@@ -171,30 +171,41 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Parent Dashboard</h1>
-        <p className="mt-2 text-gray-600">Welcome back, {user.firstName}! Here's how your children are progressing.</p>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent">
+          Parent Dashboard
+        </h1>
+        <p className="mt-2 text-gray-600 text-lg">Welcome back, {user.name}! Here's how your children are progressing.</p>
       </div>
 
-      {/* Children Overview Cards */}
+      {/* Enhanced Children Overview Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {children.map((child) => (
-          <div key={child.id} className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between mb-4">
+        {children.map((child, index) => (
+          <div 
+            key={child.id} 
+            className="group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in"
+            style={{ 
+              animationDelay: `${index * 150}ms`,
+              animationFillMode: 'forwards'
+            }}
+          >
+            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center">
-                  <span className="text-lg font-medium text-white">{child.avatar}</span>
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-pink-500 to-blue-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                  <span className="text-xl font-bold text-white">{child.avatar}</span>
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-medium text-gray-900">{child.name}</h3>
-                  <p className="text-sm text-gray-500">{child.grade} • {child.class}</p>
-                  <p className="text-xs text-gray-400">Teacher: {child.teacher}</p>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-pink-600 transition-colors">{child.name}</h3>
+                  <p className="text-sm font-medium text-gray-600">{child.grade} • {child.class}</p>
+                  <p className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-lg mt-1">Teacher: {child.teacher}</p>
                 </div>
               </div>
               <div className="flex items-center">
-                {getStatusIcon(child.status)}
-                <span className={`ml-1 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(child.status)}`}>
+                <div className="p-2 bg-gray-50 rounded-xl mr-2 group-hover:bg-white group-hover:shadow-md transition-all duration-200">
+                  {getStatusIcon(child.status)}
+                </div>
+                <span className={`inline-flex px-3 py-1.5 text-xs font-bold rounded-full shadow-sm ${getStatusColor(child.status)}`}>
                   {child.status.replace('_', ' ')}
                 </span>
               </div>

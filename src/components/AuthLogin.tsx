@@ -5,11 +5,9 @@ import { supabase } from '../lib/supabaseClient';
 import { Mail, Lock, Eye, EyeOff, GraduationCap } from 'lucide-react';
 import { User } from '../types/index';
 
-
 const password = 'user@123';
 const hash = bcrypt.hashSync(password, 10);
 console.log(hash);
-
 
 interface AuthLoginProps {
   onLogin: (user: User) => void;
@@ -21,7 +19,33 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [clickRipples, setClickRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const navigate = useNavigate();
+
+  // Simple cursor movement tracking
+  const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
+    requestAnimationFrame(() => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    });
+  }, []);
+
+  // Simple click effect
+  const handleClick = React.useCallback((e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const newRipple = {
+      id: Date.now(),
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+    
+    setClickRipples([newRipple]); // Only one ripple at a time
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+      setClickRipples([]);
+    }, 800);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,7 +81,7 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
       const loggedInUser: User = {
         id: user.id,
         email: user.email,
-        name: user.first_name, // or combine first_name + last_name
+        name: user.first_name,
         role: user.role,
         status: user.status,
         createdAt: user.createdAt,
@@ -88,73 +112,179 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
     }
   };
 
-  
-
-  // UI stays unchanged
+  // Simple UI with minimal mouse effects
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="text-center mb-8">
-            <div className="mx-auto w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
-              <GraduationCap className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900">EduFlow LMS</h1>
-            <p className="text-gray-600 mt-2">Sign in to your account</p>
+    <div 
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800"
+      onMouseMove={handleMouseMove}
+      onClick={handleClick}
+    >
+      {/* Simple Click Ripples */}
+      {clickRipples.map(ripple => (
+        <div
+          key={ripple.id}
+          className="fixed pointer-events-none z-40 animate-ping"
+          style={{
+            left: ripple.x,
+            top: ripple.y,
+            width: '40px',
+            height: '40px',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)',
+            borderRadius: '50%',
+            transform: 'translate(-50%, -50%)'
+          }}
+        />
+      ))}
+
+      {/* Subtle cursor-following light effect */}
+      <div 
+        className="fixed pointer-events-none z-30 w-64 h-64 opacity-20 transition-all duration-500 ease-out"
+        style={{ 
+          left: mousePosition.x - 128, 
+          top: mousePosition.y - 128,
+          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, transparent 60%)',
+        }}
+      />
+
+      {/* Simple Background Elements */}
+      <div className="absolute inset-0">
+        {/* Static floating shapes */}
+        <div className="absolute w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ top: '10%', left: '10%' }}></div>
+        <div className="absolute w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000" style={{ top: '40%', right: '20%' }}></div>
+        <div className="absolute w-80 h-80 bg-gradient-to-r from-pink-400/10 to-orange-400/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000" style={{ bottom: '-8%', left: '20%' }}></div>
+
+        {/* Vision Statement Background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="text-center px-8 opacity-5 select-none">
+            <h2 className="text-6xl font-bold text-white mb-8 leading-tight">
+              Personalized Learning
+            </h2>
+            <p className="text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+              We envision a future where every student experiences personalized, high-quality learning at the finest level of granularity
+            </p>
           </div>
+        </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-            </div>
+        {/* Simple Grid Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5">
+          <div 
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2px, transparent 0)`,
+              backgroundSize: '50px 50px'
+            }}
+          ></div>
+        </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="Enter your password"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
-            </div>
-
-            {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                <p className="text-red-600 text-sm">{error}</p>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+        {/* Simple floating particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${4 + Math.random() * 3}s`,
+              }}
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
-            </button>
-          </form>
+              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        <div className="max-w-md w-full">
+          {/* Login Card */}
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 animate-fade-in hover:shadow-3xl transition-all duration-500">
+            
+            {/* Vision Statement Header */}
+            <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-purple-50/80 rounded-2xl border border-blue-200/50">
+              <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Our Vision</p>
+              <p className="text-sm text-gray-700 leading-relaxed font-medium">
+                "Personalized, high-quality learning at the finest level of granularity"
+              </p>
+            </div>
+
+            <div className="text-center mb-8">
+              <div className="mx-auto w-20 h-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl animate-pulse-glow">
+                <GraduationCap className="w-10 h-10 text-white" />
+              </div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                EduFlow LMS
+              </h1>
+              <p className="text-gray-600 text-lg font-medium">Welcome to your personalized learning journey!</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="group">
+                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center">
+                  <Mail className="w-4 h-4 mr-2 text-blue-500" />
+                  Email Address
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 hover:bg-white"
+                    placeholder="Enter your email address"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="group">
+                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center">
+                  <Lock className="w-4 h-4 mr-2 text-purple-500" />
+                  Password
+                </label>
+                <div className="relative">
+                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 bg-gray-50/50 hover:bg-white"
+                    placeholder="Enter your password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors"
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
+              </div>
+
+              {error && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-2xl">
+                  <p className="text-red-600 text-sm font-medium">{error}</p>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:scale-100 glow-on-hover"
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
+                    Signing In...
+                  </div>
+                ) : (
+                  "Begin Your Learning Journey"
+                )}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

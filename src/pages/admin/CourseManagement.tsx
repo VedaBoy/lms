@@ -502,7 +502,7 @@ const CourseManagement: React.FC = () => {
               </tr>
             ) : (
               filteredList.map((item, index) => (
-              <tr 
+                <tr 
                 key={item.id} 
                 className={`hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200 transform hover:scale-[1.01] ${
                   index % 2 === 0 ? 'bg-gray-50/30' : 'bg-white'

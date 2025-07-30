@@ -157,25 +157,25 @@ const TeacherOverview: React.FC<{
           name: "Total Students",
           value: totalRes.count || 0,
           icon: Users,
-          color: "bg-blue-500",
+          color: "bg-gradient-to-br from-blue-500 to-blue-600",
         },
         {
           name: "Assigned Concepts",
           value: assignedRes.count || 0,
           icon: BookOpen,
-          color: "bg-green-500",
+          color: "bg-gradient-to-br from-green-500 to-green-600",
         },
         {
           name: "Completed Concepts",
           value: completedRes.count || 0,
           icon: TrendingUp,
-          color: "bg-purple-500",
+          color: "bg-gradient-to-br from-purple-500 to-purple-600",
         },
         {
           name: "Today's Sessions",
           value: sessRes.data?.length || 0,
           icon: Clock,
-          color: "bg-orange-500",
+          color: "bg-gradient-to-br from-orange-500 to-orange-600",
         },
       ]);
 
@@ -193,10 +193,12 @@ const TeacherOverview: React.FC<{
   }, []);
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Teacher Dashboard</h1>
-        <p className="mt-2 text-gray-600">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          Teacher Dashboard
+        </h1>
+        <p className="mt-2 text-gray-600 text-lg">
           Welcome! Here's a snapshot of your classroom activity for today.
         </p>
       </div>

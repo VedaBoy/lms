@@ -63,10 +63,10 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ user, onLogout }) =
 
 const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   const stats = [
-    { name: 'Concepts Completed', value: '12', change: '+3 this week', icon: CheckCircle2, color: 'bg-green-500' },
-    { name: 'Current Score', value: '88%', change: '+5% improvement', icon: Award, color: 'bg-purple-500' },
-    { name: 'Time Studied', value: '245m', change: 'This week', icon: Clock, color: 'bg-blue-500' },
-    { name: 'Streak Days', value: '7', change: 'Keep it up!', icon: TrendingUp, color: 'bg-orange-500' },
+    { name: 'Concepts Completed', value: '12', change: '+3 this week', icon: CheckCircle2, color: 'bg-gradient-to-br from-green-500 to-green-600' },
+    { name: 'Current Score', value: '88%', change: '+5% improvement', icon: Award, color: 'bg-gradient-to-br from-purple-500 to-purple-600' },
+    { name: 'Time Studied', value: '245m', change: 'This week', icon: Clock, color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
+    { name: 'Streak Days', value: '7', change: 'Keep it up!', icon: TrendingUp, color: 'bg-gradient-to-br from-orange-500 to-orange-600' },
   ];
 
   const todayAssignments = [
@@ -135,26 +135,35 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Welcome back, {user.firstName}!</h1>
-        <p className="mt-2 text-gray-600">Ready to continue learning? Here's what's on your schedule today.</p>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Welcome back, {user.name}!
+        </h1>
+        <p className="mt-2 text-gray-600 text-lg">Ready to continue learning? Here's what's on your schedule today.</p>
       </div>
 
-      {/* Stats Grid */}
+      {/* Enhanced Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {stats.map((stat) => (
-          <div key={stat.name} className="bg-white rounded-lg shadow p-6">
+        {stats.map((stat, index) => (
+          <div 
+            key={stat.name} 
+            className="group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in"
+            style={{ 
+              animationDelay: `${index * 100}ms`,
+              animationFillMode: 'forwards'
+            }}
+          >
             <div className="flex items-center">
-              <div className={`flex-shrink-0 p-3 rounded-lg ${stat.color}`}>
+              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
+                <p className="text-sm font-medium text-gray-600 group-hover:text-gray-800 transition-colors">{stat.name}</p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
+                  <p className="text-2xl font-bold text-gray-900 group-hover:text-green-600 transition-colors">{stat.value}</p>
                 </div>
-                <p className="text-xs text-green-600 mt-1">{stat.change}</p>
+                <p className="text-xs text-green-600 mt-1 font-medium">{stat.change}</p>
               </div>
             </div>
           </div>
@@ -162,32 +171,43 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Today's Assignments */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Today's Assignments</h3>
+        {/* Enhanced Today's Assignments */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+          <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50 rounded-t-2xl">
+            <h3 className="text-lg font-bold text-gray-900 flex items-center">
+              <Target className="h-5 w-5 mr-2 text-green-600" />
+              Today's Assignments
+            </h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
-              {todayAssignments.map((assignment) => (
-                <div key={assignment.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              {todayAssignments.map((assignment, index) => (
+                <div 
+                  key={assignment.id} 
+                  className="group border border-gray-200 rounded-2xl p-4 hover:shadow-lg hover:border-green-200 transition-all duration-300 transform hover:scale-[1.02] animate-fade-in"
+                  style={{ animationDelay: `${500 + index * 100}ms`, animationFillMode: 'forwards' }}
+                >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center">
-                        <h4 className="text-sm font-medium text-gray-900">{assignment.concept}</h4>
-                        <span className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(assignment.priority)}`}>
+                        <h4 className="text-sm font-bold text-gray-900 group-hover:text-green-600 transition-colors">{assignment.concept}</h4>
+                        <span className={`ml-2 inline-flex px-3 py-1 text-xs font-bold rounded-full shadow-sm ${getPriorityColor(assignment.priority)}`}>
                           {assignment.priority}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">{assignment.subject}</p>
+                      <p className="text-sm text-gray-500 mt-1 font-medium">{assignment.subject}</p>
                       <div className="flex items-center text-xs text-gray-500 mt-2">
-                        <Clock className="w-3 h-3 mr-1" />
-                        <span className="mr-3">{assignment.estimatedTime} min</span>
-                        <Target className="w-3 h-3 mr-1" />
-                        <span>Due {assignment.dueDate}</span>
+                        <div className="flex items-center mr-4 p-1 rounded-lg bg-gray-50">
+                          <Clock className="w-3 h-3 mr-1 text-blue-500" />
+                          <span className="font-medium">{assignment.estimatedTime} min</span>
+                        </div>
+                        <div className="flex items-center p-1 rounded-lg bg-gray-50">
+                          <Target className="w-3 h-3 mr-1 text-orange-500" />
+                          <span className="font-medium">Due {assignment.dueDate}</span>
+                        </div>
                       </div>
                     </div>
-                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(assignment.status)}`}>
+                    <span className={`inline-flex px-3 py-1.5 text-xs font-bold rounded-full shadow-sm ${getStatusColor(assignment.status)}`}>
                       {assignment.status.replace('_', ' ')}
                     </span>
                   </div>
@@ -196,7 +216,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
                     <div className="mb-3">
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div 
-                          className="bg-blue-600 h-2 rounded-full" 
+                          className="bg-gradient-to-r from-green-500 to-blue-500 h-2 rounded-full transition-all duration-500" 
                           style={{ width: `${assignment.progress}%` }}
                         />
                       </div>

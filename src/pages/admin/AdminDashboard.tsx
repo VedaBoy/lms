@@ -200,26 +200,35 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
   }, []);
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="mt-2 text-gray-600">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Admin Dashboard
+        </h1>
+        <p className="mt-2 text-gray-600 text-lg">
           Welcome back! Here's what's happening in your school.
         </p>
       </div>
 
-      {/* Stats Grid */}
+      {/* Enhanced Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {stats.map((stat) => (
-          <div key={stat.name} className="bg-white rounded-lg shadow p-6">
+        {stats.map((stat, index) => (
+          <div 
+            key={stat.name} 
+            className="group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in"
+            style={{ 
+              animationDelay: `${index * 100}ms`,
+              animationFillMode: 'forwards'
+            }}
+          >
             <div className="flex items-center">
-              <div className={`flex-shrink-0 p-3 rounded-lg ${stat.color}`}>
+              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
+                <p className="text-sm font-medium text-gray-600 group-hover:text-gray-800 transition-colors">{stat.name}</p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
+                  <p className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{stat.value}</p>
                   <p className="ml-2 text-sm font-medium text-green-600">{stat.change}</p>
                 </div>
               </div>
@@ -228,25 +237,30 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         ))}
       </div>
 
-      {/* Recent Activity */}
+      {/* Enhanced Activity & Quick Actions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Recent Activity</h3>
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+          <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-2xl">
+            <h3 className="text-lg font-bold text-gray-900 flex items-center">
+              <Activity className="h-5 w-5 mr-2 text-blue-600" />
+              Recent Activity
+            </h3>
           </div>
           <div className="p-6 space-y-4">
             {[
-              { action: "New teacher registered", user: "Sarah Johnson", time: "2 hours ago" },
-              { action: 'Course "Advanced Math" updated', user: "Mike Davis", time: "4 hours ago" },
-              { action: "Bulk student upload completed", user: "Admin", time: "6 hours ago" },
-              { action: "Content integration added", user: "Lisa Chen", time: "1 day ago" },
+              { action: "New teacher registered", user: "Sarah Johnson", time: "2 hours ago", color: "text-green-600" },
+              { action: 'Course "Advanced Math" updated', user: "Mike Davis", time: "4 hours ago", color: "text-blue-600" },
+              { action: "Bulk student upload completed", user: "Admin", time: "6 hours ago", color: "text-purple-600" },
+              { action: "Content integration added", user: "Lisa Chen", time: "1 day ago", color: "text-orange-600" },
             ].map((activity, i) => (
-              <div key={i} className="flex items-start">
+              <div key={i} className="flex items-start p-3 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200 group">
                 <div className="flex-shrink-0">
-                  <Activity className="h-5 w-5 text-gray-400" />
+                  <div className="p-2 rounded-full bg-gray-100 group-hover:bg-white group-hover:shadow-md transition-all duration-200">
+                    <Activity className={`h-4 w-4 ${activity.color} group-hover:scale-110 transition-transform duration-200`} />
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-sm text-gray-900">{activity.action}</p>
+                <div className="ml-3 flex-1">
+                  <p className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">{activity.action}</p>
                   <p className="text-xs text-gray-500">
                     by {activity.user} • {activity.time}
                   </p>
@@ -256,40 +270,55 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Quick Actions</h3>
+        {/* Enhanced Quick Actions */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 animate-fade-in" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+          <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50 rounded-t-2xl">
+            <h3 className="text-lg font-bold text-gray-900 flex items-center">
+              <Settings className="h-5 w-5 mr-2 text-green-600" />
+              Quick Actions
+            </h3>
           </div>
           <div className="p-6">
             <div className="grid grid-cols-2 gap-4">
               <button
-                className="bg-blue-50 hover:bg-blue-100 p-4 rounded-lg text-center transition-colors"
+                className="group bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
                 onClick={() => setCurrentView("users")}
               >
-                <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                <p className="text-sm font-medium text-blue-900">Add Users</p>
+                <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                  <Users className="h-6 w-6 text-white" />
+                </div>
+                <p className="text-sm font-bold text-blue-900">Add Users</p>
+                <p className="text-xs text-blue-600 mt-1">Manage user accounts</p>
               </button>
               <button
-                className="bg-green-50 hover:bg-green-100 p-4 rounded-lg text-center transition-colors"
+                className="group bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
                 onClick={() => setCurrentView("courses")}
               >
-                <BookOpen className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <p className="text-sm font-medium text-green-900">Create Course</p>
+                <div className="p-3 bg-green-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                  <BookOpen className="h-6 w-6 text-white" />
+                </div>
+                <p className="text-sm font-bold text-green-900">Create Course</p>
+                <p className="text-xs text-green-600 mt-1">Add new courses</p>
               </button>
               <button
-                className="bg-purple-50 hover:bg-purple-100 p-4 rounded-lg text-center transition-colors"
+                className="group bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
                 onClick={() => setCurrentView("content")}
               >
-                <Play className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                <p className="text-sm font-medium text-purple-900">Add Content</p>
+                <div className="p-3 bg-purple-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                  <Play className="h-6 w-6 text-white" />
+                </div>
+                <p className="text-sm font-bold text-purple-900">Add Content</p>
+                <p className="text-xs text-purple-600 mt-1">Upload materials</p>
               </button>
               <button
-                className="bg-orange-50 hover:bg-orange-100 p-4 rounded-lg text-center transition-colors"
+                className="group bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
                 onClick={() => setCurrentView("analytics")}
               >
-                <BarChart3 className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                <p className="text-sm font-medium text-orange-900">View Reports</p>
+                <div className="p-3 bg-orange-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                  <BarChart3 className="h-6 w-6 text-white" />
+                </div>
+                <p className="text-sm font-bold text-orange-900">View Reports</p>
+                <p className="text-xs text-orange-600 mt-1">Analytics dashboard</p>
               </button>
             </div>
           </div>
