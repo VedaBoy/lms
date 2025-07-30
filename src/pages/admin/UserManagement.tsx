@@ -8,6 +8,8 @@ import {
   Eye,
   EyeOff,
   Key,
+  Users,
+  TrendingUp,
 } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
 import { User } from '../../types';
@@ -529,19 +531,33 @@ const UserManagement: React.FC = () => {
 
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 px-4 sm:px-6 lg:px-8 interactive-bg scroll-smooth">
+      <div className="sm:flex sm:items-center animate-slide-in-up">
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
-          <p className="mt-2 text-sm text-gray-700">
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-lg mouse-elastic icon-bounce cursor-pointer">
+              <Users className="w-6 h-6 text-white icon-spin" />
+            </div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent text-gradient-hover cursor-default">
+              User Management
+            </h1>
+          </div>
+          <p className="text-lg text-gray-600 font-medium hover:text-gray-800 transition-colors duration-300 cursor-default">
             Manage all users in your school system including admins, teachers, students, and parents.
           </p>
+          <div className="flex items-center space-x-2 mt-2 mouse-magnetic">
+            <TrendingUp className="w-4 h-4 text-green-500 icon-bounce" />
+            <span className="text-sm text-green-600 font-medium hover:text-green-700 transition-colors">
+              {filteredUsers.length} users found
+            </span>
+          </div>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none space-x-2">
           <button
             onClick={() => setShowParentLink(true)}
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-blue-500"
+            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 transition-all duration-300 mouse-tilt mouse-shadow-dance btn-interactive cursor-pointer"
           >
+            <Users className="w-4 h-4 mr-2 icon-bounce" />
             Manage Parent Links
           </button>
           <button
@@ -549,39 +565,43 @@ const UserManagement: React.FC = () => {
               setEditingUser(null);
               setShowAddUser(true);
             }}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-xl text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-blue-500 btn-interactive mouse-ripple mouse-magnetic cursor-pointer"
           >
-            <Plus className="w-4 h-4 mr-2" />
+            <Plus className="w-4 h-4 mr-2 icon-spin" />
             Add User
           </button>
         </div>
       </div>
 
-      {/* Search and Filter */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Search users..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-        </div>
-        <div className="relative">
-          <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <select
-            value={filterRole}
-            onChange={(e) => setFilterRole(e.target.value as 'all' | User['role'])}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
-          >
-            <option value="all">All Roles</option>
-            <option value="admin">Admin</option>
-            <option value="teacher">Teacher</option>
-            <option value="student">Student</option>
-            <option value="parent">Parent</option>
-          </select>
+      {/* Enhanced Search and Filter */}
+      <div className="mt-8 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-interactive mouse-glow-border">
+        <div className="p-6 bg-gradient-to-r from-gray-50 to-blue-50">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative mouse-follow">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-bounce" />
+              <input
+                type="text"
+                placeholder="Search users by name, email, or ID..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-6 py-3 border border-gray-200 rounded-xl bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 mouse-tilt text-sm font-medium hover:shadow-md"
+              />
+            </div>
+            <div className="relative mouse-magnetic">
+              <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-spin" />
+              <select
+                value={filterRole}
+                onChange={(e) => setFilterRole(e.target.value as 'all' | User['role'])}
+                className="w-full pl-12 pr-6 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none transition-all duration-300 mouse-tilt text-sm font-medium hover:shadow-md cursor-pointer"
+              >
+                <option value="all">All Roles</option>
+                <option value="admin">👑 Admin</option>
+                <option value="teacher">👨‍🏫 Teacher</option>
+                <option value="student">🎓 Student</option>
+                <option value="parent">👨‍👩‍👧‍👦 Parent</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 

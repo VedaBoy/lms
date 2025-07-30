@@ -135,7 +135,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 scroll-smooth">
       <div className="mb-8 animate-fade-in">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
           Welcome back, {user.name}!

@@ -198,40 +198,42 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         <div className="max-w-md w-full">
-          {/* Login Card */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 animate-fade-in hover:shadow-3xl transition-all duration-500">
+          {/* Enhanced Login Card with Mouse Interactions */}
+          <div className="card-interactive mouse-follow bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 animate-fade-in hover:shadow-3xl transition-all duration-500 mouse-glow-border">
             
-            {/* Vision Statement Header */}
-            <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-purple-50/80 rounded-2xl border border-blue-200/50">
-              <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Our Vision</p>
-              <p className="text-sm text-gray-700 leading-relaxed font-medium">
+            {/* Vision Statement Header with Mouse Effects */}
+            <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-purple-50/80 rounded-2xl border border-blue-200/50 mouse-magnetic interactive-bg">
+              <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2 text-gradient-hover">Our Vision</p>
+              <p className="text-sm text-gray-700 leading-relaxed font-medium hover:text-gray-900 transition-colors duration-300">
                 "Personalized, high-quality learning at the finest level of granularity"
               </p>
             </div>
 
             <div className="text-center mb-8">
-              <div className="mx-auto w-20 h-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl animate-pulse-glow">
-                <GraduationCap className="w-10 h-10 text-white" />
+              <div className="mx-auto w-20 h-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl animate-pulse-glow mouse-elastic cursor-pointer">
+                <GraduationCap className="w-10 h-10 text-white icon-bounce" />
               </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2 text-gradient-hover cursor-default">
                 EduFlow LMS
               </h1>
-              <p className="text-gray-600 text-lg font-medium">Welcome to your personalized learning journey!</p>
+              <p className="text-gray-600 text-lg font-medium hover:text-gray-800 transition-colors duration-300 cursor-default">
+                Welcome to your personalized learning journey!
+              </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="group">
-                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center">
-                  <Mail className="w-4 h-4 mr-2 text-blue-500" />
+                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                  <Mail className="w-4 h-4 mr-2 text-blue-500 icon-bounce" />
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-pulse" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 hover:bg-white"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 hover:bg-white mouse-tilt mouse-shadow-dance"
                     placeholder="Enter your email address"
                     required
                   />
@@ -239,32 +241,32 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
               </div>
 
               <div className="group">
-                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center">
-                  <Lock className="w-4 h-4 mr-2 text-purple-500" />
+                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center hover:text-purple-600 transition-colors duration-300 cursor-pointer">
+                  <Lock className="w-4 h-4 mr-2 text-purple-500 icon-bounce" />
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-pulse" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 bg-gray-50/50 hover:bg-white"
+                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 bg-gray-50/50 hover:bg-white mouse-tilt mouse-shadow-dance"
                     placeholder="Enter your password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors mouse-elastic"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <EyeOff className="w-5 h-5 icon-spin" /> : <Eye className="w-5 h-5 icon-spin" />}
                   </button>
                 </div>
               </div>
 
               {error && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-2xl">
+                <div className="p-4 bg-red-50 border border-red-200 rounded-2xl mouse-magnetic animate-bounce-in">
                   <p className="text-red-600 text-sm font-medium">{error}</p>
                 </div>
               )}
@@ -272,15 +274,15 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:scale-100 glow-on-hover"
+                className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:scale-100 btn-interactive mouse-ripple mouse-magnetic cursor-pointer"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
-                    Signing In...
+                    <span className="text-gradient-hover">Signing In...</span>
                   </div>
                 ) : (
-                  "Begin Your Learning Journey"
+                  <span className="text-gradient-hover">Begin Your Learning Journey</span>
                 )}
               </button>
             </form>

@@ -4,11 +4,9 @@ import {
   Search, 
   Filter, 
   Play, 
-  CheckCircle2, 
   Clock,
   Target,
   Star,
-  ExternalLink,
   Youtube,
   Globe
 } from 'lucide-react';
@@ -288,34 +286,36 @@ const MyConcepts: React.FC = () => {
   );
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 scroll-smooth">
+      <div className="sm:flex sm:items-center animate-slide-in-up">
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900">My Concepts</h1>
-          <p className="mt-2 text-sm text-gray-700">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent animate-fade-in-scale">
+            My Concepts
+          </h1>
+          <p className="mt-2 text-lg text-gray-600 animate-slide-in-left delay-200">
             Access your assigned learning concepts and track your progress through each module.
           </p>
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+      {/* Enhanced Filters */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-in-up delay-300">
+        <div className="relative group">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
           <input
             type="text"
             placeholder="Search concepts..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 hover:shadow-md bg-white"
           />
         </div>
-        <div className="relative">
-          <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <div className="relative group">
+          <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
           <select
             value={filterSubject}
             onChange={(e) => setFilterSubject(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
+            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none transition-all duration-300 hover:shadow-md bg-white cursor-pointer"
           >
             <option value="all">All Subjects</option>
             <option value="Mathematics">Mathematics</option>
@@ -323,11 +323,12 @@ const MyConcepts: React.FC = () => {
             <option value="English">English</option>
           </select>
         </div>
-        <div className="relative">
+        <div className="relative group">
+          <Target className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
+            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none transition-all duration-300 hover:shadow-md bg-white cursor-pointer"
           >
             <option value="all">All Status</option>
             <option value="assigned">Assigned</option>
@@ -337,89 +338,85 @@ const MyConcepts: React.FC = () => {
         </div>
       </div>
 
-      {/* Concepts Grid */}
+      {/* Enhanced Concepts Grid */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredConcepts.map((concept) => (
-          <div key={concept.id} className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-lg font-medium text-gray-900 mb-1">{concept.title}</h3>
-                  <p className="text-sm text-gray-600">{concept.subject} • {concept.chapter}</p>
+        {filteredConcepts.map((concept, index) => (
+          <div
+            key={concept.id}
+            className={`group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover-lift hover-glow cursor-pointer transition-all duration-300 animate-bounce-in delay-${(index + 1) * 100}`}
+            onClick={() => setSelectedConcept(concept.id)}
+          >
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-300 mb-2">
+                  {concept.title}
+                </h3>
+                <div className="flex items-center text-sm text-gray-600 mb-1">
+                  <BookOpen className="w-4 h-4 mr-2 text-green-500" />
+                  {concept.subject} • {concept.chapter}
                 </div>
-                <div className="flex flex-col items-end space-y-1">
-                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(concept.status)}`}>
-                    {concept.status.replace('_', ' ')}
-                  </span>
-                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(concept.priority)}`}>
-                    {concept.priority}
-                  </span>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Clock className="w-4 h-4 mr-2 animate-pulse" />
+                  {concept.estimatedTime} minutes
                 </div>
               </div>
-
-              <p className="text-sm text-gray-700 mb-4 line-clamp-2">{concept.description}</p>
-
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <Clock className="w-4 h-4 mr-1" />
-                <span className="mr-4">{concept.estimatedTime} min</span>
-                <Target className="w-4 h-4 mr-1" />
-                <span>Due {concept.dueDate}</span>
+              <div className="flex flex-col gap-2">
+                <span className={`px-3 py-1 text-xs font-bold rounded-full ${getStatusColor(concept.status)} animate-pulse`}>
+                  {concept.status.replace('_', ' ')}
+                </span>
+                <span className={`px-3 py-1 text-xs font-bold rounded-full ${getDifficultyColor(concept.difficulty)}`}>
+                  {concept.difficulty}
+                </span>
               </div>
+            </div>
 
-              {concept.progress > 0 && (
-                <div className="mb-4">
-                  <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="text-gray-600">Progress</span>
-                    <span className="font-medium">{concept.progress}%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-600 h-2 rounded-full" 
-                      style={{ width: `${concept.progress}%` }}
-                    />
-                  </div>
-                  {concept.status === 'completed' && concept.score && (
-                    <div className="flex items-center mt-2">
-                      <Star className="w-4 h-4 text-yellow-500 mr-1" />
-                      <span className="text-sm font-medium text-gray-900">Score: {concept.score}%</span>
-                    </div>
-                  )}
+            <p className="text-sm text-gray-600 mb-4 line-clamp-2 group-hover:text-gray-700 transition-colors">
+              {concept.description}
+            </p>
+
+            {/* Enhanced Progress Bar */}
+            {concept.progress > 0 && (
+              <div className="mb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-gray-700">Progress</span>
+                  <span className="text-sm font-bold text-green-600">{concept.progress}%</span>
                 </div>
-              )}
-
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => setSelectedConcept(concept.id)}
-                  className="flex-1 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  View Details
-                </button>
-                {concept.status !== 'completed' && (
-                  <button className="flex-1 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center text-sm font-medium">
-                    <Play className="w-4 h-4 mr-1" />
-                    {concept.status === 'assigned' ? 'Start' : 'Continue'}
-                  </button>
-                )}
+                <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                  <div 
+                    className="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full animate-shimmer transition-all duration-1000"
+                    style={{ width: `${concept.progress}%` }}
+                  />
+                </div>
               </div>
+            )}
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <span className={`px-2 py-1 text-xs font-bold rounded-full ${getPriorityColor(concept.priority)} animate-pulse`}>
+                  {concept.priority} priority
+                </span>
+              </div>
+              <button className="group-hover:bg-gradient-to-r group-hover:from-green-500 group-hover:to-blue-500 bg-gray-100 text-gray-600 group-hover:text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 transform group-hover:scale-105 flex items-center">
+                <Play className="w-4 h-4 mr-2" />
+                {concept.status === 'assigned' ? 'Start' : 'Continue'}
+              </button>
             </div>
           </div>
         ))}
       </div>
 
+      {/* Enhanced Empty State */}
       {filteredConcepts.length === 0 && (
-        <div className="mt-8 text-center">
-          <BookOpen className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-medium text-gray-900">No concepts found</h3>
-          <p className="mt-1 text-sm text-gray-500">
-            Try adjusting your search or filter criteria.
-          </p>
+        <div className="text-center py-12 animate-fade-in">
+          <BookOpen className="mx-auto h-16 w-16 text-gray-300 mb-4 animate-pulse" />
+          <h3 className="text-xl font-medium text-gray-900 mb-2">No concepts found</h3>
+          <p className="text-gray-600">Try adjusting your search or filter criteria.</p>
         </div>
       )}
 
+      {/* Enhanced Modal */}
       {selectedConcept && (
-        <ConceptDetailModal 
-          concept={concepts.find(c => c.id === selectedConcept)} 
-        />
+        <ConceptDetailModal concept={concepts.find(c => c.id === selectedConcept)} />
       )}
     </div>
   );

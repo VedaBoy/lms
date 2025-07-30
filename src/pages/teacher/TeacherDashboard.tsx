@@ -193,62 +193,86 @@ const TeacherOverview: React.FC<{
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8">
-      <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 scroll-smooth">
+      <div className="mb-8 animate-slide-in-up">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent animate-fade-in-scale">
           Teacher Dashboard
         </h1>
-        <p className="mt-2 text-gray-600 text-lg">
+        <p className="mt-2 text-gray-600 text-lg animate-slide-in-left delay-200">
           Welcome! Here's a snapshot of your classroom activity for today.
         </p>
       </div>
 
-      {/* Stats */}
+      {/* Enhanced Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {stats.map((s) => (
-          <div key={s.name} className="bg-white rounded-lg shadow p-6">
+        {stats.map((s, index) => (
+          <div 
+            key={s.name} 
+            className={`group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover-lift hover-glow cursor-pointer animate-bounce-in delay-${(index + 1) * 100}`}
+          >
             <div className="flex items-center">
-              <div className={`flex-shrink-0 p-3 rounded-lg ${s.color}`}>
+              <div className={`flex-shrink-0 p-4 rounded-xl ${s.color} shadow-lg group-hover:animate-pulse transition-all duration-300`}>
                 <s.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">{s.name}</p>
-                <p className="text-2xl font-semibold text-gray-900">
-                  {s.value}
+                <p className="text-sm font-medium text-gray-600 group-hover:text-gray-700 transition-colors">
+                  {s.name}
                 </p>
+                <div className="flex items-baseline">
+                  <p className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                    {s.value}
+                  </p>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2 mt-2 overflow-hidden">
+                  <div 
+                    className="bg-gradient-to-r from-purple-400 to-blue-500 h-2 rounded-full animate-shimmer transition-all duration-1000"
+                    style={{ width: `${70 + (index * 8)}%` }}
+                  />
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Today's Sessions */}
+      {/* Enhanced Sessions and Activity Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b">
-            <h3 className="text-lg font-medium">Today's Sessions</h3>
+        {/* Today's Sessions with Animations */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-slide-in-left">
+          <div className="bg-gradient-to-r from-purple-500 to-blue-600 p-6 text-white">
+            <h3 className="text-xl font-bold flex items-center">
+              <Clock className="w-6 h-6 mr-3 animate-pulse" />
+              Today's Sessions
+            </h3>
           </div>
           <div className="p-6 space-y-4">
             {sessions.length === 0 && (
-              <p className="text-gray-500">No sessions today.</p>
+              <div className="text-center py-8">
+                <Clock className="w-12 h-12 text-gray-300 mx-auto mb-3 animate-pulse" />
+                <p className="text-gray-500 animate-fade-in">No sessions scheduled for today.</p>
+              </div>
             )}
             {sessions.map((s, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between p-4 border rounded-lg"
+                className={`group flex items-center justify-between p-5 rounded-xl bg-gradient-to-r from-gray-50 to-purple-50 hover:from-purple-50 hover:to-blue-50 transition-all duration-300 transform hover:translate-x-2 animate-slide-in-up delay-${(i + 1) * 100}`}
               >
-                <div>
-                  <Clock className="h-4 w-4 text-gray-400 mr-2 inline" />
-                  <span className="text-sm font-medium">
-                    {new Date(s.started_at).toLocaleTimeString()}
-                  </span>
-                  <h4 className="text-sm font-semibold mt-1">
-                    {s.topic || "Live Session"}
-                  </h4>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center animate-pulse-glow mr-4">
+                    <Clock className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-bold text-gray-900 block">
+                      {new Date(s.started_at).toLocaleTimeString()}
+                    </span>
+                    <h4 className="text-sm font-medium text-gray-600 mt-1">
+                      {s.topic || "Live Session"}
+                    </h4>
+                  </div>
                 </div>
                 <button
                   onClick={() => onQuickNavigate("streaming")}
-                  className="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-full"
+                  className="px-4 py-2 text-sm font-bold text-purple-700 bg-purple-100 rounded-full hover:bg-purple-200 hover:scale-105 transition-all duration-200 group-hover:animate-bounce"
                 >
                   Join
                 </button>
@@ -257,23 +281,36 @@ const TeacherOverview: React.FC<{
           </div>
         </div>
 
-        {/* Recent Activity */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b">
-            <h3 className="text-lg font-medium">Recent Student Activity</h3>
+        {/* Recent Activity with Enhanced Animations */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 animate-slide-in-right">
+          <div className="bg-gradient-to-r from-blue-500 to-green-600 p-6 text-white">
+            <h3 className="text-xl font-bold flex items-center">
+              <Activity className="w-6 h-6 mr-3 animate-pulse" />
+              Recent Student Activity
+            </h3>
           </div>
           <div className="p-6 space-y-4">
             {recent.length === 0 && (
-              <p className="text-gray-500">No recent activity.</p>
+              <div className="text-center py-8">
+                <Activity className="w-12 h-12 text-gray-300 mx-auto mb-3 animate-pulse" />
+                <p className="text-gray-500 animate-fade-in">No recent activity to display.</p>
+              </div>
             )}
             {recent.map((r, i) => (
-              <div key={i} className="flex items-start">
-                <Activity className="h-5 w-5 text-gray-400 mr-3" />
-                <div>
-                  <p className="text-sm">
-                    <span className="font-medium">{r.student}</span> {r.action}
+              <div 
+                key={i} 
+                className={`flex items-start p-4 rounded-lg bg-gradient-to-r from-gray-50 to-blue-50 hover:from-blue-50 hover:to-green-50 transition-all duration-300 transform hover:translate-x-2 animate-slide-in-up delay-${(i + 1) * 100}`}
+              >
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-500 flex items-center justify-center animate-pulse-glow">
+                    <Activity className="h-5 w-5 text-white" />
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <p className="text-sm font-medium hover:text-blue-600 transition-colors">
+                    <span className="font-bold text-green-600">{r.student}</span> {r.action}
                   </p>
-                  <p className="text-xs text-gray-500">{r.time}</p>
+                  <p className="text-xs text-gray-500 mt-1">{r.time}</p>
                 </div>
               </div>
             ))}
@@ -281,33 +318,45 @@ const TeacherOverview: React.FC<{
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="mt-8 bg-white rounded-lg shadow p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">
-          Quick Actions
-        </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <button
-            onClick={() => onQuickNavigate("assign")}
-            className="flex flex-col items-center p-3 bg-green-100 rounded hover:bg-green-200"
-          >
-            <BookOpen className="h-6 w-6 text-green-700 mb-1" />
-            Assign Concepts
-          </button>
-          <button
-            onClick={() => onQuickNavigate("streaming")}
-            className="flex flex-col items-center p-3 bg-blue-100 rounded hover:bg-blue-200"
-          >
-            <Play className="h-6 w-6 text-blue-700 mb-1" />
-            AV Streaming
-          </button>
-          <button
-            onClick={() => onQuickNavigate("progress")}
-            className="flex flex-col items-center p-3 bg-purple-100 rounded hover:bg-purple-200"
-          >
-            <Users className="h-6 w-6 text-purple-700 mb-1" />
-            Student Progress
-          </button>
+      {/* Enhanced Quick Actions */}
+      <div className="mt-8 bg-white rounded-2xl shadow-xl border border-gray-100 animate-slide-in-up delay-300">
+        <div className="bg-gradient-to-r from-green-500 to-purple-600 p-6 text-white rounded-t-2xl">
+          <h3 className="text-xl font-bold">Quick Actions</h3>
+        </div>
+        <div className="p-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <button
+              onClick={() => onQuickNavigate("assign")}
+              className="group relative overflow-hidden bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 p-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover-glow cursor-magic"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
+              <BookOpen className="h-8 w-8 text-green-700 mx-auto mb-2 group-hover:animate-bounce" />
+              <p className="text-sm font-bold text-green-900 group-hover:text-green-700">Assign Concepts</p>
+            </button>
+            <button
+              onClick={() => onQuickNavigate("streaming")}
+              className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 p-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover-glow cursor-magic"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
+              <Play className="h-8 w-8 text-blue-700 mx-auto mb-2 group-hover:animate-bounce" />
+              <p className="text-sm font-bold text-blue-900 group-hover:text-blue-700">AV Streaming</p>
+            </button>
+            <button
+              onClick={() => onQuickNavigate("progress")}
+              className="group relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 p-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover-glow cursor-magic"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
+              <Users className="h-8 w-8 text-purple-700 mx-auto mb-2 group-hover:animate-bounce" />
+              <p className="text-sm font-bold text-purple-900 group-hover:text-purple-700">Student Progress</p>
+            </button>
+            <button
+              className="group relative overflow-hidden bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 p-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover-glow cursor-magic"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
+              <BarChart3 className="h-8 w-8 text-orange-700 mx-auto mb-2 group-hover:animate-bounce" />
+              <p className="text-sm font-bold text-orange-900 group-hover:text-orange-700">Analytics</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>

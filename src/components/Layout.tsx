@@ -9,6 +9,8 @@ import {
   Bell,
   Search
 } from 'lucide-react';
+import { ScrollToTopButton } from './SmoothScroll';
+import { ScrollProgress } from './SmoothNav';
 
 interface LayoutProps {
   user: User;
@@ -28,6 +30,7 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
+      <ScrollProgress />
       {/* Mobile sidebar */}
       <div className={`fixed inset-0 flex z-40 md:hidden ${sidebarOpen ? '' : 'hidden'}`}>
         <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={() => setSidebarOpen(false)} />
@@ -67,24 +70,33 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
       {/* Desktop sidebar */}
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
-          <div className="flex flex-col h-0 flex-1 bg-white shadow-sm">
+          <div className="flex flex-col h-0 flex-1 bg-gradient-to-br from-white to-gray-50 shadow-xl">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-              <div className="flex items-center flex-shrink-0 px-4">
-                <h1 className="text-xl font-bold text-gray-900">EduFlow LMS</h1>
+              <div className="flex items-center flex-shrink-0 px-4 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center shadow-lg animate-pulse-glow mr-3">
+                  <span className="text-white font-bold text-lg">E</span>
+                </div>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  EduFlow LMS
+                </h1>
               </div>
-              <nav className="mt-5 flex-1 px-2 space-y-1">
-                {navigation.map((item) => (
+              <nav className="mt-5 flex-1 px-2 space-y-2">
+                {navigation.map((item, index) => (
                   <button
                     key={item.name}
                     onClick={item.onClick}
-                    className={`group flex items-center px-2 py-2 text-sm font-medium rounded-md w-full text-left transition-colors ${
+                    className={`group relative overflow-hidden flex items-center px-4 py-3 text-sm font-medium rounded-xl w-full text-left transition-all duration-300 transform hover:scale-105 animate-slide-in-left delay-${(index + 1) * 50} ${
                       item.current
-                        ? 'bg-blue-100 text-blue-900'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg animate-pulse-glow'
+                        : 'text-gray-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-gray-900 hover:shadow-md'
                     }`}
                   >
-                    <item.icon className="mr-3 h-5 w-5" />
-                    {item.name}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-10 animate-shimmer"></div>
+                    <item.icon className={`mr-3 h-5 w-5 transition-all duration-300 ${item.current ? 'animate-bounce' : 'group-hover:scale-110'}`} />
+                    <span className="font-medium">{item.name}</span>
+                    {item.current && (
+                      <div className="absolute right-2 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    )}
                   </button>
                 ))}
               </nav>
@@ -153,10 +165,11 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
         </div>
 
         {/* Page content */}
-        <main className="flex-1 relative overflow-y-auto focus:outline-none">
-          <div className="py-6">
+        <main className="flex-1 relative overflow-y-auto focus:outline-none smooth-scroll-container">
+          <div className="py-6 scroll-smooth">
             {children}
           </div>
+          <ScrollToTopButton />
         </main>
       </div>
     </div>
