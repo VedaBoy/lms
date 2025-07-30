@@ -126,28 +126,28 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
       value: "-",
       change: "",
       icon: Users,
-      color: "bg-blue-500",
+      color: "bg-gradient-to-br from-blue-500 to-blue-600",
     },
     {
       name: "Active Students",
       value: "-",
       change: "",
       icon: UserCheck,
-      color: "bg-green-500",
+      color: "bg-gradient-to-br from-green-500 to-green-600",
     },
     {
       name: "Courses",
       value: "-",
       change: "",
       icon: BookOpen,
-      color: "bg-purple-500",
+      color: "bg-gradient-to-br from-purple-500 to-purple-600",
     },
     {
       name: "Content Items",
       value: "-",
       change: "",
       icon: Globe,
-      color: "bg-orange-500",
+      color: "bg-gradient-to-br from-orange-500 to-orange-600",
     },
   ]);
 
