@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import bcrypt from 'bcryptjs';
-import { supabase } from '../lib/supabaseClient';
 import { Mail, Lock, Eye, EyeOff, GraduationCap } from 'lucide-react';
-import { User } from '../types/index';
+import { useAuth } from './AuthProvider';
 
-const password = 'user@123';
-const hash = bcrypt.hashSync(password, 10);
-console.log(hash);
-
-interface AuthLoginProps {
-  onLogin: (user: User) => void;
-}
-
-const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
+const AuthLogin: React.FC = () => {
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +11,6 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
   const [error, setError] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [clickRipples, setClickRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
-  const navigate = useNavigate();
 
   // Simple cursor movement tracking
   const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
@@ -47,75 +36,29 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
     }, 800);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email || !password) {
+      setError('Please fill in all fields');
+      return;
+    }
+
     setIsLoading(true);
     setError('');
 
-    try {
-      const { data: user, error: fetchError } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('email', email)
-        .single();
-
-      if (fetchError || !user) {
-        setError('User not found');
-        setIsLoading(false);
-        return;
-      }
-
-      const isMatch = await bcrypt.compare(password, user.password_hash);
-      if (!isMatch) {
-        setError('Invalid password');
-        setIsLoading(false);
-        return;
-      }
-
-      if (user.status === 'hold') {
-        setError('Account is on hold. Please contact support.');
-        setIsLoading(false);
-        return;
-      }
-
-      const loggedInUser: User = {
-        id: user.id,
-        email: user.email,
-        name: user.first_name,
-        role: user.role,
-        status: user.status,
-        createdAt: user.createdAt,
-      };
-
-      onLogin(loggedInUser);
-
-      switch (user.role) {
-        case 'admin':
-          navigate('/admin');
-          break;
-        case 'teacher':
-          navigate('/teacher');
-          break;
-        case 'student':
-          navigate('/student');
-          break;
-        case 'parent':
-          navigate('/parent');
-          break;
-        default:
-          setError('Unknown user role');
-      }
-    } catch (err: any) {
-      setError(err.message || 'An unexpected error occurred.');
-    } finally {
-      setIsLoading(false);
+    const result = await login(email, password);
+    
+    if (!result.success) {
+      setError(result.error || 'Login failed');
     }
+    
+    setIsLoading(false);
   };
 
   // Simple UI with minimal mouse effects
   return (
     <div 
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800"
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 theme-transition"
       onMouseMove={handleMouseMove}
       onClick={handleClick}
     >
@@ -199,10 +142,10 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         <div className="max-w-md w-full">
           {/* Enhanced Login Card with Mouse Interactions */}
-          <div className="card-interactive mouse-follow bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 animate-fade-in hover:shadow-3xl transition-all duration-500 mouse-glow-border">
+          <div className="card-interactive mouse-follow bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 dark:border-gray-700/50 animate-fade-in hover:shadow-3xl transition-all duration-500 mouse-glow-border theme-transition">
             
             {/* Vision Statement Header with Mouse Effects */}
-            <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-purple-50/80 rounded-2xl border border-blue-200/50 mouse-magnetic interactive-bg">
+            <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-purple-50/80 dark:from-gray-700/50 dark:to-gray-600/50 rounded-2xl border border-blue-200/50 dark:border-gray-600/50 mouse-magnetic interactive-bg theme-transition">
               <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2 text-gradient-hover">Our Vision</p>
               <p className="text-sm text-gray-700 leading-relaxed font-medium hover:text-gray-900 transition-colors duration-300">
                 "Personalized, high-quality learning at the finest level of granularity"
@@ -216,14 +159,14 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
               <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2 text-gradient-hover cursor-default">
                 EduFlow LMS
               </h1>
-              <p className="text-gray-600 text-lg font-medium hover:text-gray-800 transition-colors duration-300 cursor-default">
+              <p className="text-gray-600 dark:text-gray-300 text-lg font-medium hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-300 cursor-default theme-transition">
                 Welcome to your personalized learning journey!
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="group">
-                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer theme-transition">
                   <Mail className="w-4 h-4 mr-2 text-blue-500 icon-bounce" />
                   Email Address
                 </label>
@@ -233,7 +176,7 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 hover:bg-white mouse-tilt mouse-shadow-dance"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 bg-gray-50/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 mouse-tilt mouse-shadow-dance text-gray-900 dark:text-white theme-transition"
                     placeholder="Enter your email address"
                     required
                   />
@@ -241,7 +184,7 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
               </div>
 
               <div className="group">
-                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center hover:text-purple-600 transition-colors duration-300 cursor-pointer">
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 cursor-pointer theme-transition">
                   <Lock className="w-4 h-4 mr-2 text-purple-500 icon-bounce" />
                   Password
                 </label>
@@ -251,7 +194,7 @@ const AuthLogin: React.FC<AuthLoginProps> = ({ onLogin }) => {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 bg-gray-50/50 hover:bg-white mouse-tilt mouse-shadow-dance"
+                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300 bg-gray-50/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 mouse-tilt mouse-shadow-dance text-gray-900 dark:text-white theme-transition"
                     placeholder="Enter your password"
                     required
                   />

@@ -193,37 +193,37 @@ const TeacherOverview: React.FC<{
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 scroll-smooth">
-      <div className="mb-8 animate-slide-in-up">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+            <div className="mb-8 animate-fade-in">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent animate-fade-in-scale">
           Teacher Dashboard
         </h1>
-        <p className="mt-2 text-gray-600 text-lg animate-slide-in-left delay-200">
-          Welcome! Here's a snapshot of your classroom activity for today.
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Manage your classes, assignments, and track student progress.
         </p>
       </div>
 
       {/* Enhanced Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((s, index) => (
-          <div 
-            key={s.name} 
-            className={`group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover-lift hover-glow cursor-pointer animate-bounce-in delay-${(index + 1) * 100}`}
+                    <div
+            key={s.name}
+            className={`group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover-lift hover-glow cursor-pointer animate-bounce-in delay-${(index + 1) * 100} theme-transition`}
           >
             <div className="flex items-center">
               <div className={`flex-shrink-0 p-4 rounded-xl ${s.color} shadow-lg group-hover:animate-pulse transition-all duration-300`}>
                 <s.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 group-hover:text-gray-700 transition-colors">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-700 dark:group-hover:text-gray-100 transition-colors">
                   {s.name}
                 </p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                  <p className="text-2xl font-bold text-gray-800 dark:text-white">
                     {s.value}
                   </p>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2 mt-2 overflow-hidden">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2 overflow-hidden">
                   <div 
                     className="bg-gradient-to-r from-purple-400 to-blue-500 h-2 rounded-full animate-shimmer transition-all duration-1000"
                     style={{ width: `${70 + (index * 8)}%` }}
@@ -238,7 +238,7 @@ const TeacherOverview: React.FC<{
       {/* Enhanced Sessions and Activity Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Today's Sessions with Animations */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-slide-in-left">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden animate-slide-in-left theme-transition">
           <div className="bg-gradient-to-r from-purple-500 to-blue-600 p-6 text-white">
             <h3 className="text-xl font-bold flex items-center">
               <Clock className="w-6 h-6 mr-3 animate-pulse" />
@@ -255,7 +255,7 @@ const TeacherOverview: React.FC<{
             {sessions.map((s, i) => (
               <div
                 key={i}
-                className={`group flex items-center justify-between p-5 rounded-xl bg-gradient-to-r from-gray-50 to-purple-50 hover:from-purple-50 hover:to-blue-50 transition-all duration-300 transform hover:translate-x-2 animate-slide-in-up delay-${(i + 1) * 100}`}
+                className={`group flex items-center justify-between p-5 rounded-xl bg-gradient-to-r from-gray-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 hover:from-purple-50 hover:to-blue-50 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-300 transform hover:translate-x-2 animate-slide-in-up delay-${(i + 1) * 100} theme-transition`}
               >
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center animate-pulse-glow mr-4">
@@ -282,7 +282,7 @@ const TeacherOverview: React.FC<{
         </div>
 
         {/* Recent Activity with Enhanced Animations */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 animate-slide-in-right">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 animate-slide-in-right theme-transition">
           <div className="bg-gradient-to-r from-blue-500 to-green-600 p-6 text-white">
             <h3 className="text-xl font-bold flex items-center">
               <Activity className="w-6 h-6 mr-3 animate-pulse" />
@@ -299,7 +299,7 @@ const TeacherOverview: React.FC<{
             {recent.map((r, i) => (
               <div 
                 key={i} 
-                className={`flex items-start p-4 rounded-lg bg-gradient-to-r from-gray-50 to-blue-50 hover:from-blue-50 hover:to-green-50 transition-all duration-300 transform hover:translate-x-2 animate-slide-in-up delay-${(i + 1) * 100}`}
+                className={`flex items-start p-4 rounded-lg bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 hover:from-blue-50 hover:to-green-50 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-300 transform hover:translate-x-2 animate-slide-in-up delay-${(i + 1) * 100} theme-transition`}
               >
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-500 flex items-center justify-center animate-pulse-glow">
@@ -319,7 +319,7 @@ const TeacherOverview: React.FC<{
       </div>
 
       {/* Enhanced Quick Actions */}
-      <div className="mt-8 bg-white rounded-2xl shadow-xl border border-gray-100 animate-slide-in-up delay-300">
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 animate-slide-in-up delay-300 theme-transition">
         <div className="bg-gradient-to-r from-green-500 to-purple-600 p-6 text-white rounded-t-2xl">
           <h3 className="text-xl font-bold">Quick Actions</h3>
         </div>
@@ -327,7 +327,7 @@ const TeacherOverview: React.FC<{
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <button
               onClick={() => onQuickNavigate("assign")}
-              className="group relative overflow-hidden bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 p-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover-glow cursor-magic"
+              className="group relative overflow-hidden bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/40 dark:hover:to-green-700/40 p-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover-glow cursor-magic theme-transition"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
               <BookOpen className="h-8 w-8 text-green-700 mx-auto mb-2 group-hover:animate-bounce" />

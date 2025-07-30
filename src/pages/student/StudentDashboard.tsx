@@ -135,12 +135,14 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 scroll-smooth">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
           Welcome back, {user.name}!
         </h1>
-        <p className="mt-2 text-gray-600 text-lg">Ready to continue learning? Here's what's on your schedule today.</p>
+                <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Track your learning progress and achievements.
+        </p>
       </div>
 
       {/* Enhanced Stats Grid */}
@@ -148,7 +150,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
         {stats.map((stat, index) => (
           <div 
             key={stat.name} 
-            className="group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in"
+            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in theme-transition"
             style={{ 
               animationDelay: `${index * 100}ms`,
               animationFillMode: 'forwards'
@@ -172,8 +174,8 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Enhanced Today's Assignments */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-green-50 to-blue-50 rounded-t-2xl">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 flex items-center">
               <Target className="h-5 w-5 mr-2 text-green-600" />
               Today's Assignments
