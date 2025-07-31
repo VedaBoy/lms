@@ -58,50 +58,82 @@ const EnrollmentManagement: React.FC = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 mt-8">
-      <h2 className="text-xl font-bold">Enrollment Management</h2>
-      <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2">Select Grade</label>
-        <select onChange={(e) => setSelectedGrade(e.target.value)} className="w-full p-2 border rounded">
-          <option value="">-- Select a Grade --</option>
-          {grades.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
-        </select>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Enrollment Management
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Manage student enrollments across grades and subjects
+        </p>
       </div>
-      {selectedGrade && (
-        <div className="mt-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Select Subject</label>
-          <select onChange={(e) => setSelectedSubject(e.target.value)} className="w-full p-2 border rounded">
-            <option value="">-- Select a Subject --</option>
-            {subjects.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-          </select>
-        </div>
-      )}
-      {selectedSubject && (
-        <div className="mt-4 grid grid-cols-2 gap-4">
-          <div>
-            <h3 className="text-lg font-medium">Available Students</h3>
-            <div className="border rounded p-2 h-64 overflow-y-auto">
-              {students.filter(s => !enrolledStudents.includes(s.id)).map(student => (
-                <div key={student.id} className="flex justify-between items-center p-1">
-                  <span>{student.name}</span>
-                  <button onClick={() => handleEnroll(student.id)} className="btn-glass btn-glass-primary text-blue-500 px-3 py-1 rounded text-sm">Enroll</button>
-                </div>
-              ))}
+
+      <div className="space-y-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 theme-transition">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Grade</label>
+              <select 
+                onChange={(e) => setSelectedGrade(e.target.value)} 
+                className="w-full p-3 border border-gray-200 dark:border-gray-600 rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white theme-transition focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">-- Select a Grade --</option>
+                {grades.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
+              </select>
             </div>
-          </div>
-          <div>
-            <h3 className="text-lg font-medium">Enrolled Students</h3>
-            <div className="border rounded p-2 h-64 overflow-y-auto">
-              {students.filter(s => enrolledStudents.includes(s.id)).map(student => (
-                <div key={student.id} className="flex justify-between items-center p-1">
-                  <span>{student.name}</span>
-                                    <button onClick={() => handleUnenroll(enrollment.student_id)} className="btn-glass btn-glass-danger text-red-500 px-3 py-1 rounded text-sm">Unenroll</button>
-                </div>
-              ))}
-            </div>
+            {selectedGrade && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Subject</label>
+                <select 
+                  onChange={(e) => setSelectedSubject(e.target.value)} 
+                  className="w-full p-3 border border-gray-200 dark:border-gray-600 rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white theme-transition focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">-- Select a Subject --</option>
+                  {subjects.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                </select>
+              </div>
+            )}
           </div>
         </div>
-      )}
+        {selectedSubject && (
+          <div className="mt-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 theme-transition">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Available Students</h3>
+                <div className="border border-gray-200 dark:border-gray-600 rounded-2xl p-4 h-64 overflow-y-auto bg-gray-50 dark:bg-gray-700">
+                  {students.filter(s => !enrolledStudents.includes(s.id)).map(student => (
+                    <div key={student.id} className="flex justify-between items-center p-2 hover:bg-white dark:hover:bg-gray-600 rounded-lg theme-transition">
+                      <span className="text-gray-900 dark:text-white">{student.name}</span>
+                      <button 
+                        onClick={() => handleEnroll(student.id)} 
+                        className="btn-glass btn-glass-primary px-3 py-1 rounded-lg text-sm theme-transition"
+                      >
+                        Enroll
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Enrolled Students</h3>
+                <div className="border border-gray-200 dark:border-gray-600 rounded-2xl p-4 h-64 overflow-y-auto bg-gray-50 dark:bg-gray-700">
+                  {students.filter(s => enrolledStudents.includes(s.id)).map(student => (
+                    <div key={student.id} className="flex justify-between items-center p-2 hover:bg-white dark:hover:bg-gray-600 rounded-lg theme-transition">
+                      <span className="text-gray-900 dark:text-white">{student.name}</span>
+                      <button 
+                        onClick={() => handleUnenroll(student.id)} 
+                        className="btn-glass btn-glass-danger px-3 py-1 rounded-lg text-sm theme-transition"
+                      >
+                        Unenroll
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

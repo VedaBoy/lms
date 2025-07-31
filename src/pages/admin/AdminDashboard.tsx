@@ -211,12 +211,12 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
   }, []);
 
   return (
-    <div className={componentThemes.pageContainer}>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Admin Dashboard
         </h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg theme-transition">
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
           Welcome back! Here's what's happening in your school.
         </p>
       </div>
@@ -226,21 +226,21 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         {stats.map((stat, index) => (
           <div 
             key={stat.name} 
-            className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl p-6 hover:bg-gray-100/80 dark:hover:bg-white/20 transition-all duration-300"
+            className="btn-glass group rounded-2xl shadow-lg p-6 transition-all duration-300 theme-transition animate-fade-in"
             style={{ 
               animationDelay: `${index * 100}ms`,
               animationFillMode: 'forwards'
             }}
           >
             <div className="flex items-center">
-              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color}`}>
+              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color} shadow-lg transition-transform duration-200`}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors theme-transition">{stat.name}</p>
                 <div className="flex items-baseline">
                   <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{stat.value}</p>
-                  <p className="ml-2 text-sm font-medium text-green-600 dark:text-green-400">{stat.change}</p>
+                  <p className="ml-2 text-sm font-medium text-blue-600 dark:text-blue-400">{stat.change}</p>
                 </div>
               </div>
             </div>
@@ -250,7 +250,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
 
       {/* Enhanced Activity & Quick Actions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
           <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
               <Activity className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
@@ -282,7 +282,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         </div>
 
         {/* Enhanced Quick Actions */}
-        <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
           <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
               <Settings className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" />

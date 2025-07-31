@@ -286,20 +286,18 @@ const MyConcepts: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 scroll-smooth">
-      <div className="sm:flex sm:items-center animate-slide-in-up">
-        <div className="sm:flex-auto">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent animate-fade-in-scale">
-            My Concepts
-          </h1>
-          <p className="mt-2 text-lg text-gray-600 animate-slide-in-left delay-200">
-            Access your assigned learning concepts and track your progress through each module.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          My Concepts
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Access your assigned learning concepts and track your progress through each module.
+        </p>
       </div>
 
       {/* Enhanced Filters */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-in-up delay-300">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
         <div className="relative group">
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition" />
           <input
@@ -339,11 +337,15 @@ const MyConcepts: React.FC = () => {
       </div>
 
       {/* Enhanced Concepts Grid */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredConcepts.map((concept, index) => (
           <div
             key={concept.id}
-            className={`group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover-lift hover-glow cursor-pointer transition-all duration-300 theme-transition animate-bounce-in delay-${(index + 1) * 100}`}
+            className="btn-glass group rounded-2xl shadow-lg p-6 transition-all duration-300 theme-transition cursor-pointer animate-fade-in"
+            style={{ 
+              animationDelay: `${400 + index * 100}ms`,
+              animationFillMode: 'forwards'
+            }}
             onClick={() => setSelectedConcept(concept.id)}
           >
             <div className="flex items-start justify-between mb-4">

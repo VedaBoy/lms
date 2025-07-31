@@ -57,7 +57,6 @@ const TeacherSubjectAssignment: React.FC = () => {
 
       <div className="animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 theme-transition">
-          <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Teacher</label>
             <select 
               onChange={(e) => setSelectedTeacher(e.target.value)} 

@@ -152,16 +152,16 @@ const StudentProgress: React.FC = () => {
   });
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 py-8 theme-transition">
+      <div className="sm:flex sm:items-center animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900">Student Progress</h1>
-          <p className="mt-2 text-sm text-gray-700">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Student Progress</h1>
+          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
             Monitor individual student progress and identify students who need additional support.
           </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium">
+          <button className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-2xl text-sm font-medium shadow-lg theme-transition">
             <BarChart3 className="w-4 h-4 mr-2" />
             Generate Report
           </button>
@@ -169,23 +169,23 @@ const StudentProgress: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
           <input
             type="text"
             placeholder="Search students..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white theme-transition"
           />
         </div>
         <div className="relative">
-          <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
           <select
             value={selectedClass}
             onChange={(e) => setSelectedClass(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white theme-transition"
           >
             <option value="all">All Classes</option>
             {classes.map((cls) => (
@@ -196,7 +196,7 @@ const StudentProgress: React.FC = () => {
           </select>
         </div>
         <div className="relative">
-          <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
           <select
             value={selectedConcept}
             onChange={(e) => setSelectedConcept(e.target.value)}

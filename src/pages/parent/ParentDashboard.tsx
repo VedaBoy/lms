@@ -11,7 +11,8 @@ import {
   Calendar,
   AlertCircle,
   CheckCircle2,
-  Target
+  Target,
+  Activity
 } from 'lucide-react';
 
 interface ParentDashboardProps {
@@ -171,7 +172,7 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-        <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
           Parent Dashboard
@@ -251,9 +252,12 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Upcoming Assignments */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 theme-transition">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-lg">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Upcoming Assignments</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
+              <Target className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" />
+              Upcoming Assignments
+            </h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
@@ -279,9 +283,12 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 theme-transition">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-lg">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Recent Activity</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
+              <Activity className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
+              Recent Activity
+            </h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
@@ -320,8 +327,8 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
       </div>
 
       {/* Quick Actions */}
-      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 p-6 theme-transition">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Actions</h3>
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 animate-fade-in theme-transition" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button className="btn-glass btn-glass-primary p-4 rounded-lg text-center transition-colors theme-transition">
             <BarChart3 className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
@@ -347,15 +354,15 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
 
 const ChildrenProgress: React.FC = () => {
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Children Progress</h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-300">Detailed progress tracking for each of your children.</p>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Children Progress</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">Detailed progress tracking for each of your children.</p>
       </div>
       
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 p-8 text-center theme-transition">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-8 text-center animate-fade-in theme-transition">
         <Users className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-4" />
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Detailed Progress Reports</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Detailed Progress Reports</h3>
         <p className="text-gray-600 dark:text-gray-300 mb-4">
           This feature will provide comprehensive progress reports, grade tracking, and detailed analytics for each child.
         </p>

@@ -318,18 +318,23 @@ const ConceptAssignment: React.FC = () => {
   );
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Concept Assignment
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Assign concepts to your classes or individual students with customized content preferences.
+        </p>
+      </div>
+
+      <div className="sm:flex sm:items-center mb-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900">Concept Assignment</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            Assign concepts to your classes or individual students with customized content preferences.
-          </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             onClick={() => setShowAssignForm(true)}
-            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium"
+            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-2xl text-sm font-medium theme-transition"
           >
             <Plus className="w-4 h-4 mr-2" />
             New Assignment
@@ -338,14 +343,14 @@ const ConceptAssignment: React.FC = () => {
       </div>
 
       {/* Active Assignments */}
-      <div className="mt-8">
-        <h2 className="text-lg font-medium text-gray-900 mb-4">Active Assignments</h2>
-        <div className="bg-white shadow rounded-lg overflow-hidden">
+      <div className="mt-8 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+        <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Active Assignments</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden theme-transition">
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                     Concept
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

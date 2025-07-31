@@ -51,6 +51,7 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
       payload = {
         name,
         level,
+        status
       };
     } else if (activeTab === 'subjects') {
       table = 'subjects';
@@ -103,6 +104,12 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
               <input value={name} onChange={e => setName(e.target.value)} className="w-full border rounded px-3 py-2" />
               <label>Level</label>
               <input type="number" value={level} onChange={e => setLevel(+e.target.value)} className="w-full border rounded px-3 py-2" />
+              <label>Status</label>
+              <select value={status} onChange={e => setStatus(e.target.value as Status)} className="w-full border rounded px-3 py-2">
+                <option value="active">Active</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
             </>
           )}
 
@@ -126,6 +133,12 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
                   <option key={t.id} value={t.id}>{t.name}</option>
                 ))}
               </select>
+              <label>Status</label>
+              <select value={status} onChange={e => setStatus(e.target.value as Status)} className="w-full border rounded px-3 py-2">
+                <option value="active">Active</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
             </>
           )}
 
@@ -142,6 +155,12 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
               <input value={title} onChange={e => setTitle(e.target.value)} className="w-full border rounded px-3 py-2" />
               <label>Order Index</label>
               <input type="number" value={orderIndex} onChange={e => setOrderIndex(+e.target.value)} className="w-full border rounded px-3 py-2" />
+              <label>Status</label>
+              <select value={status} onChange={e => setStatus(e.target.value as Status)} className="w-full border rounded px-3 py-2">
+                <option value="active">Active</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
             </>
           )}
 
@@ -164,15 +183,14 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
               <input type="number" value={gradeLevel} onChange={e => setGradeLevel(+e.target.value)} className="w-full border rounded px-3 py-2" />
               <label>Content Sources (comma-separated)</label>
               <input value={sources.join(',')} onChange={e => setSources(e.target.value.split(',').map(s => s.trim()))} className="w-full border rounded px-3 py-2" />
+              <label>Status</label>
+              <select value={status} onChange={e => setStatus(e.target.value as Status)} className="w-full border rounded px-3 py-2">
+                <option value="active">Active</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
             </>
           )}
-
-          <label>Status</label>
-          <select value={status} onChange={e => setStatus(e.target.value as Status)} className="w-full border rounded px-3 py-2">
-            <option value="active">Active</option>
-            <option value="draft">Draft</option>
-            <option value="archived">Archived</option>
-          </select>
 
           <div className="flex justify-end space-x-3 pt-4 border-t">
             <button type="button" onClick={onClose} className="btn-glass px-4 py-2 rounded">Cancel</button>

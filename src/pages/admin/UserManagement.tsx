@@ -532,23 +532,20 @@ const UserManagement: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 theme-transition interactive-bg scroll-smooth">
-      <div className="sm:flex sm:items-center animate-slide-in-up">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          User Management
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Manage all users in your school system including admins, teachers, students, and parents.
+        </p>
+      </div>
+
+      <div className="sm:flex sm:items-center mb-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
-          <div className="flex items-center space-x-3 mb-2">
-            <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow theme-transition-lg mouse-elastic icon-bounce cursor-pointer">
-              <Users className="w-6 h-6 text-white icon-spin" />
-            </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent text-gradient-hover cursor-default">
-              User Management
-            </h1>
-          </div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 font-medium hover:text-gray-800 dark:hover:text-gray-200 transition-colors theme-transition duration-300 cursor-default">
-            Manage all users in your school system including admins, teachers, students, and parents.
-          </p>
-          <div className="flex items-center space-x-2 mt-2 mouse-magnetic">
-            <TrendingUp className="w-4 h-4 text-green-500 icon-bounce" />
-            <span className="text-sm text-green-600 dark:text-green-400 font-medium hover:text-green-700 dark:hover:text-green-300 transition-colors theme-transition">
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-green-600 dark:text-green-400 font-medium">
               {filteredUsers.length} users found
             </span>
           </div>
@@ -556,9 +553,9 @@ const UserManagement: React.FC = () => {
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none space-x-2">
           <button
             onClick={() => setShowParentLink(true)}
-            className="btn-glass btn-glass-secondary inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-300 theme-transition cursor-pointer"
+            className="btn-glass btn-glass-secondary inline-flex items-center px-4 py-2 rounded-2xl text-sm font-medium theme-transition"
           >
-            <Users className="w-4 h-4 mr-2 icon-bounce" />
+            <Users className="w-4 h-4 mr-2" />
             Manage Parent Links
           </button>
           <button
@@ -566,20 +563,19 @@ const UserManagement: React.FC = () => {
               setEditingUser(null);
               setShowAddUser(true);
             }}
-            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium text-white focus:ring-2 focus:ring-blue-500 cursor-pointer"
+            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-2xl text-sm font-medium theme-transition"
           >
-            <Plus className="w-4 h-4 mr-2 icon-spin" />
+            <Plus className="w-4 h-4 mr-2" />
             Add User
           </button>
         </div>
       </div>
 
-      {/* Enhanced Search and Filter */}
-      <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl p-6 mb-8">
+      {/* Search and Filter */}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 mb-8 animate-fade-in theme-transition" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Search Input */}
-          <div className="relative group">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
             <input
               type="text"
               placeholder="Search users by name, email, or ID..."

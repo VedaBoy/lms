@@ -10,8 +10,6 @@ import {
   Trash2,
   GraduationCap,
   ChevronDown,
-  Sparkles,
-  TrendingUp,
 } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 import CourseForm from "./CourseForm";
@@ -73,8 +71,6 @@ const CourseManagement: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Subject | Chapter | Concept | null>(null);
   const [loading, setLoading] = useState(true);
-  const [deleting, setDeleting] = useState<string | null>(null);
-  const [animateCards, setAnimateCards] = useState(false);
 
   useEffect(() => {
     fetchAll();
@@ -92,7 +88,6 @@ const CourseManagement: React.FC = () => {
 
   const fetchAll = async () => {
     setLoading(true);
-    setAnimateCards(false);
     try {
       const [gRes, sRes, chRes, cRes] = await Promise.all([
         supabase.from("grades").select("*"),
@@ -128,8 +123,6 @@ const CourseManagement: React.FC = () => {
           }))
         );
       
-      // Trigger animation after data loads
-      setTimeout(() => setAnimateCards(true), 100);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -179,29 +172,25 @@ const CourseManagement: React.FC = () => {
   }, [searchTerm, statusFilter, gradeFilter, subjectFilter, chapterFilter, grades, subjects, chapters, concepts, activeTab]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 theme-transition">
-      {/* Header Section with Animation */}
-      <div className="pt-8 pb-6">
-        <div className="sm:flex sm:items-center mb-8">
-          <div className="sm:flex-auto">
-            <div className="flex items-center space-x-3 mb-2">
-              <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow theme-transition-lg">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 dark:from-white to-gray-600 dark:to-gray-300 bg-clip-text text-transparent">
-                Course Management
-              </h1>
-            </div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 font-medium">
-              Manage your curriculum structure with ease
-            </p>
-            <div className="flex items-center space-x-2 mt-2">
-              <TrendingUp className="w-4 h-4 text-green-500" />
-              <span className="text-sm text-green-600 dark:text-green-400 font-medium">
-                {filteredList.length} {activeTab} found
-              </span>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Course Management
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Manage your curriculum structure with ease
+        </p>
+      </div>
+
+      <div className="sm:flex sm:items-center mb-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+        <div className="sm:flex-auto">
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+              {filteredList.length} {activeTab} found
+            </span>
           </div>
+        </div>
+        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             onClick={() => {
               setEditing(null);
@@ -217,7 +206,7 @@ const CourseManagement: React.FC = () => {
 
       {/* Enhanced Navigation Tabs */}
       <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl mb-8 overflow-hidden">
-        <nav className="flex">
+        <nav className="flex gap-2 p-2">
           {tabs.map((tab) => {
             const Icon =
               tab === "grades" ? GraduationCap : tab === "subjects" ? BookOpen : tab === "chapters" ? Layers : Target;
@@ -226,15 +215,15 @@ const CourseManagement: React.FC = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`btn-glass group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 ${
+                className={`btn-glass group relative flex-1 flex items-center justify-center px-4 py-3 font-medium transition-all duration-300 rounded-xl ${
                   isActive
-                    ? "btn-glass-primary text-blue-900 dark:text-white border-b-2 border-blue-500 dark:border-white/50"
+                    ? "btn-glass-primary text-blue-900 dark:text-white border border-blue-500 dark:border-white/50"
                     : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <Icon className={`w-5 h-5 transition-all duration-300`} />
-                  <span className="capitalize font-medium">
+                  <Icon className={`w-4 h-4 transition-all duration-300`} />
+                  <span className="capitalize font-medium text-sm">
                     {tab}
                   </span>
                 </div>
@@ -416,48 +405,48 @@ const CourseManagement: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 theme-transition overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Name / Title
                 </th>
                 {activeTab === "grades" && (
-                  <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Level
                   </th>
                 )}
                 {activeTab === "subjects" && (
                   <>
-                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Grade
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Teacher
                     </th>
                   </>
                 )}
               {activeTab === "chapters" && (
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Subject
                 </th>
               )}
               {activeTab === "concepts" && (
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Chapter
                 </th>
               )}
-              <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-4 text-right text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100 dark:divide-gray-700 bg-white dark:bg-gray-800 theme-transition">
+          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
             {loading ? (
               <tr>
                 <td colSpan={
@@ -493,15 +482,9 @@ const CourseManagement: React.FC = () => {
               filteredList.map((item, index) => (
                 <tr 
                 key={item.id} 
-                className={`btn-glass hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 ${
-                  index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/30' : 'bg-white dark:bg-gray-800'
-                } ${
-                  animateCards ? 'animate-fade-in opacity-100' : 'opacity-0'
+                className={`hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-200 ${
+                  index % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-700/30'
                 } theme-transition`}
-                style={{ 
-                  animationDelay: `${index * 50}ms`,
-                  animationFillMode: 'forwards'
-                }}
               >
                 <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
                   {"name" in item ? item.name : item.title}

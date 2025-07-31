@@ -479,18 +479,23 @@ const ContentIntegration: React.FC = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 theme-transition">
-      <div className="sm:flex sm:items-center">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+      <div className="mb-8 animate-fade-in">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Content Integration
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+          Manage content integrations with external providers like YouTube, Vimeo, and LTI 1.3 tools.
+        </p>
+      </div>
+
+      <div className="sm:flex sm:items-center mb-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Content Integration</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            Manage content integrations with external providers like YouTube, Vimeo, and LTI 1.3 tools.
-          </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             onClick={() => setShowAddIntegration(true)}
-            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white focus:ring-2 focus:ring-blue-500"
+            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-2xl text-sm font-medium theme-transition"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Integration
