@@ -891,7 +891,7 @@ body {
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 60%);
   border-radius: 50%;
   pointer-events: none;
   transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
@@ -1206,7 +1206,7 @@ button:active, .btn-glass:active, [role="button"]:active, input[type="button"]:a
 
 /* Special glassmorphism button overrides */
 .btn-glass::before {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 60%);
 }
 
 .dark .btn-glass::before {
