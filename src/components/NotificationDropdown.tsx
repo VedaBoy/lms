@@ -116,7 +116,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ user
     <div className={`relative ${className}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 mouse-tilt btn-interactive"
+        className="btn-glass relative p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
       >
         <Bell className="h-6 w-6 icon-bounce" />
         {unreadCount > 0 && (

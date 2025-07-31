@@ -267,7 +267,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
               <div key={i} className="flex items-start p-3 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 group">
                 <div className="flex-shrink-0">
                   <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 group-hover:bg-white dark:group-hover:bg-gray-600 group-hover:shadow-md transition-all duration-200">
-                    <Activity className={`h-4 w-4 ${activity.color} group-hover:scale-110 transition-transform duration-200`} />
+                    <Activity className={`h-4 w-4 ${activity.color} transition-transform duration-200`} />
                   </div>
                 </div>
                 <div className="ml-3 flex-1">
@@ -292,40 +292,40 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
           <div className="p-6">
             <div className="grid grid-cols-2 gap-4">
               <button
-                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+                className="btn-glass btn-mouse-track btn-magnetic btn-ripple custom-cursor spotlight-track group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("users")}
               >
-                <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <Users className="h-6 w-6 text-white" />
                 </div>
                 <p className="text-sm font-bold text-blue-900 dark:text-blue-300">Add Users</p>
                 <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Manage user accounts</p>
               </button>
               <button
-                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+                className="btn-glass btn-mouse-track btn-magnetic btn-ripple custom-cursor spotlight-track group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("courses")}
               >
-                <div className="p-3 bg-green-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                <div className="p-3 bg-green-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <BookOpen className="h-6 w-6 text-white" />
                 </div>
                 <p className="text-sm font-bold text-green-900 dark:text-green-300">Create Course</p>
                 <p className="text-xs text-green-600 dark:text-green-400 mt-1">Add new courses</p>
               </button>
               <button
-                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+                className="btn-glass group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("content")}
               >
-                <div className="p-3 bg-purple-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                <div className="p-3 bg-purple-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <Play className="h-6 w-6 text-white" />
                 </div>
                 <p className="text-sm font-bold text-purple-900 dark:text-purple-300">Add Content</p>
                 <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Upload materials</p>
               </button>
               <button
-                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+                className="btn-glass group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("announcements")}
               >
-                <div className="p-3 bg-indigo-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                <div className="p-3 bg-indigo-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <Bell className="h-6 w-6 text-white" />
                 </div>
                 <p className="text-sm font-bold text-indigo-900 dark:text-indigo-300">Send Announcement</p>
@@ -338,10 +338,10 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         {/* Analytics Quick Action */}
         <div className="mt-4">
           <button
-            className="group w-full bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+            className="btn-glass group w-full p-6 rounded-2xl text-center transition-all duration-300"
             onClick={() => setCurrentView("analytics")}
           >
-            <div className="p-3 bg-orange-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+            <div className="p-3 bg-orange-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
               <BarChart3 className="h-6 w-6 text-white" />
             </div>
             <p className="text-sm font-bold text-orange-900 dark:text-orange-300">View Reports</p>

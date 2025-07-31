@@ -62,7 +62,7 @@ const TeacherSubjectAssignment: React.FC = () => {
               {subjects.filter(s => !assignedSubjects.includes(s.id)).map(subject => (
                 <div key={subject.id} className="flex justify-between items-center p-1">
                   <span>{subject.name}</span>
-                  <button onClick={() => handleAssign(subject.id)} className="text-blue-500">Assign</button>
+                  <button onClick={() => handleAssign(subject.id)} className="btn-glass btn-glass-primary text-blue-500 px-3 py-1 rounded text-sm">Assign</button>
                 </div>
               ))}
             </div>
@@ -73,7 +73,7 @@ const TeacherSubjectAssignment: React.FC = () => {
               {subjects.filter(s => assignedSubjects.includes(s.id)).map(subject => (
                 <div key={subject.id} className="flex justify-between items-center p-1">
                   <span>{subject.name}</span>
-                  <button onClick={() => handleUnassign(subject.id)} className="text-red-500">Unassign</button>
+                  <button onClick={() => handleUnassign(subject.id)} className="btn-glass btn-glass-danger text-red-500 px-3 py-1 rounded text-sm">Unassign</button>
                 </div>
               ))}
             </div>

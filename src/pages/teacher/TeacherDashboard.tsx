@@ -272,7 +272,7 @@ const TeacherOverview: React.FC<{
                 </div>
                 <button
                   onClick={() => onQuickNavigate("streaming")}
-                  className="px-4 py-2 text-sm font-bold text-purple-700 bg-purple-100 rounded-full hover:bg-purple-200 hover:scale-105 transition-all duration-200 group-hover:animate-bounce"
+                  className="btn-glass btn-glass-purple px-4 py-2 text-sm font-bold text-purple-700 rounded-full transition-all duration-200 group-hover:animate-bounce"
                 >
                   Join
                 </button>
@@ -327,7 +327,7 @@ const TeacherOverview: React.FC<{
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <button
               onClick={() => onQuickNavigate("assign")}
-              className="group relative overflow-hidden bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/40 dark:hover:to-green-700/40 p-6 rounded-xl transition-all duration-300 theme-transition transform hover:scale-105 hover-glow cursor-magic theme-transition"
+              className="btn-glass btn-glass-green group relative overflow-hidden p-6 rounded-xl transition-all duration-300 theme-transition cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
               <BookOpen className="h-8 w-8 text-green-700 mx-auto mb-2 group-hover:animate-bounce" />
@@ -335,7 +335,7 @@ const TeacherOverview: React.FC<{
             </button>
             <button
               onClick={() => onQuickNavigate("streaming")}
-              className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/40 dark:hover:to-blue-700/40 p-6 rounded-xl transition-all duration-300 theme-transition transform hover:scale-105 hover-glow cursor-magic border border-blue-200 dark:border-blue-700"
+              className="btn-glass btn-glass-primary group relative overflow-hidden p-6 rounded-xl transition-all duration-300 theme-transition cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white dark:via-gray-300 to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
               <Play className="h-8 w-8 text-blue-700 dark:text-blue-400 mx-auto mb-2 group-hover:animate-bounce" />
@@ -343,14 +343,14 @@ const TeacherOverview: React.FC<{
             </button>
             <button
               onClick={() => onQuickNavigate("progress")}
-              className="group relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-800/40 dark:hover:to-purple-700/40 p-6 rounded-xl transition-all duration-300 theme-transition transform hover:scale-105 hover-glow cursor-magic border border-purple-200 dark:border-purple-700"
+              className="btn-glass btn-glass-purple group relative overflow-hidden p-6 rounded-xl transition-all duration-300 theme-transition cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white dark:via-gray-300 to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
               <Users className="h-8 w-8 text-purple-700 dark:text-purple-400 mx-auto mb-2 group-hover:animate-bounce" />
               <p className="text-sm font-bold text-purple-900 dark:text-purple-300 group-hover:text-purple-700 dark:group-hover:text-purple-400">Student Progress</p>
             </button>
             <button
-              className="group relative overflow-hidden bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-800/40 dark:hover:to-orange-700/40 p-6 rounded-xl transition-all duration-300 theme-transition transform hover:scale-105 hover-glow cursor-magic border border-orange-200 dark:border-orange-700"
+              className="btn-glass btn-glass-orange group relative overflow-hidden p-6 rounded-xl transition-all duration-300 theme-transition cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white dark:via-gray-300 to-transparent opacity-0 group-hover:opacity-20 animate-shimmer"></div>
               <BarChart3 className="h-8 w-8 text-orange-700 dark:text-orange-400 mx-auto mb-2 group-hover:animate-bounce" />

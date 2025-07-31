@@ -24,7 +24,7 @@ export const SmoothNav: React.FC<SmoothNavProps> = ({ items, className = '' }) =
           <button
             key={item.id}
             onClick={() => scrollToElement(item.id)}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 rounded-lg border border-gray-200 transition-all duration-300 mouse-tilt btn-interactive hover:shadow-md cursor-pointer"
+            className="btn-glass inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg transition-all duration-300 cursor-pointer"
           >
             {item.icon && <item.icon className="w-4 h-4 mr-2 icon-bounce" />}
             {item.label}
@@ -43,14 +43,14 @@ export const QuickScrollButtons: React.FC = () => {
     <div className="fixed bottom-20 right-4 z-40 flex flex-col space-y-2">
       <button
         onClick={() => scrollBy(-300)}
-        className="p-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-300 mouse-tilt btn-interactive hover:shadow-xl cursor-pointer"
+        className="btn-glass p-3 rounded-full shadow-lg text-gray-600 hover:text-gray-800 transition-all duration-300 cursor-pointer"
         title="Scroll up"
       >
         <ChevronDown className="w-5 h-5 rotate-180 icon-bounce" />
       </button>
       <button
         onClick={() => scrollBy(300)}
-        className="p-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-300 mouse-tilt btn-interactive hover:shadow-xl cursor-pointer"
+        className="btn-glass p-3 rounded-full shadow-lg text-gray-600 hover:text-gray-800 transition-all duration-300 cursor-pointer"
         title="Scroll down"
       >
         <ChevronDown className="w-5 h-5 icon-bounce" />

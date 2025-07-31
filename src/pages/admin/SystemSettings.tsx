@@ -144,7 +144,7 @@ const SystemSettings: React.FC = () => {
                     </div>
                     <button
                       onClick={() => handleToggle(feature.key)}
-                      className="ml-4 flex-shrink-0"
+                      className="btn-glass ml-4 flex-shrink-0 p-2 rounded"
                     >
                       {settings[feature.key as keyof typeof settings] ? (
                         <ToggleRight className="h-6 w-6 text-blue-600" />
@@ -239,8 +239,8 @@ const SystemSettings: React.FC = () => {
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Sync users and classes with Google Classroom</p>
                   <div className="flex space-x-2">
-                    <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">Configure</button>
-                    <button className="text-sm text-red-600 hover:text-red-700 font-medium">Disconnect</button>
+                    <button className="btn-glass btn-glass-primary text-sm text-blue-600 hover:text-blue-700 font-medium px-3 py-1 rounded">Configure</button>
+                    <button className="btn-glass btn-glass-danger text-sm text-red-600 hover:text-red-700 font-medium px-3 py-1 rounded">Disconnect</button>
                   </div>
                 </div>
 
@@ -252,7 +252,7 @@ const SystemSettings: React.FC = () => {
                     </span>
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Enable single sign-on and class synchronization</p>
-                  <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">Connect</button>
+                  <button className="btn-glass btn-glass-primary text-sm text-blue-600 hover:text-blue-700 font-medium px-3 py-1 rounded">Connect</button>
                 </div>
 
                 <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
@@ -263,7 +263,7 @@ const SystemSettings: React.FC = () => {
                     </span>
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Import student data from your SIS</p>
-                  <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">Configure</button>
+                  <button className="btn-glass btn-glass-secondary text-sm text-blue-600 hover:text-blue-700 font-medium px-3 py-1 rounded">Configure</button>
                 </div>
               </div>
             </div>
@@ -324,7 +324,7 @@ const SystemSettings: React.FC = () => {
                 ))}
               </div>
               <div className="mt-4">
-                <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                <button className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white">
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Create Backup Now
                 </button>
@@ -348,7 +348,7 @@ const SystemSettings: React.FC = () => {
           </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500">
+          <button className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white focus:ring-2 focus:ring-blue-500">
             <Save className="w-4 h-4 mr-2" />
             Save Changes
           </button>

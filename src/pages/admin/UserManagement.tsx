@@ -149,7 +149,7 @@ const UserManagement: React.FC = () => {
               <h3 className="text-lg font-medium text-gray-900 dark:text-white dark:text-white">{initial.id ? 'Edit User' : 'Add New User'}</h3>
               <button
                 onClick={onClose}
-                className="text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className="btn-glass btn-glass-secondary text-gray-400 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-300 transition-colors p-2"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -214,7 +214,7 @@ const UserManagement: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
                       >
                         {showPassword ? (
                           <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -241,7 +241,7 @@ const UserManagement: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
                       >
                         {showConfirmPassword ? (
                           <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -342,13 +342,13 @@ const UserManagement: React.FC = () => {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 theme-transition"
+                  className="btn-glass btn-glass-secondary px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 theme-transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+                  className="btn-glass btn-glass-primary px-4 py-2 text-sm font-medium text-white rounded-lg focus:ring-2 focus:ring-blue-500"
                 >
                   {initial.id ? 'Save Changes' : 'Create User'}
                 </button>
@@ -427,7 +427,7 @@ const UserManagement: React.FC = () => {
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">Set Password for {user.name}</h3>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600"
+                className="btn-glass btn-glass-secondary text-gray-400 hover:text-gray-600 p-2"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -453,7 +453,7 @@ const UserManagement: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
                   >
                     {showPassword ? (
                       <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -481,7 +481,7 @@ const UserManagement: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
                   >
                     {showConfirmPassword ? (
                       <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -510,14 +510,14 @@ const UserManagement: React.FC = () => {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 theme-transition"
+                  className="btn-glass btn-glass-secondary px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 theme-transition"
                   disabled={isLoading}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-lg hover:bg-green-700 focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-glass btn-glass-success px-4 py-2 text-sm font-medium text-white rounded-lg focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Setting Password...' : 'Set Password'}
@@ -556,7 +556,7 @@ const UserManagement: React.FC = () => {
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none space-x-2">
           <button
             onClick={() => setShowParentLink(true)}
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 transition-all duration-300 theme-transition mouse-tilt mouse-shadow-dance btn-interactive cursor-pointer"
+            className="btn-glass btn-glass-secondary inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-300 theme-transition cursor-pointer"
           >
             <Users className="w-4 h-4 mr-2 icon-bounce" />
             Manage Parent Links
@@ -566,7 +566,7 @@ const UserManagement: React.FC = () => {
               setEditingUser(null);
               setShowAddUser(true);
             }}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-xl text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-blue-500 btn-interactive mouse-ripple mouse-magnetic cursor-pointer"
+            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium text-white focus:ring-2 focus:ring-blue-500 cursor-pointer"
           >
             <Plus className="w-4 h-4 mr-2 icon-spin" />
             Add User
@@ -680,7 +680,7 @@ const UserManagement: React.FC = () => {
                             setPasswordUser(user);
                             setShowPasswordModal(true);
                           }}
-                          className="text-green-600 hover:text-green-900"
+                          className="btn-glass btn-glass-success text-green-600 hover:text-green-900 p-2 rounded"
                           title="Set Password"
                         >
                           <Key className="w-4 h-4" />
@@ -690,7 +690,7 @@ const UserManagement: React.FC = () => {
                             setEditingUser(user);
                             setShowAddUser(true);
                           }}
-                          className="text-blue-600 hover:text-blue-900"
+                          className="btn-glass btn-glass-primary text-blue-600 hover:text-blue-900 p-2 rounded"
                           title="Edit User"
                         >
                           <Edit3 className="w-4 h-4" />
@@ -706,7 +706,7 @@ const UserManagement: React.FC = () => {
                               else fetchUsers();
                             }
                           }}
-                          className="text-red-600 hover:text-red-900"
+                          className="btn-glass btn-glass-danger text-red-600 hover:text-red-900 p-2 rounded"
                           title="Delete User"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -831,7 +831,7 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
                   {students.filter(s => !linkedStudents.includes(s.id)).map(student => (
                     <div key={student.id} className="flex justify-between items-center p-1">
                       <span>{student.name}</span>
-                      <button onClick={() => handleLink(student.id)} className="text-blue-500">Link</button>
+                      <button onClick={() => handleLink(student.id)} className="btn-glass btn-glass-primary text-blue-500 px-2 py-1 rounded text-xs">Link</button>
                     </div>
                   ))}
                 </div>
@@ -842,7 +842,7 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
                   {students.filter(s => linkedStudents.includes(s.id)).map(student => (
                     <div key={student.id} className="flex justify-between items-center p-1">
                       <span>{student.name}</span>
-                      <button onClick={() => handleUnlink(student.id)} className="text-red-500">Unlink</button>
+                      <button onClick={() => handleUnlink(student.id)} className="btn-glass btn-glass-danger text-red-500 px-2 py-1 rounded text-xs">Unlink</button>
                     </div>
                   ))}
                 </div>
@@ -851,7 +851,7 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
           </div>
         )}
         <div className="mt-4 flex justify-end">
-          <button onClick={onClose} className="bg-gray-300 text-black p-2 rounded">Close</button>
+          <button onClick={onClose} className="btn-glass btn-glass-secondary text-gray-700 dark:text-gray-300 p-2 rounded">Close</button>
         </div>
       </div>
     </div>

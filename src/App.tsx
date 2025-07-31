@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AuthProvider, useAuth, ProtectedRoute } from './components/AuthProvider';
 import { ThemeProvider } from './components/ThemeProvider';
 import AuthLogin from './components/AuthLogin';
@@ -6,10 +6,23 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import TeacherDashboard from './pages/teacher/TeacherDashboard';
 import StudentDashboard from './pages/student/StudentDashboard';
 import ParentDashboard from './pages/parent/ParentDashboard';
+import { initializeButtonMouseTracking } from './utils/buttonMouseTracker';
 
 // Main App Content Component
 const AppContent: React.FC = () => {
   const { user, loading, logout } = useAuth();
+
+  // Initialize button mouse tracking for ALL buttons
+  useEffect(() => {
+    initializeButtonMouseTracking();
+    
+    // Re-initialize tracking whenever the component updates
+    const intervalId = setInterval(initializeButtonMouseTracking, 1000);
+    
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [user]); // Re-run when user changes (different dashboards)
 
   if (loading) {
     return (

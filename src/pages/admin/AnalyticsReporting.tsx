@@ -316,7 +316,7 @@ const AnalyticsReporting: React.FC = () => {
           </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500">
+          <button className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -374,9 +374,9 @@ const AnalyticsReporting: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setReportType(tab.id)}
-              className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
+              className={`btn-glass flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
                 reportType === tab.id
-                  ? 'border-blue-500 text-blue-600'
+                  ? 'btn-glass-primary border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 hover:border-gray-300 dark:border-gray-600'
               }`}
             >

@@ -207,7 +207,7 @@ const CourseManagement: React.FC = () => {
               setEditing(null);
               setShowForm(true);
             }}
-            className="group mt-4 sm:mt-0 inline-flex items-center px-6 py-3 bg-blue-100/80 dark:bg-white/10 backdrop-blur-lg border border-blue-200/50 dark:border-white/20 text-blue-900 dark:text-white rounded-xl font-medium hover:bg-blue-200/80 dark:hover:bg-white/20 transition-all duration-200"
+            className="btn-glass btn-glass-primary group mt-4 sm:mt-0 inline-flex items-center px-6 py-3 rounded-xl font-medium"
           >
             <Plus className="mr-2 w-5 h-5" />
             New {activeTab.slice(0, -1)}
@@ -226,16 +226,14 @@ const CourseManagement: React.FC = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 ${
+                className={`btn-glass group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 ${
                   isActive
-                    ? "text-blue-900 dark:text-white bg-blue-100/80 dark:bg-white/20 backdrop-blur-lg border-b-2 border-blue-500 dark:border-white/50"
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-white/5 hover:backdrop-blur-lg"
+                    ? "btn-glass-primary text-blue-900 dark:text-white border-b-2 border-blue-500 dark:border-white/50"
+                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <Icon className={`w-5 h-5 transition-all duration-300 ${
-                    isActive ? "" : "group-hover:scale-105"
-                  }`} />
+                  <Icon className={`w-5 h-5 transition-all duration-300`} />
                   <span className="capitalize font-medium">
                     {tab}
                   </span>
@@ -495,7 +493,7 @@ const CourseManagement: React.FC = () => {
               filteredList.map((item, index) => (
                 <tr 
                 key={item.id} 
-                className={`hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 transform hover:scale-[1.01] ${
+                className={`btn-glass hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 ${
                   index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/30' : 'bg-white dark:bg-gray-800'
                 } ${
                   animateCards ? 'animate-fade-in opacity-100' : 'opacity-0'
@@ -538,7 +536,7 @@ const CourseManagement: React.FC = () => {
                       setEditing(item);
                       setShowForm(true);
                     }}
-                    className="group p-2 rounded-full bg-blue-100/80 dark:bg-white/10 backdrop-blur-lg border border-blue-200/50 dark:border-white/20 hover:bg-blue-200/80 dark:hover:bg-white/20 transition-all duration-200"
+                    className="btn-glass btn-glass-primary group p-2 rounded-full"
                     aria-label="Edit"
                   >
                     <Edit3 className="text-blue-600 dark:text-blue-400 w-4 h-4" />
@@ -569,7 +567,7 @@ const CourseManagement: React.FC = () => {
                         }
                       }
                     }}
-                    className="group p-2 rounded-full bg-red-100/80 dark:bg-white/10 backdrop-blur-lg border border-red-200/50 dark:border-white/20 hover:bg-red-200/80 dark:hover:bg-red-500/10 transition-all duration-200"
+                    className="btn-glass btn-glass-danger group p-2 rounded-full"
                     aria-label="Delete"
                   >
                     <Trash2 className="text-red-600 dark:text-red-400 w-4 h-4" />

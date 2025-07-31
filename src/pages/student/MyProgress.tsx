@@ -120,7 +120,7 @@ const MyProgress: React.FC = () => {
           </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button onClick={handleConceptComplete} className="bg-blue-500 text-white p-2 rounded">Complete a concept</button>
+          <button onClick={handleConceptComplete} className="btn-glass btn-glass-primary text-white p-2 rounded">Complete a concept</button>
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}

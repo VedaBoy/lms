@@ -175,8 +175,8 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
           </select>
 
           <div className="flex justify-end space-x-3 pt-4 border-t">
-            <button type="button" onClick={onClose} className="px-4 py-2 border rounded">Cancel</button>
-            <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">
+            <button type="button" onClick={onClose} className="btn-glass px-4 py-2 rounded">Cancel</button>
+            <button type="submit" className="btn-glass btn-glass-primary px-4 py-2 rounded">
               {isEditing ? 'Save Changes' : 'Create'}
             </button>
           </div>

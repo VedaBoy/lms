@@ -254,7 +254,7 @@ const MyConcepts: React.FC = () => {
                           <div className="text-xs text-gray-500">{source.provider} • {source.type}</div>
                         </div>
                       </div>
-                      <button className="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-full hover:bg-blue-100">
+                      <button className="btn-glass btn-glass-primary inline-flex items-center px-3 py-1 text-xs font-medium text-blue-700 rounded-full">
                         <Play className="w-3 h-3 mr-1" />
                         Start
                       </button>
@@ -396,7 +396,7 @@ const MyConcepts: React.FC = () => {
                   {concept.priority} priority
                 </span>
               </div>
-              <button className="group-hover:bg-gradient-to-r group-hover:from-green-500 group-hover:to-blue-500 bg-gray-100 text-gray-600 group-hover:text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 theme-transition transform group-hover:scale-105 flex items-center">
+              <button className="btn-glass btn-glass-success px-4 py-2 rounded-xl font-medium transition-all duration-300 theme-transition flex items-center text-white">
                 <Play className="w-4 h-4 mr-2" />
                 {concept.status === 'assigned' ? 'Start' : 'Continue'}
               </button>

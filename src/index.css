@@ -58,11 +58,13 @@ body {
 }
 
 .btn-interactive:hover {
-  transform: scale(1.05);
+  /* Scale transforms removed - replaced with glassmorphism brightness */
+  filter: brightness(1.05);
 }
 
 .btn-interactive:active {
-  transform: scale(0.95);
+  /* Scale transforms removed - replaced with glassmorphism brightness */
+  filter: brightness(0.95);
 }
 
 /* Enhanced scrollbar styling */
@@ -251,7 +253,8 @@ body {
 }
 
 .hover-scale:hover {
-  transform: scale(1.05);
+  /* Scale removed - using filter instead */
+  filter: brightness(1.1);
 }
 
 .hover-glow {
@@ -334,7 +337,8 @@ body {
 }
 
 .mouse-tilt:hover {
-  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
+  /* Scale removed - using filter instead */
+  filter: brightness(1.1);
 }
 
 .mouse-magnetic {
@@ -342,7 +346,8 @@ body {
 }
 
 .mouse-magnetic:hover {
-  transform: translateY(-8px) scale(1.05);
+  transform: translateY(-8px);
+  filter: brightness(1.1);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
@@ -444,11 +449,11 @@ body {
 }
 
 .mouse-elastic:hover {
-  transform: scale(1.1);
+  filter: brightness(1.1);
 }
 
 .mouse-elastic:active {
-  transform: scale(0.95);
+  filter: brightness(0.9);
 }
 
 /* Interactive Background Effects */
@@ -500,7 +505,7 @@ body {
 }
 
 .btn-interactive:active {
-  transform: scale(0.98);
+  filter: brightness(0.9);
 }
 
 /* Card Interaction Effects */
@@ -523,7 +528,7 @@ body {
 }
 
 .icon-bounce:hover {
-  transform: scale(1.2) rotate(5deg);
+  filter: brightness(1.2) drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 .icon-spin {
@@ -841,7 +846,8 @@ body {
 }
 
 .scroll-to-top-button:hover {
-  transform: translateY(-2px) scale(1.1);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
   box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
   background: linear-gradient(45deg, #4f46e5, #7c3aed);
 }
@@ -853,9 +859,356 @@ body {
 }
 
 .smooth-section:target {
-  transform: scale(1.02);
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 10px 25px rgba(99, 102, 241, 0.1);
+}
+
+/* =================================
+   GLASSMORPHISM BUTTON STYLES
+   ================================= */
+
+/* Base glassmorphism button */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mouse tracking glow effect for glassmorphism buttons */
+.btn-glass::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.btn-glass:hover::before {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+.btn-glass:active {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(0.98);
+}
+
+/* Dark theme glassmorphism */
+.dark .btn-glass {
+  background: rgba(17, 24, 39, 0.2);
+  border-color: rgba(156, 163, 175, 0.2);
+}
+
+.dark .btn-glass::before {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 60%);
+}
+
+.dark .btn-glass:hover {
+  background: rgba(17, 24, 39, 0.3);
+  border-color: rgba(156, 163, 175, 0.3);
+  transform: scale(1.02);
+}
+
+.dark .btn-glass:active {
+  background: rgba(17, 24, 39, 0.25);
+  transform: scale(0.98);
+}
+
+/* Glassmorphism variants */
+.btn-glass-primary {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+  border-color: rgba(59, 130, 246, 0.3);
+  color: rgb(59, 130, 246);
+}
+
+.btn-glass-primary::before {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-secondary::before {
+  background: radial-gradient(circle, rgba(156, 163, 175, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-success::before {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-warning::before {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-danger::before {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-purple::before {
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-indigo::before {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-pink::before {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-green::before {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 60%);
+}
+
+.btn-glass-orange::before {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, transparent 60%);
+}
+
+/* Dark mode glassmorphism variants */
+.dark .btn-glass-primary::before {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.5) 0%, transparent 60%);
+}
+
+.dark .btn-glass-secondary::before {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 60%);
+}
+
+.btn-glass-primary:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(37, 99, 235, 0.25));
+  border-color: rgba(59, 130, 246, 0.4);
+  color: rgb(37, 99, 235);
+  transform: scale(1.02);
+}
+
+/* Dark mode uses violet gradient */
+.dark .btn-glass-primary {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(99, 102, 241, 0.15));
+  border-color: rgba(124, 58, 237, 0.3);
+  color: rgb(124, 58, 237);
+}
+
+.dark .btn-glass-primary::before {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.5) 0%, transparent 60%);
+}
+
+.dark .btn-glass-primary:hover {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(99, 102, 241, 0.25));
+  border-color: rgba(124, 58, 237, 0.4);
+  color: rgb(99, 102, 241);
+  transform: scale(1.02);
+}
+
+.btn-glass-secondary {
+  background: linear-gradient(135deg, rgba(156, 163, 175, 0.15), rgba(107, 114, 128, 0.15));
+  border-color: rgba(156, 163, 175, 0.3);
+  color: rgb(75, 85, 99);
+}
+
+.btn-glass-secondary:hover {
+  background: linear-gradient(135deg, rgba(156, 163, 175, 0.25), rgba(107, 114, 128, 0.25));
+  border-color: rgba(156, 163, 175, 0.4);
+}
+
+/* Dark mode secondary */
+.dark .btn-glass-secondary {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(99, 102, 241, 0.1));
+  border-color: rgba(124, 58, 237, 0.2);
+  color: rgb(156, 163, 175);
+}
+
+.dark .btn-glass-secondary:hover {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(99, 102, 241, 0.2));
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.btn-glass-success {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: rgb(34, 197, 94);
+}
+
+.btn-glass-success:hover {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: rgb(21, 128, 61);
+}
+
+.btn-glass-warning {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: rgb(245, 158, 11);
+}
+
+.btn-glass-warning:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: rgb(217, 119, 6);
+}
+
+.btn-glass-danger {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: rgb(239, 68, 68);
+}
+
+.btn-glass-danger:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: rgb(220, 38, 38);
+}
+
+.btn-glass-purple {
+  background: rgba(147, 51, 234, 0.15);
+  border-color: rgba(147, 51, 234, 0.3);
+  color: rgb(147, 51, 234);
+}
+
+.btn-glass-purple:hover {
+  background: rgba(147, 51, 234, 0.25);
+  border-color: rgba(147, 51, 234, 0.4);
+  color: rgb(126, 34, 206);
+}
+
+.btn-glass-indigo {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: rgb(99, 102, 241);
+}
+
+.btn-glass-indigo:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: rgb(79, 70, 229);
+}
+
+.btn-glass-pink {
+  background: rgba(236, 72, 153, 0.15);
+  border-color: rgba(236, 72, 153, 0.3);
+  color: rgb(236, 72, 153);
+}
+
+.btn-glass-pink:hover {
+  background: rgba(236, 72, 153, 0.25);
+  border-color: rgba(236, 72, 153, 0.4);
+  color: rgb(219, 39, 119);
+}
+
+.btn-glass-green {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: rgb(34, 197, 94);
+}
+
+.btn-glass-green:hover {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: rgb(21, 128, 61);
+}
+
+.btn-glass-orange {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: rgb(249, 115, 22);
+}
+
+.btn-glass-orange:hover {
+  background: rgba(249, 115, 22, 0.25);
+  border-color: rgba(249, 115, 22, 0.4);
+  color: rgb(234, 88, 12);
+}
+
+/* Remove all scale transforms from existing styles */
+.btn-interactive {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-interactive:hover {
+  /* Scale transforms removed - using glassmorphism instead */
+  filter: brightness(1.05);
+}
+
+.btn-interactive:active {
+  /* Scale transforms removed - using glassmorphism instead */
+  filter: brightness(0.95);
+}
+
+/* =================================
+   MOUSE TRACKING EFFECTS (SIMPLIFIED)
+   ================================= */
+
+/* Global button mouse tracking - applies to ALL buttons */
+button, .btn-glass, [role="button"], input[type="button"], input[type="submit"] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mouse tracking glow effect for ALL buttons */
+button::before, .btn-glass::before, [role="button"]::before, input[type="button"]::before, input[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+button:hover::before, .btn-glass:hover::before, [role="button"]:hover::before, input[type="button"]:hover::before, input[type="submit"]:hover::before {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+}
+
+/* Enhanced hover effects for all buttons */
+button:hover, .btn-glass:hover, [role="button"]:hover, input[type="button"]:hover, input[type="submit"]:hover {
+  transform: scale(1.02);
+}
+
+button:active, .btn-glass:active, [role="button"]:active, input[type="button"]:active, input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Dark mode glow effects */
+.dark button::before, .dark .btn-glass::before, .dark [role="button"]::before, .dark input[type="button"]::before, .dark input[type="submit"]::before {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 60%);
+}
+
+/* Special glassmorphism button overrides */
+.btn-glass::before {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+}
+
+.dark .btn-glass::before {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 60%);
 }

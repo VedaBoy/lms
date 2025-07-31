@@ -150,14 +150,14 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
         {stats.map((stat, index) => (
           <div 
             key={stat.name} 
-            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 theme-transition transform hover:scale-105 animate-fade-in theme-transition"
+            className="btn-glass group rounded-2xl shadow-lg p-6 transition-all duration-300 theme-transition animate-fade-in"
             style={{ 
               animationDelay: `${index * 100}ms`,
               animationFillMode: 'forwards'
             }}
           >
             <div className="flex items-center">
-              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
+              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color} shadow-lg transition-transform duration-200`}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
@@ -186,7 +186,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
               {todayAssignments.map((assignment, index) => (
                 <div 
                   key={assignment.id} 
-                  className="group border border-gray-200 dark:border-gray-600 rounded-2xl p-4 hover:shadow-lg hover:border-green-200 dark:hover:border-green-600 transition-all duration-300 theme-transition transform hover:scale-[1.02] animate-fade-in bg-white dark:bg-gray-700"
+                  className="btn-glass group rounded-2xl p-4 hover:border-green-200 dark:hover:border-green-600 transition-all duration-300 theme-transition animate-fade-in"
                   style={{ animationDelay: `${500 + index * 100}ms`, animationFillMode: 'forwards' }}
                 >
                   <div className="flex items-start justify-between mb-3">

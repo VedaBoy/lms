@@ -186,7 +186,7 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
         {children.map((child, index) => (
           <div 
             key={child.id} 
-            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 theme-transition transform hover:scale-[1.02] animate-fade-in"
+            className="btn-glass group rounded-2xl shadow-lg p-6 transition-all duration-300 theme-transition animate-fade-in"
             style={{ 
               animationDelay: `${index * 150}ms`,
               animationFillMode: 'forwards'
@@ -194,7 +194,7 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
           >
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-pink-500 to-blue-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-pink-500 to-blue-500 flex items-center justify-center shadow-lg transition-transform duration-200">
                   <span className="text-xl font-bold text-white">{child.avatar}</span>
                 </div>
                 <div className="ml-4">
@@ -323,19 +323,19 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
       <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 p-6 theme-transition">
         <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Actions</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <button className="bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-blue-200 dark:border-blue-700">
+          <button className="btn-glass btn-glass-primary p-4 rounded-lg text-center transition-colors theme-transition">
             <BarChart3 className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
             <p className="text-sm font-medium text-blue-900 dark:text-blue-300">View Reports</p>
           </button>
-          <button className="bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-green-200 dark:border-green-700">
+          <button className="btn-glass btn-glass-success p-4 rounded-lg text-center transition-colors theme-transition">
             <Calendar className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-2" />
             <p className="text-sm font-medium text-green-900 dark:text-green-300">Schedule</p>
           </button>
-          <button className="bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-purple-200 dark:border-purple-700">
+          <button className="btn-glass btn-glass-purple p-4 rounded-lg text-center transition-colors theme-transition">
             <Users className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
             <p className="text-sm font-medium text-purple-900 dark:text-purple-300">Contact Teachers</p>
           </button>
-          <button className="bg-orange-50 dark:bg-orange-900/30 hover:bg-orange-100 dark:hover:bg-orange-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-orange-200 dark:border-orange-700">
+          <button className="btn-glass btn-glass-orange p-4 rounded-lg text-center transition-colors theme-transition">
             <Award className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />
             <p className="text-sm font-medium text-orange-900 dark:text-orange-300">Achievements</p>
           </button>

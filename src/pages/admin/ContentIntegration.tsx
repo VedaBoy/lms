@@ -88,7 +88,7 @@ const ContentIntegration: React.FC = () => {
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">Add Content Integration</h3>
             <button
               onClick={() => setShowAddIntegration(false)}
-              className="text-gray-400 hover:text-gray-600"
+              className="btn-glass btn-glass-secondary text-gray-400 hover:text-gray-600 p-2"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -263,13 +263,13 @@ const ContentIntegration: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddIntegration(false)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600"
+                className="btn-glass btn-glass-secondary px-4 py-2 text-sm font-medium text-gray-700 rounded-lg"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700"
+                className="btn-glass btn-glass-primary px-4 py-2 text-sm font-medium text-white rounded-lg"
               >
                 Add Integration
               </button>
@@ -364,10 +364,10 @@ const ContentIntegration: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div className="flex items-center justify-end space-x-2">
-                          <button className="text-blue-600 hover:text-blue-900">
+                          <button className="btn-glass btn-glass-primary text-blue-600 hover:text-blue-900 p-2 rounded">
                             <Edit3 className="w-4 h-4" />
                           </button>
-                          <button className="text-red-600 hover:text-red-900">
+                          <button className="btn-glass btn-glass-danger text-red-600 hover:text-red-900 p-2 rounded">
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
@@ -441,10 +441,10 @@ const ContentIntegration: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div className="flex items-center justify-end space-x-2">
-                          <button className="text-blue-600 hover:text-blue-900">
+                          <button className="btn-glass btn-glass-secondary text-blue-600 hover:text-blue-900 p-2 rounded">
                             <Settings className="w-4 h-4" />
                           </button>
-                          <button className="text-green-600 hover:text-green-900">
+                          <button className="btn-glass btn-glass-success text-green-600 hover:text-green-900 px-3 py-1 rounded text-sm">
                             Test
                           </button>
                         </div>
@@ -474,7 +474,7 @@ const ContentIntegration: React.FC = () => {
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             onClick={() => setShowAddIntegration(true)}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white focus:ring-2 focus:ring-blue-500"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Integration
@@ -492,10 +492,10 @@ const ContentIntegration: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
+              className={`btn-glass flex items-center py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 hover:border-gray-300 dark:border-gray-600'
+                  ? 'btn-glass-primary text-blue-600'
+                  : 'btn-glass-secondary text-gray-500 dark:text-gray-400 hover:text-gray-700'
               }`}
             >
               <tab.icon className="w-4 h-4 mr-2" />

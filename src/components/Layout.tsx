@@ -89,14 +89,14 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
                   <button
                     key={item.name}
                     onClick={item.onClick}
-                    className={`group relative overflow-hidden flex items-center px-4 py-3 text-sm font-medium rounded-xl w-full text-left transition-all duration-300 ${
-                      item.current
-                        ? 'bg-blue-100/80 dark:bg-white/10 backdrop-blur-lg border border-blue-200/50 dark:border-white/20 text-blue-900 dark:text-white shadow-lg dark:shadow-xl'
-                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100/50 dark:hover:bg-white/5 hover:backdrop-blur-lg hover:border hover:border-gray-200/50 dark:hover:border-white/10 hover:text-gray-900 dark:hover:text-white'
+                    className={`btn-glass group relative overflow-hidden flex items-center px-4 py-3 text-sm font-medium rounded-xl w-full text-left transition-all duration-300 ${
+                      item.current 
+                        ? 'btn-glass-primary text-blue-900 dark:text-white'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                     }`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 dark:via-gray-300 to-transparent opacity-0 group-hover:opacity-20 dark:group-hover:opacity-10"></div>
-                    <item.icon className={`mr-3 h-5 w-5 transition-all duration-300 ${item.current ? '' : 'group-hover:scale-110'}`} />
+                    <item.icon className={`mr-3 h-5 w-5 transition-all duration-300`} />
                     <span className="font-medium">{item.name}</span>
                     {item.current && (
                       <div className="absolute right-2 w-2 h-2 bg-blue-600 dark:bg-white rounded-full"></div>

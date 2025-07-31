@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { User, Subject, Grade } from '../../types';
+import { User, Subject } from '../../types';
 
 const EnrollmentManagement: React.FC = () => {
-  const [grades, setGrades] = useState<Grade[]>([]);
+  const [grades, setGrades] = useState<any[]>([]);
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [students, setStudents] = useState<User[]>([]);
   const [selectedGrade, setSelectedGrade] = useState<string>('');
@@ -84,7 +84,7 @@ const EnrollmentManagement: React.FC = () => {
               {students.filter(s => !enrolledStudents.includes(s.id)).map(student => (
                 <div key={student.id} className="flex justify-between items-center p-1">
                   <span>{student.name}</span>
-                  <button onClick={() => handleEnroll(student.id)} className="text-blue-500">Enroll</button>
+                  <button onClick={() => handleEnroll(student.id)} className="btn-glass btn-glass-primary text-blue-500 px-3 py-1 rounded text-sm">Enroll</button>
                 </div>
               ))}
             </div>
@@ -95,7 +95,7 @@ const EnrollmentManagement: React.FC = () => {
               {students.filter(s => enrolledStudents.includes(s.id)).map(student => (
                 <div key={student.id} className="flex justify-between items-center p-1">
                   <span>{student.name}</span>
-                  <button onClick={() => handleUnenroll(student.id)} className="text-red-500">Unenroll</button>
+                                    <button onClick={() => handleUnenroll(enrollment.student_id)} className="btn-glass btn-glass-danger text-red-500 px-3 py-1 rounded text-sm">Unenroll</button>
                 </div>
               ))}
             </div>

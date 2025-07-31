@@ -201,7 +201,7 @@ const AuthLogin: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors mouse-elastic"
+                    className="btn-glass absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors mouse-elastic"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5 icon-spin" /> : <Eye className="w-5 h-5 icon-spin" />}
                   </button>
@@ -217,7 +217,7 @@ const AuthLogin: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:scale-100 btn-interactive mouse-ripple mouse-magnetic cursor-pointer"
+                className="btn-glass btn-glass-primary w-full py-4 px-6 text-white font-bold rounded-2xl shadow-lg transition-all duration-300 disabled:opacity-50"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">

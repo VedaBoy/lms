@@ -148,9 +148,9 @@ const AnnouncementForm: React.FC<AnnouncementFormProps> = ({ onClose, onSuccess,
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
               {editing ? 'Edit Announcement' : 'Create New Announcement'}
             </h2>
-            <button
-              onClick={onClose}
-              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                        <button
+              onClick={() => setShowCreateForm(false)}
+              className="btn-glass btn-glass-secondary text-gray-400 hover:text-gray-600 p-2"
             >
               <X className="w-5 h-5" />
             </button>

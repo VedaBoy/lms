@@ -299,13 +299,13 @@ const ConceptAssignment: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAssignForm(false)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="btn-glass px-4 py-2 text-sm font-medium rounded-lg"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700"
+                className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Create Assignment
@@ -329,7 +329,7 @@ const ConceptAssignment: React.FC = () => {
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             onClick={() => setShowAssignForm(true)}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+            className="btn-glass btn-glass-primary inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium"
           >
             <Plus className="w-4 h-4 mr-2" />
             New Assignment
@@ -408,8 +408,8 @@ const ConceptAssignment: React.FC = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end space-x-2">
-                        <button className="text-blue-600 hover:text-blue-900 text-sm">View Details</button>
-                        <button className="text-green-600 hover:text-green-900 text-sm">Push to AV</button>
+                        <button className="btn-glass btn-glass-primary text-sm px-2 py-1 rounded">View Details</button>
+                        <button className="btn-glass btn-glass-success text-sm px-2 py-1 rounded">Push to AV</button>
                       </div>
                     </td>
                   </tr>
