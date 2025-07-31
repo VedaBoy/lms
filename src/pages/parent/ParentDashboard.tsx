@@ -134,20 +134,20 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'ahead':
-        return 'bg-green-100 text-green-800';
+        return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700';
       case 'on_track':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-700';
       case 'needs_attention':
-        return 'bg-red-100 text-red-800';
+        return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-700';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-gray-600';
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'ahead':
-        return <CheckCircle2 className="w-4 h-4 text-green-600" />;
+        return <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400" />;
       case 'on_track':
         return <Target className="w-4 h-4 text-blue-600" />;
       case 'needs_attention':
@@ -171,12 +171,12 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+        <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
           Parent Dashboard
         </h1>
-        <p className="mt-2 text-gray-600 text-lg animate-slide-in-left delay-200">
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
           Welcome back, {user.name}! Here's how your children are progressing.
         </p>
       </div>
@@ -186,7 +186,7 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
         {children.map((child, index) => (
           <div 
             key={child.id} 
-            className="group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in"
+            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 theme-transition transform hover:scale-[1.02] animate-fade-in"
             style={{ 
               animationDelay: `${index * 150}ms`,
               animationFillMode: 'forwards'
@@ -198,13 +198,13 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
                   <span className="text-xl font-bold text-white">{child.avatar}</span>
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-pink-600 transition-colors">{child.name}</h3>
-                  <p className="text-sm font-medium text-gray-600">{child.grade} • {child.class}</p>
-                  <p className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-lg mt-1">Teacher: {child.teacher}</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors theme-transition">{child.name}</h3>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-300">{child.grade} • {child.class}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded-lg mt-1">Teacher: {child.teacher}</p>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="p-2 bg-gray-50 rounded-xl mr-2 group-hover:bg-white group-hover:shadow-md transition-all duration-200">
+                <div className="p-2 bg-gray-50 dark:bg-gray-700 rounded-xl mr-2 group-hover:bg-white dark:group-hover:bg-gray-600 group-hover:shadow-md transition-all duration-200">
                   {getStatusIcon(child.status)}
                 </div>
                 <span className={`inline-flex px-3 py-1.5 text-xs font-bold rounded-full shadow-sm ${getStatusColor(child.status)}`}>
@@ -215,33 +215,33 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
 
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{child.completedConcepts}</div>
-                <div className="text-xs text-gray-500">Completed</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">{child.completedConcepts}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{child.averageScore}%</div>
-                <div className="text-xs text-gray-500">Avg Score</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">{child.averageScore}%</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Avg Score</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{Math.floor(child.weeklyTimeSpent / 60)}h</div>
-                <div className="text-xs text-gray-500">This Week</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">{Math.floor(child.weeklyTimeSpent / 60)}h</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">This Week</div>
               </div>
             </div>
 
             <div className="mb-4">
               <div className="flex items-center justify-between text-sm mb-1">
-                <span className="text-gray-600">Progress</span>
-                <span className="font-medium">{child.completedConcepts}/{child.totalConcepts}</span>
+                <span className="text-gray-600 dark:text-gray-300">Progress</span>
+                <span className="font-medium text-gray-900 dark:text-white">{child.completedConcepts}/{child.totalConcepts}</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
                 <div 
-                  className="bg-blue-600 h-2 rounded-full" 
+                  className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" 
                   style={{ width: `${(child.completedConcepts / child.totalConcepts) * 100}%` }}
                 />
               </div>
             </div>
 
-            <div className="flex items-center text-xs text-gray-500">
+            <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
               <Clock className="w-3 h-3 mr-1" />
               Last active: {child.lastActivity}
             </div>
@@ -251,9 +251,9 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Upcoming Assignments */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Upcoming Assignments</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 theme-transition">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-lg">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Upcoming Assignments</h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
@@ -279,9 +279,9 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Recent Activity</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 theme-transition">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-lg">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Recent Activity</h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
@@ -320,24 +320,24 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
       </div>
 
       {/* Quick Actions */}
-      <div className="mt-8 bg-white rounded-lg shadow p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 p-6 theme-transition">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Actions</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <button className="bg-blue-50 hover:bg-blue-100 p-4 rounded-lg text-center transition-colors">
-            <BarChart3 className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-            <p className="text-sm font-medium text-blue-900">View Reports</p>
+          <button className="bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-blue-200 dark:border-blue-700">
+            <BarChart3 className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-blue-900 dark:text-blue-300">View Reports</p>
           </button>
-          <button className="bg-green-50 hover:bg-green-100 p-4 rounded-lg text-center transition-colors">
-            <Calendar className="h-8 w-8 text-green-600 mx-auto mb-2" />
-            <p className="text-sm font-medium text-green-900">Schedule</p>
+          <button className="bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-green-200 dark:border-green-700">
+            <Calendar className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-green-900 dark:text-green-300">Schedule</p>
           </button>
-          <button className="bg-purple-50 hover:bg-purple-100 p-4 rounded-lg text-center transition-colors">
-            <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-            <p className="text-sm font-medium text-purple-900">Contact Teachers</p>
+          <button className="bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-purple-200 dark:border-purple-700">
+            <Users className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-purple-900 dark:text-purple-300">Contact Teachers</p>
           </button>
-          <button className="bg-orange-50 hover:bg-orange-100 p-4 rounded-lg text-center transition-colors">
-            <Award className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-            <p className="text-sm font-medium text-orange-900">Achievements</p>
+          <button className="bg-orange-50 dark:bg-orange-900/30 hover:bg-orange-100 dark:hover:bg-orange-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-orange-200 dark:border-orange-700">
+            <Award className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-orange-900 dark:text-orange-300">Achievements</p>
           </button>
         </div>
       </div>
@@ -349,17 +349,17 @@ const ChildrenProgress: React.FC = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Children Progress</h1>
-        <p className="mt-2 text-gray-600">Detailed progress tracking for each of your children.</p>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Children Progress</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">Detailed progress tracking for each of your children.</p>
       </div>
       
-      <div className="bg-white rounded-lg shadow p-8 text-center">
-        <Users className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-        <h3 className="text-lg font-medium text-gray-900 mb-2">Detailed Progress Reports</h3>
-        <p className="text-gray-600 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 p-8 text-center theme-transition">
+        <Users className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-4" />
+        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Detailed Progress Reports</h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">
           This feature will provide comprehensive progress reports, grade tracking, and detailed analytics for each child.
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           Coming soon in the full version of the LMS platform.
         </p>
       </div>

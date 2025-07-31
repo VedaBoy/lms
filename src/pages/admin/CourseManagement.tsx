@@ -163,9 +163,9 @@ const CourseManagement: React.FC = () => {
     );
 
   const statusClasses: Record<Status, string> = {
-    active: "bg-green-100 text-green-800",
-    draft: "bg-yellow-100 text-yellow-800",
-    archived: "bg-gray-100 text-gray-700",
+    active: "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700",
+    draft: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-700",
+    archived: "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600",
   };
 
   const filteredList = useMemo(() => {
@@ -179,25 +179,25 @@ const CourseManagement: React.FC = () => {
   }, [searchTerm, statusFilter, gradeFilter, subjectFilter, chapterFilter, grades, subjects, chapters, concepts, activeTab]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 theme-transition">
       {/* Header Section with Animation */}
       <div className="pt-8 pb-6">
         <div className="sm:flex sm:items-center mb-8">
           <div className="sm:flex-auto">
             <div className="flex items-center space-x-3 mb-2">
-              <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg">
+              <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow theme-transition-lg">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 dark:from-white to-gray-600 dark:to-gray-300 bg-clip-text text-transparent">
                 Course Management
               </h1>
             </div>
-            <p className="text-lg text-gray-600 font-medium">
+            <p className="text-lg text-gray-600 dark:text-gray-300 font-medium">
               Manage your curriculum structure with ease
             </p>
             <div className="flex items-center space-x-2 mt-2">
               <TrendingUp className="w-4 h-4 text-green-500" />
-              <span className="text-sm text-green-600 font-medium">
+              <span className="text-sm text-green-600 dark:text-green-400 font-medium">
                 {filteredList.length} {activeTab} found
               </span>
             </div>
@@ -216,7 +216,7 @@ const CourseManagement: React.FC = () => {
       </div>
 
       {/* Enhanced Navigation Tabs */}
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 mb-8 overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 mb-8 overflow-hidden theme-transition">
         <nav className="flex">
           {tabs.map((tab, index) => {
             const Icon =
@@ -226,17 +226,17 @@ const CourseManagement: React.FC = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 ${
+                className={`group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 theme-transition ${
                   isActive
                     ? "text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700"
                 }`}
                 style={{
                   animationDelay: `${index * 100}ms`,
                 }}
               >
                 <div className="flex items-center space-x-2">
-                  <Icon className={`w-5 h-5 transition-all duration-300 ${
+                  <Icon className={`w-5 h-5 transition-all duration-300 theme-transition ${
                     isActive ? "scale-110" : "group-hover:scale-105"
                   }`} />
                   <span className="capitalize font-medium">
@@ -246,7 +246,7 @@ const CourseManagement: React.FC = () => {
                 {isActive && (
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-10 animate-pulse" />
                 )}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform transition-all duration-300 ${
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform transition-all duration-300 theme-transition ${
                   isActive ? "scale-x-100" : "scale-x-0"
                 }`} />
               </button>
@@ -256,7 +256,7 @@ const CourseManagement: React.FC = () => {
       </div>
 
       {/* Enhanced Filters Section */}
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 p-6 mb-8 theme-transition">
         <div className={`grid grid-cols-1 gap-4 ${
           activeTab === "subjects" ? "md:grid-cols-4" : 
           activeTab === "chapters" ? "md:grid-cols-5" : 
@@ -265,24 +265,24 @@ const CourseManagement: React.FC = () => {
         }`}>
           {/* Search Input */}
           <div className="relative group">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
             <input
               type="text"
               placeholder={`Search ${activeTab}...`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md"
+              className="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md theme-transition"
             />
           </div>
 
           {/* Status Filter */}
           <div className="relative group">
-            <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+            <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
             <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as any)}
-              className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+              className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
             >
               <option value="">All Status</option>
               <option value="active">Active</option>
@@ -293,12 +293,12 @@ const CourseManagement: React.FC = () => {
           {/* Subject Tab Filters */}
           {activeTab === "subjects" && (
             <div className="relative group">
-              <GraduationCap className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+              <GraduationCap className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
               <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
               <select
                 value={gradeFilter}
                 onChange={(e) => setGradeFilter(e.target.value)}
-                className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+                className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
               >
                 <option value="">All Grades</option>
                 {grades.map((grade) => (
@@ -313,7 +313,7 @@ const CourseManagement: React.FC = () => {
           {activeTab === "chapters" && (
             <>
               <div className="relative group">
-                <GraduationCap className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+                <GraduationCap className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
                 <select
                   value={gradeFilter}
@@ -323,7 +323,7 @@ const CourseManagement: React.FC = () => {
                       setSubjectFilter("");
                     }
                   }}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
                 >
                   <option value="">All Grades</option>
                   {grades.map((grade) => (
@@ -334,12 +334,12 @@ const CourseManagement: React.FC = () => {
                 </select>
               </div>
               <div className="relative group">
-                <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+                <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
                 <select
                   value={subjectFilter}
                   onChange={(e) => setSubjectFilter(e.target.value)}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
                 >
                   <option value="">All Subjects</option>
                   {subjects
@@ -357,7 +357,7 @@ const CourseManagement: React.FC = () => {
           {activeTab === "concepts" && (
             <>
               <div className="relative group">
-                <GraduationCap className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+                <GraduationCap className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
                 <select
                   value={gradeFilter}
@@ -368,7 +368,7 @@ const CourseManagement: React.FC = () => {
                       setChapterFilter("");
                     }
                   }}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
                 >
                   <option value="">All Grades</option>
                   {grades.map((grade) => (
@@ -379,7 +379,7 @@ const CourseManagement: React.FC = () => {
                 </select>
               </div>
               <div className="relative group">
-                <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+                <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
                 <select
                   value={subjectFilter}
@@ -389,7 +389,7 @@ const CourseManagement: React.FC = () => {
                       setChapterFilter("");
                     }
                   }}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
                 >
                   <option value="">All Subjects</option>
                   {subjects
@@ -402,12 +402,12 @@ const CourseManagement: React.FC = () => {
                 </select>
               </div>
               <div className="relative group">
-                <Layers className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors duration-200" />
+                <Layers className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
                 <select
                   value={chapterFilter}
                   onChange={(e) => setChapterFilter(e.target.value)}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white shadow-sm hover:shadow-md appearance-none"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
                 >
                   <option value="">All Chapters</option>
                   {chapters
@@ -427,48 +427,48 @@ const CourseManagement: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden theme-transition">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                   Name / Title
                 </th>
                 {activeTab === "grades" && (
-                  <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     Level
                   </th>
                 )}
                 {activeTab === "subjects" && (
                   <>
-                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                       Grade
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                       Teacher
                     </th>
                   </>
                 )}
               {activeTab === "chapters" && (
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                   Subject
                 </th>
               )}
               {activeTab === "concepts" && (
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                   Chapter
                 </th>
               )}
-              <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-4 text-right text-xs font-bold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-right text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100 bg-white">
+          <tbody className="divide-y divide-gray-100 dark:divide-gray-700 bg-white dark:bg-gray-800 theme-transition">
             {loading ? (
               <tr>
                 <td colSpan={
@@ -478,7 +478,7 @@ const CourseManagement: React.FC = () => {
                 } className="px-6 py-12 text-center">
                   <div className="flex flex-col items-center justify-center space-y-4">
                     <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
-                    <p className="text-gray-500 font-medium">Loading {activeTab}...</p>
+                    <p className="text-gray-500 dark:text-gray-400 font-medium">Loading {activeTab}...</p>
                   </div>
                 </td>
               </tr>
@@ -490,11 +490,11 @@ const CourseManagement: React.FC = () => {
                   activeTab === "chapters" ? 4 : 5
                 } className="px-6 py-12 text-center">
                   <div className="flex flex-col items-center justify-center space-y-4">
-                    <div className="p-4 bg-gray-100 rounded-full">
+                    <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-full">
                       <Search className="w-8 h-8 text-gray-400" />
                     </div>
                     <div>
-                      <p className="text-gray-500 font-medium">No {activeTab} found</p>
+                      <p className="text-gray-500 dark:text-gray-400 font-medium">No {activeTab} found</p>
                       <p className="text-gray-400 text-sm mt-1">Try adjusting your search or filters</p>
                     </div>
                   </div>
@@ -504,33 +504,33 @@ const CourseManagement: React.FC = () => {
               filteredList.map((item, index) => (
                 <tr 
                 key={item.id} 
-                className={`hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200 transform hover:scale-[1.01] ${
-                  index % 2 === 0 ? 'bg-gray-50/30' : 'bg-white'
+                className={`hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 transform hover:scale-[1.01] ${
+                  index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/30' : 'bg-white dark:bg-gray-800'
                 } ${
                   animateCards ? 'animate-fade-in opacity-100' : 'opacity-0'
-                }`}
+                } theme-transition`}
                 style={{ 
                   animationDelay: `${index * 50}ms`,
                   animationFillMode: 'forwards'
                 }}
               >
-                <td className="px-6 py-4 font-medium text-gray-900">
+                <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
                   {"name" in item ? item.name : item.title}
                 </td>
                 {activeTab === "grades" && (
-                  <td className="px-6 py-4 text-gray-600">{(item as any).level}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{(item as any).level}</td>
                 )}
                 {activeTab === "subjects" && (
                   <>
-                    <td className="px-6 py-4 text-gray-600">{(item as any).grade_name}</td>
-                    <td className="px-6 py-4 text-gray-600">{(item as any).teacher_name}</td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{(item as any).grade_name}</td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{(item as any).teacher_name}</td>
                   </>
                 )}
                 {activeTab === "chapters" && (
-                  <td className="px-6 py-4 text-gray-600">{(item as Chapter).subject_name}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{(item as Chapter).subject_name}</td>
                 )}
                 {activeTab === "concepts" && (
-                  <td className="px-6 py-4 text-gray-600">{(item as Concept).chapter_title}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{(item as Concept).chapter_title}</td>
                 )}
                 <td className="px-6 py-4">
                   <span
@@ -547,10 +547,10 @@ const CourseManagement: React.FC = () => {
                       setEditing(item);
                       setShowForm(true);
                     }}
-                    className="group p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition-all duration-200 transform hover:scale-110"
+                    className="group p-2 rounded-full bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-800/40 transition-all duration-200 transform hover:scale-110 theme-transition"
                     aria-label="Edit"
                   >
-                    <Edit3 className="text-blue-600 w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+                    <Edit3 className="text-blue-600 dark:text-blue-400 w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
                   </button>
                   <button
                     onClick={async () => {
@@ -578,10 +578,10 @@ const CourseManagement: React.FC = () => {
                         }
                       }
                     }}
-                    className="group p-2 rounded-full bg-red-100 hover:bg-red-200 transition-all duration-200 transform hover:scale-110"
+                    className="group p-2 rounded-full bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-800/40 transition-all duration-200 transform hover:scale-110 theme-transition"
                     aria-label="Delete"
                   >
-                    <Trash2 className="text-red-600 w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+                    <Trash2 className="text-red-600 dark:text-red-400 w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
                   </button>
                 </td>
               </tr>

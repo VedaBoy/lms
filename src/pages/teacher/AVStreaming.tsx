@@ -284,7 +284,7 @@ const AVStreaming: React.FC = () => {
             <div className="flex items-center justify-center space-x-6 mb-4">
               <button 
                 onClick={() => setCurrentItem(Math.max(0, currentItem - 1))}
-                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors theme-transition"
                 disabled={currentItem === 0}
               >
                 <SkipBack className="w-6 h-6 text-gray-600" />
@@ -292,7 +292,7 @@ const AVStreaming: React.FC = () => {
               
               <button 
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="p-4 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors"
+                className="p-4 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors theme-transition"
               >
                 {isPlaying ? (
                   <Pause className="w-8 h-8 text-white" />
@@ -303,7 +303,7 @@ const AVStreaming: React.FC = () => {
               
               <button 
                 onClick={() => setCurrentItem(Math.min(currentPlaylist.length - 1, currentItem + 1))}
-                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors theme-transition"
                 disabled={currentItem === currentPlaylist.length - 1}
               >
                 <SkipForward className="w-6 h-6 text-gray-600" />
@@ -347,7 +347,7 @@ const AVStreaming: React.FC = () => {
               {currentPlaylist.map((item, index) => (
                 <div 
                   key={item.id} 
-                  className={`flex items-center p-3 rounded-lg cursor-pointer transition-colors ${
+                  className={`flex items-center p-3 rounded-lg cursor-pointer transition-colors theme-transition ${
                     index === currentItem 
                       ? 'bg-blue-50 border border-blue-200' 
                       : 'hover:bg-gray-50'

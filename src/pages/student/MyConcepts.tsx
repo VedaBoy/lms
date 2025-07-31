@@ -301,21 +301,21 @@ const MyConcepts: React.FC = () => {
       {/* Enhanced Filters */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-in-up delay-300">
         <div className="relative group">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition" />
           <input
             type="text"
             placeholder="Search concepts..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 hover:shadow-md bg-white"
+            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 theme-transition hover:shadow-md bg-white"
           />
         </div>
         <div className="relative group">
-          <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
+          <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition" />
           <select
             value={filterSubject}
             onChange={(e) => setFilterSubject(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none transition-all duration-300 hover:shadow-md bg-white cursor-pointer"
+            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none transition-all duration-300 theme-transition hover:shadow-md bg-white cursor-pointer"
           >
             <option value="all">All Subjects</option>
             <option value="Mathematics">Mathematics</option>
@@ -324,11 +324,11 @@ const MyConcepts: React.FC = () => {
           </select>
         </div>
         <div className="relative group">
-          <Target className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
+          <Target className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition" />
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none transition-all duration-300 hover:shadow-md bg-white cursor-pointer"
+            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none transition-all duration-300 theme-transition hover:shadow-md bg-white cursor-pointer"
           >
             <option value="all">All Status</option>
             <option value="assigned">Assigned</option>
@@ -343,12 +343,12 @@ const MyConcepts: React.FC = () => {
         {filteredConcepts.map((concept, index) => (
           <div
             key={concept.id}
-            className={`group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover-lift hover-glow cursor-pointer transition-all duration-300 animate-bounce-in delay-${(index + 1) * 100}`}
+            className={`group bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover-lift hover-glow cursor-pointer transition-all duration-300 theme-transition animate-bounce-in delay-${(index + 1) * 100}`}
             onClick={() => setSelectedConcept(concept.id)}
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-300 mb-2">
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors theme-transition duration-300 mb-2">
                   {concept.title}
                 </h3>
                 <div className="flex items-center text-sm text-gray-600 mb-1">
@@ -370,7 +370,7 @@ const MyConcepts: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-sm text-gray-600 mb-4 line-clamp-2 group-hover:text-gray-700 transition-colors">
+            <p className="text-sm text-gray-600 mb-4 line-clamp-2 group-hover:text-gray-700 transition-colors theme-transition">
               {concept.description}
             </p>
 
@@ -396,7 +396,7 @@ const MyConcepts: React.FC = () => {
                   {concept.priority} priority
                 </span>
               </div>
-              <button className="group-hover:bg-gradient-to-r group-hover:from-green-500 group-hover:to-blue-500 bg-gray-100 text-gray-600 group-hover:text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 transform group-hover:scale-105 flex items-center">
+              <button className="group-hover:bg-gradient-to-r group-hover:from-green-500 group-hover:to-blue-500 bg-gray-100 text-gray-600 group-hover:text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 theme-transition transform group-hover:scale-105 flex items-center">
                 <Play className="w-4 h-4 mr-2" />
                 {concept.status === 'assigned' ? 'Start' : 'Continue'}
               </button>

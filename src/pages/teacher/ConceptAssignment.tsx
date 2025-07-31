@@ -114,7 +114,7 @@ const ConceptAssignment: React.FC = () => {
                     onChange={(e) => setAssignmentType(e.target.value)}
                     className="sr-only" 
                   />
-                  <div className={`border-2 rounded-lg p-4 cursor-pointer transition-colors ${
+                  <div className={`border-2 rounded-lg p-4 cursor-pointer transition-colors theme-transition ${
                     assignmentType === 'class' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300'
                   }`}>
                     <div className="flex items-center justify-center mb-2">
@@ -132,7 +132,7 @@ const ConceptAssignment: React.FC = () => {
                     onChange={(e) => setAssignmentType(e.target.value)}
                     className="sr-only" 
                   />
-                  <div className={`border-2 rounded-lg p-4 cursor-pointer transition-colors ${
+                  <div className={`border-2 rounded-lg p-4 cursor-pointer transition-colors theme-transition ${
                     assignmentType === 'individual' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300'
                   }`}>
                     <div className="flex items-center justify-center mb-2">

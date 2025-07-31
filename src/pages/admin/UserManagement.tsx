@@ -10,6 +10,7 @@ import {
   Key,
   Users,
   TrendingUp,
+  ChevronDown,
 } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
 import { User } from '../../types';
@@ -141,14 +142,14 @@ const UserManagement: React.FC = () => {
     };
 
     return (
-      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-        <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-lg bg-white">
+      <div className="fixed inset-0 bg-gray-600 dark:bg-gray-900 bg-opacity-50 dark:bg-opacity-75 overflow-y-auto h-full w-full z-50">
+        <div className="relative top-20 mx-auto p-5 border border-gray-200 dark:border-gray-600 w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-lg bg-white dark:bg-gray-800 theme-transition">
           <div className="mt-3">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-medium text-gray-900">{initial.id ? 'Edit User' : 'Add New User'}</h3>
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white dark:text-white">{initial.id ? 'Edit User' : 'Add New User'}</h3>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -159,37 +160,37 @@ const UserManagement: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">First Name</label>
                   <input
                     type="text"
                     required
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                     placeholder="Enter first name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Last Name</label>
                   <input
                     type="text"
                     required
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                     placeholder="Enter last name"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                   placeholder="Enter email address"
                 />
               </div>
@@ -197,7 +198,7 @@ const UserManagement: React.FC = () => {
               {(!initial.id || password) && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Password {!initial.id && <span className="text-red-500">*</span>}
                     </label>
                     <div className="relative">
@@ -206,7 +207,7 @@ const UserManagement: React.FC = () => {
                         required={!initial.id}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                         placeholder={initial.id ? "Leave blank to keep current password" : "Enter password"}
                         minLength={8}
                       />
@@ -216,15 +217,15 @@ const UserManagement: React.FC = () => {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center"
                       >
                         {showPassword ? (
-                          <EyeOff className="h-5 w-5 text-gray-400" />
+                          <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                         ) : (
-                          <Eye className="h-5 w-5 text-gray-400" />
+                          <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                         )}
                       </button>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Confirm Password {!initial.id && <span className="text-red-500">*</span>}
                     </label>
                     <div className="relative">
@@ -233,7 +234,7 @@ const UserManagement: React.FC = () => {
                         required={!initial.id}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                         placeholder={initial.id ? "Leave blank to keep current password" : "Confirm password"}
                         minLength={8}
                       />
@@ -243,9 +244,9 @@ const UserManagement: React.FC = () => {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center"
                       >
                         {showConfirmPassword ? (
-                          <EyeOff className="h-5 w-5 text-gray-400" />
+                          <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                         ) : (
-                          <Eye className="h-5 w-5 text-gray-400" />
+                          <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                         )}
                       </button>
                     </div>
@@ -260,7 +261,7 @@ const UserManagement: React.FC = () => {
               )}
 
               {!initial.id && (
-                <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                <div className="text-sm text-gray-600 dark:text-gray-300 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
                   <p className="font-medium mb-1">Password Requirements:</p>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>Minimum 8 characters long</li>
@@ -271,11 +272,11 @@ const UserManagement: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Role</label>
                   <select
                     value={role}
                     onChange={(e) => setRole(e.target.value as User['role'])}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                   >
                     <option value="admin">Admin</option>
                     <option value="teacher">Teacher</option>
@@ -284,11 +285,11 @@ const UserManagement: React.FC = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status</label>
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as User['status'])}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                   >
                     <option value="active">Active</option>
                     <option value="hold">Hold</option>
@@ -299,8 +300,8 @@ const UserManagement: React.FC = () => {
               {/* No explicit grade level or class assignment in the provided backend code, keeping it for UI consistency if needed later */}
               {/*
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Grade Level</label>
+                <select className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition">
                   <option value="">Select grade (if applicable)</option>
                   <option value="k">Kindergarten</option>
                   <option value="1">1st Grade</option>
@@ -319,7 +320,7 @@ const UserManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Class Assignment</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Class Assignment</label>
                 <div className="space-y-2">
                   <div className="flex items-center">
                     <input type="checkbox" id="math101" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
@@ -337,11 +338,11 @@ const UserManagement: React.FC = () => {
               </div>
               */}
 
-              <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+              <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-600">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:ring-2 focus:ring-blue-500"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 theme-transition"
                 >
                   Cancel
                 </button>
@@ -420,10 +421,10 @@ const UserManagement: React.FC = () => {
 
     return (
       <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-        <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-lg bg-white">
+        <div className="relative top-20 mx-auto p-5 border border-gray-200 dark:border-gray-600 w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-lg bg-white dark:bg-gray-800 theme-transition">
           <div className="mt-3">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-medium text-gray-900">Set Password for {user.name}</h3>
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">Set Password for {user.name}</h3>
               <button
                 onClick={onClose}
                 className="text-gray-400 hover:text-gray-600"
@@ -436,7 +437,7 @@ const UserManagement: React.FC = () => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   New Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -445,7 +446,7 @@ const UserManagement: React.FC = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                     placeholder="Enter new password"
                     minLength={8}
                   />
@@ -455,16 +456,16 @@ const UserManagement: React.FC = () => {
                     className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   >
                     {showPassword ? (
-                      <EyeOff className="h-5 w-5 text-gray-400" />
+                      <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                     ) : (
-                      <Eye className="h-5 w-5 text-gray-400" />
+                      <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                     )}
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Confirm New Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -473,7 +474,7 @@ const UserManagement: React.FC = () => {
                     required
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent theme-transition"
                     placeholder="Confirm new password"
                     minLength={8}
                   />
@@ -483,9 +484,9 @@ const UserManagement: React.FC = () => {
                     className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   >
                     {showConfirmPassword ? (
-                      <EyeOff className="h-5 w-5 text-gray-400" />
+                      <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                     ) : (
-                      <Eye className="h-5 w-5 text-gray-400" />
+                      <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                     )}
                   </button>
                 </div>
@@ -505,11 +506,11 @@ const UserManagement: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+              <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-600">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:ring-2 focus:ring-blue-500"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 theme-transition"
                   disabled={isLoading}
                 >
                   Cancel
@@ -531,23 +532,23 @@ const UserManagement: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 px-4 sm:px-6 lg:px-8 interactive-bg scroll-smooth">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 theme-transition interactive-bg scroll-smooth">
       <div className="sm:flex sm:items-center animate-slide-in-up">
         <div className="sm:flex-auto">
           <div className="flex items-center space-x-3 mb-2">
-            <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-lg mouse-elastic icon-bounce cursor-pointer">
+            <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow theme-transition-lg mouse-elastic icon-bounce cursor-pointer">
               <Users className="w-6 h-6 text-white icon-spin" />
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent text-gradient-hover cursor-default">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent text-gradient-hover cursor-default">
               User Management
             </h1>
           </div>
-          <p className="text-lg text-gray-600 font-medium hover:text-gray-800 transition-colors duration-300 cursor-default">
+          <p className="text-lg text-gray-600 dark:text-gray-300 font-medium hover:text-gray-800 dark:hover:text-gray-200 transition-colors theme-transition duration-300 cursor-default">
             Manage all users in your school system including admins, teachers, students, and parents.
           </p>
           <div className="flex items-center space-x-2 mt-2 mouse-magnetic">
             <TrendingUp className="w-4 h-4 text-green-500 icon-bounce" />
-            <span className="text-sm text-green-600 font-medium hover:text-green-700 transition-colors">
+            <span className="text-sm text-green-600 dark:text-green-400 font-medium hover:text-green-700 dark:hover:text-green-300 transition-colors theme-transition">
               {filteredUsers.length} users found
             </span>
           </div>
@@ -555,7 +556,7 @@ const UserManagement: React.FC = () => {
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none space-x-2">
           <button
             onClick={() => setShowParentLink(true)}
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 transition-all duration-300 mouse-tilt mouse-shadow-dance btn-interactive cursor-pointer"
+            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 transition-all duration-300 theme-transition mouse-tilt mouse-shadow-dance btn-interactive cursor-pointer"
           >
             <Users className="w-4 h-4 mr-2 icon-bounce" />
             Manage Parent Links
@@ -574,66 +575,67 @@ const UserManagement: React.FC = () => {
       </div>
 
       {/* Enhanced Search and Filter */}
-      <div className="mt-8 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-interactive mouse-glow-border">
-        <div className="p-6 bg-gradient-to-r from-gray-50 to-blue-50">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="relative mouse-follow">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-bounce" />
-              <input
-                type="text"
-                placeholder="Search users by name, email, or ID..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-6 py-3 border border-gray-200 rounded-xl bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 mouse-tilt text-sm font-medium hover:shadow-md"
-              />
-            </div>
-            <div className="relative mouse-magnetic">
-              <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-spin" />
-              <select
-                value={filterRole}
-                onChange={(e) => setFilterRole(e.target.value as 'all' | User['role'])}
-                className="w-full pl-12 pr-6 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none transition-all duration-300 mouse-tilt text-sm font-medium hover:shadow-md cursor-pointer"
-              >
-                <option value="all">All Roles</option>
-                <option value="admin">👑 Admin</option>
-                <option value="teacher">👨‍🏫 Teacher</option>
-                <option value="student">🎓 Student</option>
-                <option value="parent">👨‍👩‍👧‍👦 Parent</option>
-              </select>
-            </div>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 p-6 mb-8 theme-transition">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Search Input */}
+          <div className="relative group">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
+            <input
+              type="text"
+              placeholder="Search users by name, email, or ID..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md theme-transition"
+            />
+          </div>
+          {/* Filter Select */}
+          <div className="relative group">
+            <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors theme-transition duration-200" />
+            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
+            <select
+              value={filterRole}
+              onChange={(e) => setFilterRole(e.target.value as 'all' | User['role'])}
+              className="w-full pl-10 pr-10 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-600 shadow-sm hover:shadow-md appearance-none"
+            >
+              <option value="all">All Roles</option>
+              <option value="admin">👑 Admin</option>
+              <option value="teacher">👨‍🏫 Teacher</option>
+              <option value="student">🎓 Student</option>
+              <option value="parent">👨‍👩‍👧‍👦 Parent</option>
+            </select>
           </div>
         </div>
       </div>
 
       {/* Users Table */}
-      <div className="mt-8 bg-white shadow rounded-lg overflow-hidden">
+      <div className="mt-8 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 theme-transition overflow-hidden">
         {loading ? (
-          <div className="p-6 text-center text-gray-500">Loading users...</div>
+          <div className="p-6 text-center text-gray-500 dark:text-gray-400 dark:text-gray-300">Loading users...</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-300 uppercase tracking-wider">
                     User
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-300 uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-300 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-300 uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-300 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                 {filteredUsers.map((user) => (
-                  <tr key={user.id} className="hover:bg-gray-50">
+                  <tr key={user.id} className="hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
@@ -644,10 +646,10 @@ const UserManagement: React.FC = () => {
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">
                             {user.name}
                           </div>
-                          <div className="text-sm text-gray-500">{user.email}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-300">{user.email}</div>
                         </div>
                       </div>
                     </td>
@@ -668,7 +670,7 @@ const UserManagement: React.FC = () => {
                         {user.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 dark:text-gray-300">
                       {new Date(user.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -810,10 +812,10 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-lg bg-white">
-        <h3 className="text-lg font-medium text-gray-900">Manage Parent-Student Links</h3>
+      <div className="relative top-20 mx-auto p-5 border border-gray-200 dark:border-gray-600 w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-lg bg-white dark:bg-gray-800 theme-transition">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-white">Manage Parent-Student Links</h3>
         <div className="mt-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Select Parent</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Parent</label>
           <select onChange={(e) => setSelectedParent(e.target.value)} className="w-full p-2 border rounded">
             <option value="">-- Select a Parent --</option>
             {parents.map(parent => <option key={parent.id} value={parent.id}>{parent.name}</option>)}
@@ -821,10 +823,10 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
         </div>
         {selectedParent && (
           <div className="mt-4">
-            <h4 className="text-md font-medium text-gray-900">Link Students</h4>
+            <h4 className="text-md font-medium text-gray-900 dark:text-white">Link Students</h4>
             <div className="grid grid-cols-2 gap-4 mt-2">
               <div>
-                <h5 className="text-sm font-medium text-gray-900">Available Students</h5>
+                <h5 className="text-sm font-medium text-gray-900 dark:text-white">Available Students</h5>
                 <div className="border rounded p-2 h-64 overflow-y-auto">
                   {students.filter(s => !linkedStudents.includes(s.id)).map(student => (
                     <div key={student.id} className="flex justify-between items-center p-1">
@@ -835,7 +837,7 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
                 </div>
               </div>
               <div>
-                <h5 className="text-sm font-medium text-gray-900">Linked Students</h5>
+                <h5 className="text-sm font-medium text-gray-900 dark:text-white">Linked Students</h5>
                 <div className="border rounded p-2 h-64 overflow-y-auto">
                   {students.filter(s => linkedStudents.includes(s.id)).map(student => (
                     <div key={student.id} className="flex justify-between items-center p-1">

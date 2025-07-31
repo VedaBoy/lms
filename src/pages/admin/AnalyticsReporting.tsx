@@ -92,7 +92,7 @@ const AnalyticsReporting: React.FC = () => {
             {/* Key Metrics */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {overviewStats.map((stat) => (
-                <div key={stat.name} className="bg-white rounded-lg shadow p-6">
+                <div key={stat.name} className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
                   <div className="flex items-center">
                     <div className={`flex-shrink-0 p-3 rounded-lg ${stat.color}`}>
                       <stat.icon className="h-6 w-6 text-white" />
@@ -100,7 +100,7 @@ const AnalyticsReporting: React.FC = () => {
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-600">{stat.name}</p>
                       <div className="flex items-baseline">
-                        <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
+                        <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stat.value}</p>
                         <p className="ml-2 text-sm font-medium text-green-600">{stat.change}</p>
                       </div>
                     </div>
@@ -111,34 +111,34 @@ const AnalyticsReporting: React.FC = () => {
 
             {/* Charts Placeholder */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Student Progress Over Time</h3>
-                <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Student Progress Over Time</h3>
+                <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                   <div className="text-center">
                     <BarChart3 className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-500">Line chart visualization would appear here</p>
+                    <p className="text-gray-500 dark:text-gray-400">Line chart visualization would appear here</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Concept Completion Rates</h3>
-                <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Concept Completion Rates</h3>
+                <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                   <div className="text-center">
                     <PieChart className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-500">Pie chart visualization would appear here</p>
+                    <p className="text-gray-500 dark:text-gray-400">Pie chart visualization would appear here</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Activity Heatmap */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Weekly Activity Heatmap</h3>
-              <div className="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Weekly Activity Heatmap</h3>
+              <div className="h-48 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                 <div className="text-center">
                   <Activity className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-500">Activity heatmap would appear here</p>
+                  <p className="text-gray-500 dark:text-gray-400">Activity heatmap would appear here</p>
                   <p className="text-sm text-gray-400 mt-1">Shows daily engagement patterns across the week</p>
                 </div>
               </div>
@@ -148,34 +148,34 @@ const AnalyticsReporting: React.FC = () => {
 
       case 'students':
         return (
-          <div className="bg-white shadow rounded-lg overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900">Student Progress Report</h3>
+          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">Student Progress Report</h3>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Student
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Progress
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Average Score
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Time Spent
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Last Activity
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200">
                   {studentProgress.map((student, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
+                    <tr key={index} className="hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-10 w-10 flex-shrink-0">
@@ -186,8 +186,8 @@ const AnalyticsReporting: React.FC = () => {
                             </div>
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{student.student}</div>
-                            <div className="text-sm text-gray-500">{student.grade} Grade</div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-white">{student.student}</div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400">{student.grade} Grade</div>
                           </div>
                         </div>
                       </td>
@@ -198,7 +198,7 @@ const AnalyticsReporting: React.FC = () => {
                             style={{ width: `${(student.conceptsCompleted / student.totalConcepts) * 100}%` }}
                           />
                         </div>
-                        <div className="text-sm text-gray-500 mt-1">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                           {student.conceptsCompleted}/{student.totalConcepts} concepts
                         </div>
                       </td>
@@ -211,10 +211,10 @@ const AnalyticsReporting: React.FC = () => {
                           {student.averageScore}%
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {student.timeSpent} min
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {student.lastActivity}
                       </td>
                     </tr>
@@ -227,38 +227,38 @@ const AnalyticsReporting: React.FC = () => {
 
       case 'concepts':
         return (
-          <div className="bg-white shadow rounded-lg overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900">Concept Performance Analysis</h3>
+          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">Concept Performance Analysis</h3>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Concept
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Completion Rate
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Avg. Time
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Avg. Score
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Struggling Students
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200">
                   {conceptAnalytics.map((concept, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
+                    <tr key={index} className="hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{concept.concept}</div>
-                          <div className="text-sm text-gray-500">{concept.subject}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">{concept.concept}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">{concept.subject}</div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -268,11 +268,11 @@ const AnalyticsReporting: React.FC = () => {
                             style={{ width: `${(concept.completed / concept.totalAssigned) * 100}%` }}
                           />
                         </div>
-                        <div className="text-sm text-gray-500 mt-1">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                           {concept.completed}/{concept.totalAssigned} ({Math.round((concept.completed / concept.totalAssigned) * 100)}%)
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {concept.averageTime} min
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -307,16 +307,16 @@ const AnalyticsReporting: React.FC = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8 theme-transition">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900">Analytics & Reporting</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics & Reporting</h1>
           <p className="mt-2 text-sm text-gray-700">
             Comprehensive insights into student progress, concept performance, and engagement metrics.
           </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-blue-500">
+          <button className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-2 focus:ring-blue-500">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </button>
@@ -330,7 +330,7 @@ const AnalyticsReporting: React.FC = () => {
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
           >
             <option value="last7days">Last 7 days</option>
             <option value="last30days">Last 30 days</option>
@@ -341,7 +341,7 @@ const AnalyticsReporting: React.FC = () => {
         </div>
         <div className="relative">
           <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none">
+          <select className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none">
             <option value="">All Grades</option>
             <option value="k">Kindergarten</option>
             <option value="1">1st Grade</option>
@@ -353,7 +353,7 @@ const AnalyticsReporting: React.FC = () => {
         </div>
         <div className="relative">
           <BookOpen className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none">
+          <select className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none">
             <option value="">All Subjects</option>
             <option value="math">Mathematics</option>
             <option value="science">Science</option>
@@ -364,7 +364,7 @@ const AnalyticsReporting: React.FC = () => {
       </div>
 
       {/* Report Type Tabs */}
-      <div className="mt-6 border-b border-gray-200">
+      <div className="mt-6 border-b border-gray-200 dark:border-gray-700">
         <nav className="-mb-px flex space-x-8">
           {[
             { id: 'overview', name: 'Overview', icon: BarChart3 },
@@ -377,7 +377,7 @@ const AnalyticsReporting: React.FC = () => {
               className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
                 reportType === tab.id
                   ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 hover:border-gray-300 dark:border-gray-600'
               }`}
             >
               <tab.icon className="w-4 h-4 mr-2" />

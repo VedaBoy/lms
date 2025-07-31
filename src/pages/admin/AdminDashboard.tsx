@@ -9,6 +9,7 @@ import EnrollmentManagement from './EnrollmentManagement';
 import SystemSettings from "./SystemSettings";
 import { supabase } from "../../lib/supabaseClient";
 import { User } from "../../types";
+import { componentThemes } from "../../utils/themeUtils";
 import {
   Users,
   BookOpen,
@@ -200,7 +201,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 theme-transition">
+    <div className={componentThemes.pageContainer}>
       <div className="mb-8 animate-fade-in">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Admin Dashboard
@@ -215,7 +216,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         {stats.map((stat, index) => (
           <div 
             key={stat.name} 
-            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in theme-transition"
+            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 theme-transition transform hover:scale-105 animate-fade-in theme-transition"
             style={{ 
               animationDelay: `${index * 100}ms`,
               animationFillMode: 'forwards'
@@ -226,9 +227,9 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors">{stat.name}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors theme-transition">{stat.name}</p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{stat.value}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{stat.value}</p>
                   <p className="ml-2 text-sm font-medium text-green-600 dark:text-green-400">{stat.change}</p>
                 </div>
               </div>
@@ -260,7 +261,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                   </div>
                 </div>
                 <div className="ml-3 flex-1">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{activity.action}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{activity.action}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     by {activity.user} • {activity.time}
                   </p>
@@ -281,7 +282,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
           <div className="p-6">
             <div className="grid grid-cols-2 gap-4">
               <button
-                className="group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/40 dark:hover:to-blue-700/40 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg border border-blue-200 dark:border-blue-700"
+                className="group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/40 dark:hover:to-blue-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-blue-200 dark:border-blue-700"
                 onClick={() => setCurrentView("users")}
               >
                 <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
@@ -291,7 +292,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Manage user accounts</p>
               </button>
               <button
-                className="group bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/40 dark:hover:to-green-700/40 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg border border-green-200 dark:border-green-700"
+                className="group bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/40 dark:hover:to-green-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-green-200 dark:border-green-700"
                 onClick={() => setCurrentView("courses")}
               >
                 <div className="p-3 bg-green-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
@@ -301,7 +302,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <p className="text-xs text-green-600 dark:text-green-400 mt-1">Add new courses</p>
               </button>
               <button
-                className="group bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-800/40 dark:hover:to-purple-700/40 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg border border-purple-200 dark:border-purple-700"
+                className="group bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-800/40 dark:hover:to-purple-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-purple-200 dark:border-purple-700"
                 onClick={() => setCurrentView("content")}
               >
                 <div className="p-3 bg-purple-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
@@ -311,7 +312,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Upload materials</p>
               </button>
               <button
-                className="group bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-800/40 dark:hover:to-orange-700/40 p-6 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg border border-orange-200 dark:border-orange-700"
+                className="group bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-800/40 dark:hover:to-orange-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-orange-200 dark:border-orange-700"
                 onClick={() => setCurrentView("analytics")}
               >
                 <div className="p-3 bg-orange-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">

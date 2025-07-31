@@ -50,8 +50,8 @@ const SystemSettings: React.FC = () => {
       case 'general':
         return (
           <div className="space-y-6">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">School Information</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">School Information</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">School Name</label>
@@ -59,7 +59,7 @@ const SystemSettings: React.FC = () => {
                     type="text"
                     value={settings.schoolName}
                     onChange={(e) => handleInputChange('schoolName', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -68,7 +68,7 @@ const SystemSettings: React.FC = () => {
                     type="email"
                     value={settings.adminEmail}
                     onChange={(e) => handleInputChange('adminEmail', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -76,7 +76,7 @@ const SystemSettings: React.FC = () => {
                   <select
                     value={settings.timezone}
                     onChange={(e) => handleInputChange('timezone', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value="America/New_York">Eastern Time</option>
                     <option value="America/Chicago">Central Time</option>
@@ -90,14 +90,14 @@ const SystemSettings: React.FC = () => {
                     type="text"
                     value={settings.academicYear}
                     onChange={(e) => handleInputChange('academicYear', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">System Limits</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">System Limits</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Max Students per Class</label>
@@ -105,7 +105,7 @@ const SystemSettings: React.FC = () => {
                     type="number"
                     value={settings.maxStudentsPerClass}
                     onChange={(e) => handleInputChange('maxStudentsPerClass', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -114,7 +114,7 @@ const SystemSettings: React.FC = () => {
                     type="number"
                     value={settings.sessionTimeout}
                     onChange={(e) => handleInputChange('sessionTimeout', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -125,8 +125,8 @@ const SystemSettings: React.FC = () => {
       case 'features':
         return (
           <div className="space-y-6">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Feature Toggles</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Feature Toggles</h3>
               <div className="space-y-4">
                 {[
                   { key: 'allowBulkUpload', label: 'Allow Bulk User Upload', description: 'Enable CSV/Excel bulk upload functionality' },
@@ -135,12 +135,12 @@ const SystemSettings: React.FC = () => {
                   { key: 'enableParentPortal', label: 'Enable Parent Portal', description: 'Allow parents to view their children\'s progress' },
                   { key: 'enableAVStreaming', label: 'Enable AV Streaming', description: 'Allow teachers to stream content to classrooms' },
                 ].map((feature) => (
-                  <div key={feature.key} className="flex items-center justify-between py-3 border-b border-gray-200 last:border-b-0">
+                  <div key={feature.key} className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
                     <div className="flex-1">
                       <div className="flex items-center">
-                        <h4 className="text-sm font-medium text-gray-900">{feature.label}</h4>
+                        <h4 className="text-sm font-medium text-gray-900 dark:text-white">{feature.label}</h4>
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">{feature.description}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{feature.description}</p>
                     </div>
                     <button
                       onClick={() => handleToggle(feature.key)}
@@ -162,33 +162,33 @@ const SystemSettings: React.FC = () => {
       case 'security':
         return (
           <div className="space-y-6">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Authentication Settings</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Authentication Settings</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Password Policy</label>
                   <div className="space-y-2">
                     <label className="flex items-center">
-                      <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" defaultChecked />
+                      <input type="checkbox" className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" defaultChecked />
                       <span className="ml-2 text-sm text-gray-700">Minimum 8 characters</span>
                     </label>
                     <label className="flex items-center">
-                      <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" defaultChecked />
+                      <input type="checkbox" className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" defaultChecked />
                       <span className="ml-2 text-sm text-gray-700">Require uppercase and lowercase letters</span>
                     </label>
                     <label className="flex items-center">
-                      <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" defaultChecked />
+                      <input type="checkbox" className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" defaultChecked />
                       <span className="ml-2 text-sm text-gray-700">Require at least one number</span>
                     </label>
                     <label className="flex items-center">
-                      <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                      <input type="checkbox" className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" />
                       <span className="ml-2 text-sm text-gray-700">Require special characters</span>
                     </label>
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Two-Factor Authentication</label>
-                  <select className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <select className="w-full md:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <option value="optional">Optional</option>
                     <option value="required">Required for all users</option>
                     <option value="admin_only">Required for admins only</option>
@@ -198,8 +198,8 @@ const SystemSettings: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Privacy Settings</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Privacy Settings</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Data Retention Period (days)</label>
@@ -207,13 +207,13 @@ const SystemSettings: React.FC = () => {
                     type="number"
                     value={settings.dataRetention}
                     onChange={(e) => handleInputChange('dataRetention', parseInt(e.target.value))}
-                    className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full md:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
-                  <p className="text-sm text-gray-500 mt-1">How long to keep inactive user data</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">How long to keep inactive user data</p>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Cookie Policy</label>
-                  <select className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <select className="w-full md:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <option value="essential">Essential cookies only</option>
                     <option value="functional">Essential + Functional</option>
                     <option value="all">All cookies (including analytics)</option>
@@ -227,12 +227,12 @@ const SystemSettings: React.FC = () => {
       case 'integrations':
         return (
           <div className="space-y-6">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">External Integrations</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">External Integrations</h3>
               <div className="space-y-6">
-                <div className="border border-gray-200 rounded-lg p-4">
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-md font-medium text-gray-900">Google Workspace</h4>
+                    <h4 className="text-md font-medium text-gray-900 dark:text-white">Google Workspace</h4>
                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
                       Connected
                     </span>
@@ -244,9 +244,9 @@ const SystemSettings: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border border-gray-200 rounded-lg p-4">
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-md font-medium text-gray-900">Microsoft Teams</h4>
+                    <h4 className="text-md font-medium text-gray-900 dark:text-white">Microsoft Teams</h4>
                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
                       Not Connected
                     </span>
@@ -255,9 +255,9 @@ const SystemSettings: React.FC = () => {
                   <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">Connect</button>
                 </div>
 
-                <div className="border border-gray-200 rounded-lg p-4">
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-md font-medium text-gray-900">Student Information System</h4>
+                    <h4 className="text-md font-medium text-gray-900 dark:text-white">Student Information System</h4>
                     <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
                       Not Connected
                     </span>
@@ -273,15 +273,15 @@ const SystemSettings: React.FC = () => {
       case 'backup':
         return (
           <div className="space-y-6">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Backup Configuration</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Backup Configuration</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Backup Frequency</label>
                   <select
                     value={settings.backupFrequency}
                     onChange={(e) => handleInputChange('backupFrequency', e.target.value)}
-                    className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full md:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value="hourly">Hourly</option>
                     <option value="daily">Daily</option>
@@ -291,7 +291,7 @@ const SystemSettings: React.FC = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Backup Retention</label>
-                  <select className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <select className="w-full md:w-1/2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <option value="7">7 days</option>
                     <option value="30">30 days</option>
                     <option value="90">90 days</option>
@@ -301,8 +301,8 @@ const SystemSettings: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Backups</h3>
+            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Recent Backups</h3>
               <div className="space-y-3">
                 {[
                   { date: '2024-01-15 02:00 AM', size: '2.4 GB', status: 'Success' },
@@ -310,10 +310,10 @@ const SystemSettings: React.FC = () => {
                   { date: '2024-01-13 02:00 AM', size: '2.3 GB', status: 'Success' },
                   { date: '2024-01-12 02:00 AM', size: '2.2 GB', status: 'Failed' },
                 ].map((backup, index) => (
-                  <div key={index} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-b-0">
+                  <div key={index} className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{backup.date}</div>
-                      <div className="text-sm text-gray-500">{backup.size}</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">{backup.date}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">{backup.size}</div>
                     </div>
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                       backup.status === 'Success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
@@ -342,7 +342,7 @@ const SystemSettings: React.FC = () => {
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-bold text-gray-900">System Settings</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">System Settings</h1>
           <p className="mt-2 text-sm text-gray-700">
             Configure system-wide settings, security policies, and integrations.
           </p>
@@ -356,7 +356,7 @@ const SystemSettings: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="mt-6 border-b border-gray-200">
+      <div className="mt-6 border-b border-gray-200 dark:border-gray-700">
         <nav className="-mb-px flex space-x-8">
           {[
             { id: 'general', name: 'General', icon: Settings },
@@ -371,7 +371,7 @@ const SystemSettings: React.FC = () => {
               className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === tab.id
                   ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 hover:border-gray-300 dark:border-gray-600'
               }`}
             >
               <tab.icon className="w-4 h-4 mr-2" />
