@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Mail, Lock, Eye, EyeOff, GraduationCap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Lock, Eye, EyeOff, GraduationCap, Sun, Moon } from 'lucide-react';
 import { useAuth } from './AuthProvider';
 
 const AuthLogin: React.FC = () => {
@@ -11,6 +11,34 @@ const AuthLogin: React.FC = () => {
   const [error, setError] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [clickRipples, setClickRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Initialize theme from localStorage or system preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+    } else {
+      // Check system preference
+      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+  }, []);
+
+  // Apply theme to document
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   // Simple cursor movement tracking
   const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
@@ -55,14 +83,29 @@ const AuthLogin: React.FC = () => {
     setIsLoading(false);
   };
 
-  // Simple UI with minimal mouse effects
+  // Glassmorphism UI consistent with the rest of the site
   return (
     <div 
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 theme-transition"
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 theme-transition"
       onMouseMove={handleMouseMove}
       onClick={handleClick}
     >
-      {/* Simple Click Ripples */}
+      {/* Theme Switcher Button */}
+      <div className="absolute top-6 right-6 z-50">
+        <button
+          onClick={toggleTheme}
+          className="btn-glass p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
+          title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {isDarkMode ? (
+            <Sun className="w-6 h-6 text-yellow-500" />
+          ) : (
+            <Moon className="w-6 h-6 text-blue-600" />
+          )}
+        </button>
+      </div>
+
+      {/* Glassmorphism Click Ripples */}
       {clickRipples.map(ripple => (
         <div
           key={ripple.id}
@@ -72,67 +115,65 @@ const AuthLogin: React.FC = () => {
             top: ripple.y,
             width: '40px',
             height: '40px',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
             borderRadius: '50%',
             transform: 'translate(-50%, -50%)'
           }}
         />
       ))}
 
-      {/* Subtle cursor-following light effect */}
+      {/* Glassmorphism cursor-following light effect */}
       <div 
         className="fixed pointer-events-none z-30 w-64 h-64 opacity-20 transition-all duration-500 ease-out"
         style={{ 
           left: mousePosition.x - 128, 
           top: mousePosition.y - 128,
-          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 60%)',
         }}
       />
 
-      {/* Simple Background Elements */}
+      {/* Clean glassmorphism background */}
       <div className="absolute inset-0">
-        {/* Static floating shapes */}
-        <div className="absolute w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ top: '10%', left: '10%' }}></div>
-        <div className="absolute w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000" style={{ top: '40%', right: '20%' }}></div>
-        <div className="absolute w-80 h-80 bg-gradient-to-r from-pink-400/10 to-orange-400/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000" style={{ bottom: '-8%', left: '20%' }}></div>
+        {/* Subtle floating glassmorphism shapes */}
+        <div className="absolute w-72 h-72 btn-glass rounded-full opacity-50" style={{ top: '15%', left: '10%' }}></div>
+        <div className="absolute w-96 h-96 btn-glass rounded-full opacity-40" style={{ top: '40%', right: '15%' }}></div>
+        <div className="absolute w-80 h-80 btn-glass rounded-full opacity-30" style={{ bottom: '10%', left: '20%' }}></div>
 
-        {/* Vision Statement Background */}
+        {/* Clean vision statement background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="text-center px-8 opacity-5 select-none">
-            <h2 className="text-6xl font-bold text-white mb-8 leading-tight">
+            <h2 className="text-6xl font-bold text-gray-700 dark:text-white mb-8 leading-tight">
               Personalized Learning
             </h2>
-            <p className="text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-2xl text-gray-600 dark:text-white/80 max-w-4xl mx-auto leading-relaxed">
               We envision a future where every student experiences personalized, high-quality learning at the finest level of granularity
             </p>
           </div>
         </div>
 
-        {/* Simple Grid Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5">
+        {/* Simple grid pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5 dark:from-blue-600/3 dark:to-purple-600/3">
           <div 
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-10 dark:opacity-5"
             style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2px, transparent 0)`,
+              backgroundImage: `radial-gradient(circle at 25px 25px, rgba(59, 130, 246, 0.1) 2px, transparent 0)`,
               backgroundSize: '50px 50px'
             }}
           ></div>
         </div>
 
-        {/* Simple floating particles */}
+        {/* Clean floating particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <div
               key={i}
-              className="absolute animate-float"
+              className="absolute"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${4 + Math.random() * 3}s`,
               }}
             >
-              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+              <div className="w-1 h-1 bg-blue-400/20 dark:bg-blue-400/10 rounded-full"></div>
             </div>
           ))}
         </div>
@@ -141,42 +182,42 @@ const AuthLogin: React.FC = () => {
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         <div className="max-w-md w-full">
-          {/* Enhanced Login Card with Mouse Interactions */}
-          <div className="card-interactive mouse-follow bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 dark:border-gray-700/50 animate-fade-in hover:shadow-3xl transition-all duration-500 mouse-glow-border theme-transition">
+          {/* Clean Glassmorphism Login Card */}
+          <div className="login-card rounded-3xl shadow-2xl p-8 transition-all duration-500">
             
-            {/* Vision Statement Header with Mouse Effects */}
-            <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-purple-50/80 dark:from-gray-700/50 dark:to-gray-600/50 rounded-2xl border border-blue-200/50 dark:border-gray-600/50 mouse-magnetic interactive-bg theme-transition">
-              <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2 text-gradient-hover">Our Vision</p>
-              <p className="text-sm text-gray-700 leading-relaxed font-medium hover:text-gray-900 transition-colors duration-300">
+            {/* Clean Vision Statement Header */}
+            <div className="text-center mb-6 p-4 login-card-inner rounded-2xl">
+              <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Our Vision</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
                 "Personalized, high-quality learning at the finest level of granularity"
               </p>
             </div>
 
             <div className="text-center mb-8">
-              <div className="mx-auto w-20 h-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl animate-pulse-glow mouse-elastic cursor-pointer">
-                <GraduationCap className="w-10 h-10 text-white icon-bounce" />
+              <div className="mx-auto w-20 h-20 btn-glass-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <GraduationCap className="w-10 h-10 text-blue-600 dark:text-blue-400" />
               </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2 text-gradient-hover cursor-default">
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
                 EduFlow LMS
               </h1>
-              <p className="text-gray-600 dark:text-gray-300 text-lg font-medium hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-300 cursor-default theme-transition">
+              <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">
                 Welcome to your personalized learning journey!
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="group">
-                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer theme-transition">
-                  <Mail className="w-4 h-4 mr-2 text-blue-500 icon-bounce" />
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
+                  <Mail className="w-4 h-4 mr-2 text-blue-500" />
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-pulse" />
+                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 bg-gray-50/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 mouse-tilt mouse-shadow-dance text-gray-900 dark:text-white theme-transition"
+                    className="login-input w-full pl-12 pr-4 py-4 rounded-2xl bg-white/15 dark:bg-gray-800/40 backdrop-filter backdrop-blur-16 border-2 border-white/30 dark:border-gray-600/40 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500/60 dark:focus:border-blue-400/60 transition-all duration-300 text-gray-900 dark:text-white shadow-lg"
                     placeholder="Enter your email address"
                     required
                   />
@@ -184,33 +225,33 @@ const AuthLogin: React.FC = () => {
               </div>
 
               <div className="group">
-                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 cursor-pointer theme-transition">
-                  <Lock className="w-4 h-4 mr-2 text-purple-500 icon-bounce" />
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
+                  <Lock className="w-4 h-4 mr-2 text-purple-500" />
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-pulse" />
+                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300 bg-gray-50/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 mouse-tilt mouse-shadow-dance text-gray-900 dark:text-white theme-transition"
+                    className="login-input w-full pl-12 pr-14 py-4 rounded-2xl bg-white/15 dark:bg-gray-800/40 backdrop-filter backdrop-blur-16 border-2 border-white/30 dark:border-gray-600/40 focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500/60 dark:focus:border-purple-400/60 transition-all duration-300 text-gray-900 dark:text-white shadow-lg"
                     placeholder="Enter your password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="btn-glass absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors mouse-elastic"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors p-1 rounded"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5 icon-spin" /> : <Eye className="w-5 h-5 icon-spin" />}
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
 
               {error && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-2xl mouse-magnetic animate-bounce-in">
-                  <p className="text-red-600 text-sm font-medium">{error}</p>
+                <div className="login-card-inner p-4 rounded-2xl border border-red-300/30 dark:border-red-500/30">
+                  <p className="text-red-600 dark:text-red-400 text-sm font-medium">{error}</p>
                 </div>
               )}
 
@@ -222,10 +263,10 @@ const AuthLogin: React.FC = () => {
                 {isLoading ? (
                   <div className="flex items-center justify-center">
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
-                    <span className="text-gradient-hover">Signing In...</span>
+                    <span>Signing In...</span>
                   </div>
                 ) : (
-                  <span className="text-gradient-hover">Begin Your Learning Journey</span>
+                  <span>Begin Your Learning Journey</span>
                 )}
               </button>
             </form>

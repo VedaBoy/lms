@@ -10,13 +10,16 @@ import {
   Video,
   Layers,
   Edit3,
-  Trash2
+  Trash2,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 
 const ContentIntegration: React.FC = () => {
   const [showAddIntegration, setShowAddIntegration] = useState(false);
   const [activeTab, setActiveTab] = useState('content');
   const [searchTerm, setSearchTerm] = useState('');
+  const [showSharedSecret, setShowSharedSecret] = useState(false);
 
   // Mock data
   const contentIntegrations = [
@@ -207,11 +210,24 @@ const ContentIntegration: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Shared Secret</label>
-                    <input
-                      type="password"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="shared_secret_key"
-                    />
+                    <div className="relative">
+                      <input
+                        type={showSharedSecret ? 'text' : 'password'}
+                        className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="shared_secret_key"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowSharedSecret(!showSharedSecret)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors p-1"
+                      >
+                        {showSharedSecret ? (
+                          <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+                        ) : (
+                          <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div>

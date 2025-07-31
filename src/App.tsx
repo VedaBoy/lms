@@ -12,16 +12,12 @@ import { initializeButtonMouseTracking } from './utils/buttonMouseTracker';
 const AppContent: React.FC = () => {
   const { user, loading, logout } = useAuth();
 
-  // Initialize button mouse tracking for ALL buttons
+  // Initialize button mouse tracking only for buttons
   useEffect(() => {
     initializeButtonMouseTracking();
     
-    // Re-initialize tracking whenever the component updates
-    const intervalId = setInterval(initializeButtonMouseTracking, 1000);
-    
-    return () => {
-      clearInterval(intervalId);
-    };
+    // Re-initialize only when user changes (different dashboards)
+    // Removed continuous re-initialization to reduce continuous effects
   }, [user]); // Re-run when user changes (different dashboards)
 
   if (loading) {

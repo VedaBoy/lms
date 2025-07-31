@@ -214,7 +214,7 @@ const UserManagement: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors p-1"
                       >
                         {showPassword ? (
                           <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -241,7 +241,7 @@ const UserManagement: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors p-1"
                       >
                         {showConfirmPassword ? (
                           <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -453,7 +453,7 @@ const UserManagement: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors p-1"
                   >
                     {showPassword ? (
                       <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -481,7 +481,7 @@ const UserManagement: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="btn-glass absolute inset-y-0 right-0 pr-3 flex items-center"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors p-1"
                   >
                     {showConfirmPassword ? (
                       <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
