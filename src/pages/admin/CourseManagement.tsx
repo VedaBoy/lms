@@ -207,18 +207,18 @@ const CourseManagement: React.FC = () => {
               setEditing(null);
               setShowForm(true);
             }}
-            className="group mt-4 sm:mt-0 inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 font-medium"
+            className="group mt-4 sm:mt-0 inline-flex items-center px-6 py-3 bg-blue-100/80 dark:bg-white/10 backdrop-blur-lg border border-blue-200/50 dark:border-white/20 text-blue-900 dark:text-white rounded-xl font-medium hover:bg-blue-200/80 dark:hover:bg-white/20 transition-all duration-200"
           >
-            <Plus className="mr-2 w-5 h-5 group-hover:rotate-90 transition-transform duration-200" />
+            <Plus className="mr-2 w-5 h-5" />
             New {activeTab.slice(0, -1)}
           </button>
         </div>
       </div>
 
       {/* Enhanced Navigation Tabs */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 mb-8 overflow-hidden theme-transition">
+      <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl mb-8 overflow-hidden">
         <nav className="flex">
-          {tabs.map((tab, index) => {
+          {tabs.map((tab) => {
             const Icon =
               tab === "grades" ? GraduationCap : tab === "subjects" ? BookOpen : tab === "chapters" ? Layers : Target;
             const isActive = activeTab === tab;
@@ -226,29 +226,20 @@ const CourseManagement: React.FC = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 theme-transition ${
+                className={`group relative flex-1 flex items-center justify-center px-6 py-4 font-semibold transition-all duration-300 ${
                   isActive
-                    ? "text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg"
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700"
+                    ? "text-blue-900 dark:text-white bg-blue-100/80 dark:bg-white/20 backdrop-blur-lg border-b-2 border-blue-500 dark:border-white/50"
+                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-white/5 hover:backdrop-blur-lg"
                 }`}
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                }}
               >
                 <div className="flex items-center space-x-2">
-                  <Icon className={`w-5 h-5 transition-all duration-300 theme-transition ${
-                    isActive ? "scale-110" : "group-hover:scale-105"
+                  <Icon className={`w-5 h-5 transition-all duration-300 ${
+                    isActive ? "" : "group-hover:scale-105"
                   }`} />
                   <span className="capitalize font-medium">
                     {tab}
                   </span>
                 </div>
-                {isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-10 animate-pulse" />
-                )}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform transition-all duration-300 theme-transition ${
-                  isActive ? "scale-x-100" : "scale-x-0"
-                }`} />
               </button>
             );
           })}
@@ -256,7 +247,7 @@ const CourseManagement: React.FC = () => {
       </div>
 
       {/* Enhanced Filters Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 p-6 mb-8 theme-transition">
+      <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl p-6 mb-8">
         <div className={`grid grid-cols-1 gap-4 ${
           activeTab === "subjects" ? "md:grid-cols-4" : 
           activeTab === "chapters" ? "md:grid-cols-5" : 
@@ -427,7 +418,7 @@ const CourseManagement: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden theme-transition">
+      <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600">
@@ -547,10 +538,10 @@ const CourseManagement: React.FC = () => {
                       setEditing(item);
                       setShowForm(true);
                     }}
-                    className="group p-2 rounded-full bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-800/40 transition-all duration-200 transform hover:scale-110 theme-transition"
+                    className="group p-2 rounded-full bg-blue-100/80 dark:bg-white/10 backdrop-blur-lg border border-blue-200/50 dark:border-white/20 hover:bg-blue-200/80 dark:hover:bg-white/20 transition-all duration-200"
                     aria-label="Edit"
                   >
-                    <Edit3 className="text-blue-600 dark:text-blue-400 w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+                    <Edit3 className="text-blue-600 dark:text-blue-400 w-4 h-4" />
                   </button>
                   <button
                     onClick={async () => {
@@ -578,10 +569,10 @@ const CourseManagement: React.FC = () => {
                         }
                       }
                     }}
-                    className="group p-2 rounded-full bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-800/40 transition-all duration-200 transform hover:scale-110 theme-transition"
+                    className="group p-2 rounded-full bg-red-100/80 dark:bg-white/10 backdrop-blur-lg border border-red-200/50 dark:border-white/20 hover:bg-red-200/80 dark:hover:bg-red-500/10 transition-all duration-200"
                     aria-label="Delete"
                   >
-                    <Trash2 className="text-red-600 dark:text-red-400 w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+                    <Trash2 className="text-red-600 dark:text-red-400 w-4 h-4" />
                   </button>
                 </td>
               </tr>

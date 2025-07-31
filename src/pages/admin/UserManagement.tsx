@@ -143,7 +143,7 @@ const UserManagement: React.FC = () => {
 
     return (
       <div className="fixed inset-0 bg-gray-600 dark:bg-gray-900 bg-opacity-50 dark:bg-opacity-75 overflow-y-auto h-full w-full z-50">
-        <div className="relative top-20 mx-auto p-5 border border-gray-200 dark:border-gray-600 w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-lg bg-white dark:bg-gray-800 theme-transition">
+        <div className="relative top-20 mx-auto p-5 border border-white/20 w-11/12 md:w-3/4 lg:w-1/2 backdrop-blur-lg bg-white/10 dark:bg-white/5 rounded-lg">
           <div className="mt-3">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white dark:text-white">{initial.id ? 'Edit User' : 'Add New User'}</h3>
@@ -421,7 +421,7 @@ const UserManagement: React.FC = () => {
 
     return (
       <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-        <div className="relative top-20 mx-auto p-5 border border-gray-200 dark:border-gray-600 w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-lg bg-white dark:bg-gray-800 theme-transition">
+        <div className="relative top-20 mx-auto p-5 border border-white/20 w-11/12 md:w-1/2 lg:w-1/3 backdrop-blur-lg bg-white/10 dark:bg-white/5 rounded-lg">
           <div className="mt-3">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">Set Password for {user.name}</h3>
@@ -575,7 +575,7 @@ const UserManagement: React.FC = () => {
       </div>
 
       {/* Enhanced Search and Filter */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 p-6 mb-8 theme-transition">
+      <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl p-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search Input */}
           <div className="relative group">
@@ -812,7 +812,7 @@ const ParentStudentLinkForm: React.FC<{ onClose: () => void }> = ({ onClose }) =
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border border-gray-200 dark:border-gray-600 w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-lg bg-white dark:bg-gray-800 theme-transition">
+      <div className="relative top-20 mx-auto p-5 border border-white/20 w-11/12 md:w-3/4 lg:w-1/2 backdrop-blur-lg bg-white/10 dark:bg-white/5 rounded-lg">
         <h3 className="text-lg font-medium text-gray-900 dark:text-white">Manage Parent-Student Links</h3>
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Parent</label>

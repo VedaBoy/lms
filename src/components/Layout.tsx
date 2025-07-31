@@ -77,7 +77,7 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
           <div className="flex flex-col h-0 flex-1 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl theme-transition">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center shadow-lg animate-pulse-glow mr-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center backdrop-blur-lg bg-opacity-90 border border-white/20 mr-3">
                   <span className="text-white font-bold text-lg">E</span>
                 </div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -85,21 +85,21 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
                 </h1>
               </div>
               <nav className="mt-5 flex-1 px-2 space-y-2">
-                {navigation.map((item, index) => (
+                {navigation.map((item) => (
                   <button
                     key={item.name}
                     onClick={item.onClick}
-                    className={`group relative overflow-hidden flex items-center px-4 py-3 text-sm font-medium rounded-xl w-full text-left transition-all duration-300 transform hover:scale-105 animate-slide-in-left delay-${(index + 1) * 50} ${
+                    className={`group relative overflow-hidden flex items-center px-4 py-3 text-sm font-medium rounded-xl w-full text-left transition-all duration-300 ${
                       item.current
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg animate-pulse-glow'
-                        : 'text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 hover:text-gray-900 dark:hover:text-white hover:shadow-md'
+                        ? 'bg-blue-100/80 dark:bg-white/10 backdrop-blur-lg border border-blue-200/50 dark:border-white/20 text-blue-900 dark:text-white shadow-lg dark:shadow-xl'
+                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100/50 dark:hover:bg-white/5 hover:backdrop-blur-lg hover:border hover:border-gray-200/50 dark:hover:border-white/10 hover:text-gray-900 dark:hover:text-white'
                     }`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white dark:via-gray-300 to-transparent opacity-0 group-hover:opacity-10 animate-shimmer"></div>
-                    <item.icon className={`mr-3 h-5 w-5 transition-all duration-300 ${item.current ? 'animate-bounce' : 'group-hover:scale-110'}`} />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 dark:via-gray-300 to-transparent opacity-0 group-hover:opacity-20 dark:group-hover:opacity-10"></div>
+                    <item.icon className={`mr-3 h-5 w-5 transition-all duration-300 ${item.current ? '' : 'group-hover:scale-110'}`} />
                     <span className="font-medium">{item.name}</span>
                     {item.current && (
-                      <div className="absolute right-2 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                      <div className="absolute right-2 w-2 h-2 bg-blue-600 dark:bg-white rounded-full"></div>
                     )}
                   </button>
                 ))}

@@ -82,7 +82,7 @@ const ContentIntegration: React.FC = () => {
 
   const AddIntegrationForm = () => (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-2/3 shadow-lg rounded-lg bg-white dark:bg-gray-800 max-h-[80vh] overflow-y-auto">
+      <div className="relative top-20 mx-auto p-5 border border-white/20 w-11/12 md:w-3/4 lg:w-2/3 backdrop-blur-lg bg-white/10 dark:bg-white/5 rounded-lg max-h-[80vh] overflow-y-auto">
         <div className="mt-3">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">Add Content Integration</h3>
@@ -284,7 +284,7 @@ const ContentIntegration: React.FC = () => {
     switch (activeTab) {
       case 'content':
         return (
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+          <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50 dark:bg-gray-700">
@@ -382,7 +382,7 @@ const ContentIntegration: React.FC = () => {
 
       case 'providers':
         return (
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+          <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50 dark:bg-gray-700">

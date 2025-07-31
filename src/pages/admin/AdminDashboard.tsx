@@ -7,6 +7,7 @@ import AnalyticsReporting from "./AnalyticsReporting";
 import TeacherSubjectAssignment from './TeacherSubjectAssignment';
 import EnrollmentManagement from './EnrollmentManagement';
 import SystemSettings from "./SystemSettings";
+import AnnouncementManagement from "./AnnouncementManagement";
 import { supabase } from "../../lib/supabaseClient";
 import { User } from "../../types";
 import { componentThemes } from "../../utils/themeUtils";
@@ -19,6 +20,7 @@ import {
   UserCheck,
   Globe,
   Activity,
+  Bell,
 } from "lucide-react";
 
 interface AdminDashboardProps {
@@ -73,6 +75,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
       onClick: () => setCurrentView("enrollment"),
     },
     {
+      name: "Announcements",
+      icon: Bell,
+      current: currentView === "announcements",
+      onClick: () => setCurrentView("announcements"),
+    },
+    {
       name: "System Settings",
       icon: Settings,
       current: currentView === "settings",
@@ -94,6 +102,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
         return <TeacherSubjectAssignment />;
       case "enrollment":
         return <EnrollmentManagement />;
+      case "announcements":
+        return <AnnouncementManagement currentUser={user} />;
       case "settings":
         return <SystemSettings />;
       default:
@@ -216,14 +226,14 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         {stats.map((stat, index) => (
           <div 
             key={stat.name} 
-            className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 theme-transition transform hover:scale-105 animate-fade-in theme-transition"
+            className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl p-6 hover:bg-gray-100/80 dark:hover:bg-white/20 transition-all duration-300"
             style={{ 
               animationDelay: `${index * 100}ms`,
               animationFillMode: 'forwards'
             }}
           >
             <div className="flex items-center">
-              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
+              <div className={`flex-shrink-0 p-3 rounded-xl ${stat.color}`}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
               <div className="ml-4">
@@ -240,7 +250,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
 
       {/* Enhanced Activity & Quick Actions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
+        <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
           <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
               <Activity className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
@@ -272,7 +282,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
         </div>
 
         {/* Enhanced Quick Actions */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+        <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-2xl" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
           <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
               <Settings className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" />
@@ -282,7 +292,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
           <div className="p-6">
             <div className="grid grid-cols-2 gap-4">
               <button
-                className="group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/40 dark:hover:to-blue-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-blue-200 dark:border-blue-700"
+                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("users")}
               >
                 <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
@@ -292,7 +302,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Manage user accounts</p>
               </button>
               <button
-                className="group bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/40 dark:hover:to-green-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-green-200 dark:border-green-700"
+                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("courses")}
               >
                 <div className="p-3 bg-green-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
@@ -302,7 +312,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <p className="text-xs text-green-600 dark:text-green-400 mt-1">Add new courses</p>
               </button>
               <button
-                className="group bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-800/40 dark:hover:to-purple-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-purple-200 dark:border-purple-700"
+                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("content")}
               >
                 <div className="p-3 bg-purple-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
@@ -312,17 +322,31 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Upload materials</p>
               </button>
               <button
-                className="group bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-800/40 dark:hover:to-orange-700/40 p-6 rounded-2xl text-center transition-all duration-300 theme-transition transform hover:scale-105 shadow-sm hover:shadow-lg border border-orange-200 dark:border-orange-700"
-                onClick={() => setCurrentView("analytics")}
+                className="group bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+                onClick={() => setCurrentView("announcements")}
               >
-                <div className="p-3 bg-orange-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
-                  <BarChart3 className="h-6 w-6 text-white" />
+                <div className="p-3 bg-indigo-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+                  <Bell className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm font-bold text-orange-900 dark:text-orange-300">View Reports</p>
-                <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">Analytics dashboard</p>
+                <p className="text-sm font-bold text-indigo-900 dark:text-indigo-300">Send Announcement</p>
+                <p className="text-xs text-indigo-600 dark:text-indigo-400 mt-1">Notify users</p>
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Analytics Quick Action */}
+        <div className="mt-4">
+          <button
+            className="group w-full bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 hover:bg-gray-100/80 dark:hover:bg-white/20 p-6 rounded-2xl text-center transition-all duration-300"
+            onClick={() => setCurrentView("analytics")}
+          >
+            <div className="p-3 bg-orange-500 rounded-xl mx-auto mb-3 w-fit group-hover:scale-110 transition-transform duration-200">
+              <BarChart3 className="h-6 w-6 text-white" />
+            </div>
+            <p className="text-sm font-bold text-orange-900 dark:text-orange-300">View Reports</p>
+            <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">Analytics dashboard</p>
+          </button>
         </div>
       </div>
     </div>

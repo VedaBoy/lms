@@ -50,7 +50,7 @@ const SystemSettings: React.FC = () => {
       case 'general':
         return (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">School Information</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -96,7 +96,7 @@ const SystemSettings: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">System Limits</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -125,7 +125,7 @@ const SystemSettings: React.FC = () => {
       case 'features':
         return (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Feature Toggles</h3>
               <div className="space-y-4">
                 {[
@@ -162,7 +162,7 @@ const SystemSettings: React.FC = () => {
       case 'security':
         return (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Authentication Settings</h3>
               <div className="space-y-4">
                 <div>
@@ -198,7 +198,7 @@ const SystemSettings: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Privacy Settings</h3>
               <div className="space-y-4">
                 <div>
@@ -227,7 +227,7 @@ const SystemSettings: React.FC = () => {
       case 'integrations':
         return (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">External Integrations</h3>
               <div className="space-y-6">
                 <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
@@ -273,7 +273,7 @@ const SystemSettings: React.FC = () => {
       case 'backup':
         return (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Backup Configuration</h3>
               <div className="space-y-4">
                 <div>
@@ -301,7 +301,7 @@ const SystemSettings: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Recent Backups</h3>
               <div className="space-y-3">
                 {[

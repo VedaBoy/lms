@@ -94,7 +94,7 @@ const CourseForm: React.FC<Props> = ({ activeTab, editing, onClose, refresh }) =
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg p-6 w-full max-w-lg overflow-y-auto max-h-[90vh]">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-lg overflow-y-auto max-h-[90vh] theme-transition">
         <h2 className="text-xl font-semibold mb-4">{isEditing ? 'Edit' : 'Add'} {activeTab.slice(0, -1)}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {activeTab === 'grades' && (

@@ -92,7 +92,7 @@ const AnalyticsReporting: React.FC = () => {
             {/* Key Metrics */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {overviewStats.map((stat) => (
-                <div key={stat.name} className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+                <div key={stat.name} className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
                   <div className="flex items-center">
                     <div className={`flex-shrink-0 p-3 rounded-lg ${stat.color}`}>
                       <stat.icon className="h-6 w-6 text-white" />
@@ -111,7 +111,7 @@ const AnalyticsReporting: React.FC = () => {
 
             {/* Charts Placeholder */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+              <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Student Progress Over Time</h3>
                 <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                   <div className="text-center">
@@ -121,7 +121,7 @@ const AnalyticsReporting: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+              <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Concept Completion Rates</h3>
                 <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                   <div className="text-center">
@@ -133,7 +133,7 @@ const AnalyticsReporting: React.FC = () => {
             </div>
 
             {/* Activity Heatmap */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow theme-transition p-6">
+            <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Weekly Activity Heatmap</h3>
               <div className="h-48 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                 <div className="text-center">
@@ -148,7 +148,7 @@ const AnalyticsReporting: React.FC = () => {
 
       case 'students':
         return (
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+          <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">Student Progress Report</h3>
             </div>
@@ -227,7 +227,7 @@ const AnalyticsReporting: React.FC = () => {
 
       case 'concepts':
         return (
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+          <div className="bg-gray-50/80 dark:bg-white/5 backdrop-blur-lg border border-gray-200/50 dark:border-white/20 rounded-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">Concept Performance Analysis</h3>
             </div>
