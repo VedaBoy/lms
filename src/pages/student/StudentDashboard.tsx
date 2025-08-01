@@ -63,8 +63,8 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ user, onLogout }) =
 
 const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   const stats = [
-    { name: 'Concepts Completed', value: '12', change: '+3 this week', icon: CheckCircle2, color: 'bg-gradient-to-br from-green-500 to-green-600' },
-    { name: 'Current Score', value: '88%', change: '+5% improvement', icon: Award, color: 'bg-gradient-to-br from-purple-500 to-purple-600' },
+    { name: 'Concepts Completed', value: '12', change: '+3 this week', icon: CheckCircle2, color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
+    { name: 'Current Score', value: '88%', change: '+5% improvement', icon: Award, color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
     { name: 'Time Studied', value: '245m', change: 'This week', icon: Clock, color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
     { name: 'Streak Days', value: '7', change: 'Keep it up!', icon: TrendingUp, color: 'bg-gradient-to-br from-orange-500 to-orange-600' },
   ];
@@ -115,7 +115,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
       case 'medium':
         return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-700';
       case 'low':
-        return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700';
+        return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-700';
       default:
         return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-gray-600';
     }
@@ -124,7 +124,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed':
-        return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700';
+        return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-700';
       case 'in_progress':
         return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-700';
       case 'not_started':
@@ -135,9 +135,9 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Welcome back, {user.name}!
         </h1>
                 <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -163,9 +163,9 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors theme-transition">{stat.name}</p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors theme-transition">{stat.value}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{stat.value}</p>
                 </div>
-                <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-medium">{stat.change}</p>
+                <p className="text-xs text-blue-600 dark:text-blue-400 mt-1 font-medium">{stat.change}</p>
               </div>
             </div>
           </div>
@@ -175,9 +175,9 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Enhanced Today's Assignments */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-              <Target className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" />
+              <Target className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Today's Assignments
             </h3>
           </div>
@@ -186,13 +186,13 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
               {todayAssignments.map((assignment, index) => (
                 <div 
                   key={assignment.id} 
-                  className="btn-glass group rounded-2xl p-4 hover:border-green-200 dark:hover:border-green-600 transition-all duration-300 theme-transition animate-fade-in"
+                  className="btn-glass group rounded-2xl p-4 hover:border-blue-200 dark:hover:border-blue-600 transition-all duration-300 theme-transition animate-fade-in"
                   style={{ animationDelay: `${500 + index * 100}ms`, animationFillMode: 'forwards' }}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center">
-                        <h4 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors theme-transition">{assignment.concept}</h4>
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{assignment.concept}</h4>
                         <span className={`ml-2 inline-flex px-3 py-1 text-xs font-bold rounded-full shadow-sm ${getPriorityColor(assignment.priority)}`}>
                           {assignment.priority}
                         </span>
@@ -238,7 +238,7 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
 
         {/* Recent Activity */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 theme-transition">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-lg">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-lg">
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">Recent Activity</h3>
           </div>
           <div className="p-6">
@@ -289,9 +289,9 @@ const StudentOverview: React.FC<{ user: User }> = ({ user }) => {
             <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-2" />
             <p className="text-sm font-medium text-green-900 dark:text-green-300">My Progress</p>
           </button>
-          <button className="bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-purple-200 dark:border-purple-700">
-            <Award className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
-            <p className="text-sm font-medium text-purple-900 dark:text-purple-300">Achievements</p>
+          <button className="bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-blue-200 dark:border-blue-700">
+            <Award className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-blue-900 dark:text-blue-300">Achievements</p>
           </button>
           <button className="bg-orange-50 dark:bg-orange-900/30 hover:bg-orange-100 dark:hover:bg-orange-800/40 p-4 rounded-lg text-center transition-colors theme-transition border border-orange-200 dark:border-orange-700">
             <Clock className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />

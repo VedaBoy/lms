@@ -487,7 +487,7 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({ user, classN
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className={`relative p-2 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700 ${className}`}
+        className={`relative p-2 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700 ${className}`}
         title="View notifications"
       >
         <Bell className="w-6 h-6" />

@@ -19,8 +19,8 @@ const AnalyticsReporting: React.FC = () => {
   // Mock analytics data
   const overviewStats = [
     { name: 'Total Active Students', value: '987', change: '+12%', icon: Users, color: 'bg-blue-500' },
-    { name: 'Concepts Completed', value: '4,521', change: '+18%', icon: BookOpen, color: 'bg-green-500' },
-    { name: 'Average Study Time', value: '45 min', change: '+8%', icon: Clock, color: 'bg-purple-500' },
+    { name: 'Concepts Completed', value: '4,521', change: '+18%', icon: BookOpen, color: 'bg-blue-500' },
+    { name: 'Average Study Time', value: '45 min', change: '+8%', icon: Clock, color: 'bg-blue-500' },
     { name: 'Engagement Rate', value: '78%', change: '+5%', icon: TrendingUp, color: 'bg-orange-500' },
   ];
 
@@ -101,7 +101,7 @@ const AnalyticsReporting: React.FC = () => {
                       <p className="text-sm font-medium text-gray-600">{stat.name}</p>
                       <div className="flex items-baseline">
                         <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stat.value}</p>
-                        <p className="ml-2 text-sm font-medium text-green-600">{stat.change}</p>
+                        <p className="ml-2 text-sm font-medium text-blue-600">{stat.change}</p>
                       </div>
                     </div>
                   </div>
@@ -204,7 +204,7 @@ const AnalyticsReporting: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          student.averageScore >= 90 ? 'bg-green-100 text-green-800' :
+                          student.averageScore >= 90 ? 'bg-blue-100 text-blue-800' :
                           student.averageScore >= 80 ? 'bg-yellow-100 text-yellow-800' :
                           'bg-red-100 text-red-800'
                         }`}>
@@ -264,7 +264,7 @@ const AnalyticsReporting: React.FC = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="w-full bg-gray-200 rounded-full h-2">
                           <div 
-                            className="bg-green-600 h-2 rounded-full" 
+                            className="bg-blue-600 h-2 rounded-full" 
                             style={{ width: `${(concept.completed / concept.totalAssigned) * 100}%` }}
                           />
                         </div>
@@ -277,7 +277,7 @@ const AnalyticsReporting: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          concept.averageScore >= 85 ? 'bg-green-100 text-green-800' :
+                          concept.averageScore >= 85 ? 'bg-blue-100 text-blue-800' :
                           concept.averageScore >= 75 ? 'bg-yellow-100 text-yellow-800' :
                           'bg-red-100 text-red-800'
                         }`}>
@@ -286,7 +286,7 @@ const AnalyticsReporting: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          concept.strugglingStudents <= 5 ? 'bg-green-100 text-green-800' :
+                          concept.strugglingStudents <= 5 ? 'bg-blue-100 text-blue-800' :
                           concept.strugglingStudents <= 10 ? 'bg-yellow-100 text-yellow-800' :
                           'bg-red-100 text-red-800'
                         }`}>
@@ -307,9 +307,9 @@ const AnalyticsReporting: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Analytics & Reporting
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">

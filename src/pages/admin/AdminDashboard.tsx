@@ -144,14 +144,14 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
       value: "-",
       change: "",
       icon: UserCheck,
-      color: "bg-gradient-to-br from-green-500 to-green-600",
+      color: "bg-gradient-to-br from-blue-500 to-blue-600",
     },
     {
       name: "Courses",
       value: "-",
       change: "",
       icon: BookOpen,
-      color: "bg-gradient-to-br from-purple-500 to-purple-600",
+      color: "bg-gradient-to-br from-blue-500 to-blue-600",
     },
     {
       name: "Content Items",
@@ -185,14 +185,14 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
             value: studentsRes.data?.length.toString() ?? "0",
             change: "+8%",
             icon: UserCheck,
-            color: "bg-green-500",
+            color: "bg-blue-500",
           },
           {
             name: "Courses",
             value: coursesRes.data?.length.toString() ?? "0",
             change: "+3%",
             icon: BookOpen,
-            color: "bg-purple-500",
+            color: "bg-blue-500",
           },
           {
             name: "Content Items",
@@ -211,9 +211,9 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Admin Dashboard
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -251,7 +251,7 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
       {/* Enhanced Activity & Quick Actions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
               <Activity className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Recent Activity
@@ -259,12 +259,12 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
           </div>
           <div className="p-6 space-y-4">
             {[
-              { action: "New teacher registered", user: "Sarah Johnson", time: "2 hours ago", color: "text-green-600 dark:text-green-400" },
+              { action: "New teacher registered", user: "Sarah Johnson", time: "2 hours ago", color: "text-blue-600 dark:text-blue-400" },
               { action: 'Course "Advanced Math" updated', user: "Mike Davis", time: "4 hours ago", color: "text-blue-600 dark:text-blue-400" },
-              { action: "Bulk student upload completed", user: "Admin", time: "6 hours ago", color: "text-purple-600 dark:text-purple-400" },
+              { action: "Bulk student upload completed", user: "Admin", time: "6 hours ago", color: "text-blue-600 dark:text-blue-400" },
               { action: "Content integration added", user: "Lisa Chen", time: "1 day ago", color: "text-orange-600 dark:text-orange-400" },
             ].map((activity, i) => (
-              <div key={i} className="flex items-start p-3 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 group">
+              <div key={i} className="flex items-start p-3 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-gray-700 dark:hover:to-gray-600 transition-all duration-200 group">
                 <div className="flex-shrink-0">
                   <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 group-hover:bg-white dark:group-hover:bg-gray-600 group-hover:shadow-md transition-all duration-200">
                     <Activity className={`h-4 w-4 ${activity.color} transition-transform duration-200`} />
@@ -283,9 +283,9 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
 
         {/* Enhanced Quick Actions */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-              <Settings className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" />
+              <Settings className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Quick Actions
             </h3>
           </div>
@@ -305,31 +305,31 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({ setCurrentView }) => {
                 className="btn-glass btn-mouse-track btn-magnetic btn-ripple custom-cursor spotlight-track group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("courses")}
               >
-                <div className="p-3 bg-green-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
+                <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <BookOpen className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm font-bold text-green-900 dark:text-green-300">Create Course</p>
-                <p className="text-xs text-green-600 dark:text-green-400 mt-1">Add new courses</p>
+                <p className="text-sm font-bold text-blue-900 dark:text-blue-300">Create Course</p>
+                <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Add new courses</p>
               </button>
               <button
                 className="btn-glass group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("content")}
               >
-                <div className="p-3 bg-purple-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
+                <div className="p-3 bg-blue-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <Play className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm font-bold text-purple-900 dark:text-purple-300">Add Content</p>
-                <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Upload materials</p>
+                <p className="text-sm font-bold text-blue-900 dark:text-blue-300">Add Content</p>
+                <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Upload materials</p>
               </button>
               <button
                 className="btn-glass group p-6 rounded-2xl text-center transition-all duration-300"
                 onClick={() => setCurrentView("announcements")}
               >
-                <div className="p-3 bg-indigo-500 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
+                <div className="p-3 bg-blue-600 rounded-xl mx-auto mb-3 w-fit transition-transform duration-200">
                   <Bell className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-sm font-bold text-indigo-900 dark:text-indigo-300">Send Announcement</p>
-                <p className="text-xs text-indigo-600 dark:text-indigo-400 mt-1">Notify users</p>
+                <p className="text-sm font-bold text-blue-900 dark:text-blue-300">Send Announcement</p>
+                <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Notify users</p>
               </button>
             </div>
           </div>

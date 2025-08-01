@@ -124,7 +124,7 @@ const TeacherOverview: React.FC<{
           value: 3,
           change: "Today",
           icon: Play,
-          color: "bg-gradient-to-br from-purple-500 to-purple-600",
+          color: "bg-gradient-to-br from-blue-500 to-blue-600",
         },
         {
           name: "Avg Performance",
@@ -155,9 +155,9 @@ const TeacherOverview: React.FC<{
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Teacher Dashboard
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -183,9 +183,9 @@ const TeacherOverview: React.FC<{
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors theme-transition">{stat.name}</p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors theme-transition">{stat.value}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{stat.value}</p>
                 </div>
-                <p className="text-xs text-purple-600 dark:text-purple-400 mt-1 font-medium">{stat.change}</p>
+                <p className="text-xs text-blue-600 dark:text-blue-400 mt-1 font-medium">{stat.change}</p>
               </div>
             </div>
           </div>
@@ -195,9 +195,9 @@ const TeacherOverview: React.FC<{
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Today's Sessions */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-              <Clock className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" />
+              <Clock className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Today's Sessions
             </h3>
           </div>
@@ -212,16 +212,16 @@ const TeacherOverview: React.FC<{
               {sessions.map((session, index) => (
                 <div 
                   key={session.id} 
-                  className="btn-glass group rounded-2xl p-4 hover:border-purple-200 dark:hover:border-purple-600 transition-all duration-300 theme-transition animate-fade-in"
+                  className="btn-glass group rounded-2xl p-4 hover:border-blue-200 dark:hover:border-blue-600 transition-all duration-300 theme-transition animate-fade-in"
                   style={{ animationDelay: `${500 + index * 100}ms`, animationFillMode: 'forwards' }}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center mr-4">
                         <Play className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors theme-transition">{session.topic}</h4>
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors theme-transition">{session.topic}</h4>
                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                           Started at {new Date(session.started_at).toLocaleTimeString()}
                         </p>
@@ -229,7 +229,7 @@ const TeacherOverview: React.FC<{
                     </div>
                     <button
                       onClick={() => onQuickNavigate("streaming")}
-                      className="btn-glass btn-glass-purple px-4 py-2 text-sm font-bold text-purple-700 dark:text-purple-300 rounded-full transition-all duration-200"
+                      className="btn-glass btn-glass-blue px-4 py-2 text-sm font-bold text-blue-700 dark:text-blue-300 rounded-full transition-all duration-200"
                     >
                       Join
                     </button>
@@ -295,10 +295,10 @@ const TeacherOverview: React.FC<{
           </button>
           <button
             onClick={() => onQuickNavigate("progress")}
-            className="btn-glass btn-glass-purple p-4 rounded-lg text-center transition-colors theme-transition"
+            className="btn-glass btn-glass-blue p-4 rounded-lg text-center transition-colors theme-transition"
           >
-            <Users className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
-            <p className="text-sm font-medium text-purple-900 dark:text-purple-300">Student Progress</p>
+            <Users className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-blue-900 dark:text-blue-300">Student Progress</p>
           </button>
           <button className="btn-glass btn-glass-orange p-4 rounded-lg text-center transition-colors theme-transition">
             <BarChart3 className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />

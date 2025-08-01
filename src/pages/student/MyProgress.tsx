@@ -70,7 +70,7 @@ const MyProgress: React.FC = () => {
       notStarted: 1,
       averageScore: 90,
       timeSpent: 50,
-      color: 'bg-purple-500',
+      color: 'bg-blue-500',
     },
   ];
 
@@ -127,7 +127,7 @@ const MyProgress: React.FC = () => {
         {[
           { name: 'Concepts Completed', value: overallStats.completedConcepts, total: overallStats.totalConcepts, icon: Target, color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
           { name: 'Average Score', value: `${overallStats.averageScore}%`, icon: Award, color: 'bg-gradient-to-br from-green-500 to-green-600' },
-          { name: 'Time Studied', value: `${Math.floor(overallStats.totalTimeSpent / 60)}h ${overallStats.totalTimeSpent % 60}m`, icon: Clock, color: 'bg-gradient-to-br from-purple-500 to-purple-600' },
+          { name: 'Time Studied', value: `${Math.floor(overallStats.totalTimeSpent / 60)}h ${overallStats.totalTimeSpent % 60}m`, icon: Clock, color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
           { name: 'Current Streak', value: `${overallStats.currentStreak} days`, icon: TrendingUp, color: 'bg-gradient-to-br from-orange-500 to-orange-600' }
         ].map((stat, index) => (
           <div 
@@ -196,9 +196,9 @@ const MyProgress: React.FC = () => {
 
         {/* Weekly Activity */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" />
+              <Calendar className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Weekly Activity
             </h3>
           </div>
@@ -288,9 +288,9 @@ const MyProgress: React.FC = () => {
 
       {/* Achievements */}
       <div className="mt-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}>
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-            <Trophy className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" />
+            <Trophy className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
             Achievements
           </h3>
         </div>

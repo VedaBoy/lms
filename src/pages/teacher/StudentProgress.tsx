@@ -152,7 +152,7 @@ const StudentProgress: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 py-8 theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 py-8 theme-transition">
       <div className="sm:flex sm:items-center animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Student Progress</h1>

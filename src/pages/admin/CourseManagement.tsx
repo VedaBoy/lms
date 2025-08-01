@@ -156,7 +156,7 @@ const CourseManagement: React.FC = () => {
     );
 
   const statusClasses: Record<Status, string> = {
-    active: "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700",
+    active: "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-700",
     draft: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-700",
     archived: "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600",
   };
@@ -172,9 +172,9 @@ const CourseManagement: React.FC = () => {
   }, [searchTerm, statusFilter, gradeFilter, subjectFilter, chapterFilter, grades, subjects, chapters, concepts, activeTab]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Course Management
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -185,7 +185,7 @@ const CourseManagement: React.FC = () => {
       <div className="sm:flex sm:items-center mb-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+            <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
               {filteredList.length} {activeTab} found
             </span>
           </div>

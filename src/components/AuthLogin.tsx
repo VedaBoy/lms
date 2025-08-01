@@ -86,7 +86,7 @@ const AuthLogin: React.FC = () => {
   // Glassmorphism UI consistent with the rest of the site
   return (
     <div 
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 theme-transition"
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 theme-transition"
       onMouseMove={handleMouseMove}
       onClick={handleClick}
     >
@@ -152,7 +152,7 @@ const AuthLogin: React.FC = () => {
         </div>
 
         {/* Simple grid pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5 dark:from-blue-600/3 dark:to-purple-600/3">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-blue-500/5 dark:from-blue-600/3 dark:to-blue-500/3">
           <div 
             className="absolute inset-0 opacity-10 dark:opacity-5"
             style={{
@@ -226,7 +226,7 @@ const AuthLogin: React.FC = () => {
 
               <div className="group">
                 <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
-                  <Lock className="w-4 h-4 mr-2 text-purple-500" />
+                  <Lock className="w-4 h-4 mr-2 text-blue-500" />
                   Password
                 </label>
                 <div className="relative">
@@ -235,14 +235,14 @@ const AuthLogin: React.FC = () => {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="login-input w-full pl-12 pr-14 py-4 rounded-2xl bg-white/15 dark:bg-gray-800/40 backdrop-filter backdrop-blur-16 border-2 border-white/30 dark:border-gray-600/40 focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500/60 dark:focus:border-purple-400/60 transition-all duration-300 text-gray-900 dark:text-white shadow-lg"
+                    className="login-input w-full pl-12 pr-14 py-4 rounded-2xl bg-white/15 dark:bg-gray-800/40 backdrop-filter backdrop-blur-16 border-2 border-white/30 dark:border-gray-600/40 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500/60 dark:focus:border-blue-400/60 transition-all duration-300 text-gray-900 dark:text-white shadow-lg"
                     placeholder="Enter your password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-500 transition-colors p-1 rounded"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-blue-500 transition-colors p-1 rounded"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>

@@ -24,7 +24,7 @@ const AppContent: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="flex flex-col items-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           <p className="text-gray-600 dark:text-gray-400">Loading application...</p>
         </div>
       </div>
@@ -70,7 +70,7 @@ const AppContent: React.FC = () => {
               <p className="text-gray-600 dark:text-gray-400 mt-2">Your account role is not recognized.</p>
               <button
                 onClick={logout}
-                className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Logout
               </button>

@@ -172,9 +172,9 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent">
           Parent Dashboard
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -253,9 +253,9 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Upcoming Assignments */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-              <Target className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" />
+              <Target className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Upcoming Assignments
             </h3>
           </div>
@@ -284,7 +284,7 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
 
         {/* Recent Activity */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in theme-transition" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
               <Activity className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
               Recent Activity
@@ -338,9 +338,9 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
             <Calendar className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-2" />
             <p className="text-sm font-medium text-green-900 dark:text-green-300">Schedule</p>
           </button>
-          <button className="btn-glass btn-glass-purple p-4 rounded-lg text-center transition-colors theme-transition">
-            <Users className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
-            <p className="text-sm font-medium text-purple-900 dark:text-purple-300">Contact Teachers</p>
+          <button className="btn-glass btn-glass-blue p-4 rounded-lg text-center transition-colors theme-transition">
+            <Users className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+            <p className="text-sm font-medium text-blue-900 dark:text-blue-300">Contact Teachers</p>
           </button>
           <button className="btn-glass btn-glass-orange p-4 rounded-lg text-center transition-colors theme-transition">
             <Award className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />
@@ -354,9 +354,9 @@ const ParentOverview: React.FC<{ user: User }> = ({ user }) => {
 
 const ChildrenProgress: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Children Progress</h1>
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent">Children Progress</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">Detailed progress tracking for each of your children.</p>
       </div>
       

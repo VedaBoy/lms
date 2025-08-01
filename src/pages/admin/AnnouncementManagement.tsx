@@ -128,7 +128,7 @@ const AnnouncementForm: React.FC<AnnouncementFormProps> = ({ onClose, onSuccess,
 
   const typeOptions = [
     { value: 'info', label: 'Information', icon: Info, color: 'text-blue-600' },
-    { value: 'success', label: 'Success', icon: CheckCircle, color: 'text-green-600' },
+    { value: 'success', label: 'Success', icon: CheckCircle, color: 'text-blue-600' },
     { value: 'warning', label: 'Warning', icon: AlertCircle, color: 'text-yellow-600' },
     { value: 'error', label: 'Error', icon: AlertCircle, color: 'text-red-600' },
   ];
@@ -381,7 +381,7 @@ const AnnouncementManagement: React.FC<AnnouncementManagementProps> = ({ current
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'success': return <CheckCircle className="w-4 h-4 text-green-600" />;
+      case 'success': return <CheckCircle className="w-4 h-4 text-blue-600" />;
       case 'warning': return <AlertCircle className="w-4 h-4 text-yellow-600" />;
       case 'error': return <AlertCircle className="w-4 h-4 text-red-600" />;
       default: return <Info className="w-4 h-4 text-blue-600" />;
@@ -398,9 +398,9 @@ const AnnouncementManagement: React.FC<AnnouncementManagementProps> = ({ current
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Announcement Management
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -500,7 +500,7 @@ const AnnouncementManagement: React.FC<AnnouncementManagementProps> = ({ current
                       <div className="flex items-center space-x-2">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                           announcement.is_active 
-                            ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
                             : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
                         }`}>
                           {announcement.is_active ? 'Active' : 'Inactive'}

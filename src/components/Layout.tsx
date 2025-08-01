@@ -77,10 +77,10 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
           <div className="flex flex-col h-0 flex-1 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl theme-transition">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center backdrop-blur-lg bg-opacity-90 border border-white/20 mr-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center backdrop-blur-lg bg-opacity-90 border border-white/20 mr-3">
                   <span className="text-white font-bold text-lg">E</span>
                 </div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                   EduFlow LMS
                 </h1>
               </div>
@@ -114,7 +114,7 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
         {/* Top bar */}
         <div className="relative z-10 flex-shrink-0 flex h-16 bg-white dark:bg-gray-800 shadow theme-transition">
           <button
-            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <Menu className="h-6 w-6" />
@@ -162,7 +162,7 @@ const Layout: React.FC<LayoutProps> = ({ user, children, navigation, onLogout })
               
               <button
                 onClick={onLogout}
-                className="bg-white dark:bg-gray-800 p-1 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-all duration-300 mouse-tilt btn-interactive"
+                className="bg-white dark:bg-gray-800 p-1 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-all duration-300 mouse-tilt btn-interactive"
                 title="Logout"
               >
                 <LogOut className="h-6 w-6" />

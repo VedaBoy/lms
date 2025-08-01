@@ -138,7 +138,7 @@ const ContentIntegration: React.FC = () => {
                   <input type="radio" name="provider" value="lti" className="sr-only" />
                   <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-4 cursor-pointer hover:border-blue-300 peer-checked:border-blue-500 peer-checked:bg-blue-50">
                     <div className="flex items-center justify-center">
-                      <ExternalLink className="w-8 h-8 text-green-600" />
+                      <ExternalLink className="w-8 h-8 text-blue-600" />
                     </div>
                     <p className="text-sm font-medium text-gray-900 dark:text-white mt-2 text-center">LTI 1.3</p>
                   </div>
@@ -342,8 +342,8 @@ const ContentIntegration: React.FC = () => {
                               </div>
                             )}
                             {integration.provider === 'lti' && (
-                              <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center">
-                                <ExternalLink className="h-6 w-6 text-green-600" />
+                              <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                                <ExternalLink className="h-6 w-6 text-blue-600" />
                               </div>
                             )}
                           </div>
@@ -363,7 +363,7 @@ const ContentIntegration: React.FC = () => {
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full capitalize ${
                           integration.provider === 'youtube' ? 'bg-red-100 text-red-800' :
                           integration.provider === 'vimeo' ? 'bg-blue-100 text-blue-800' :
-                          'bg-green-100 text-green-800'
+                          'bg-blue-100 text-blue-800'
                         }`}>
                           {integration.provider}
                         </span>
@@ -373,7 +373,7 @@ const ContentIntegration: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          integration.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                          integration.status === 'active' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800'
                         }`}>
                           {integration.status}
                         </span>
@@ -428,7 +428,7 @@ const ContentIntegration: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          provider.type === 'LTI 1.3' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'
+                          provider.type === 'LTI 1.3' ? 'bg-blue-100 text-blue-800' : 'bg-blue-200 text-blue-900'
                         }`}>
                           {provider.type}
                         </span>
@@ -448,7 +448,7 @@ const ContentIntegration: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          provider.status === 'connected' ? 'bg-green-100 text-green-800' :
+                          provider.status === 'connected' ? 'bg-blue-100 text-blue-800' :
                           provider.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                           'bg-red-100 text-red-800'
                         }`}>
@@ -460,7 +460,7 @@ const ContentIntegration: React.FC = () => {
                           <button className="btn-glass btn-glass-secondary text-blue-600 hover:text-blue-900 p-2 rounded">
                             <Settings className="w-4 h-4" />
                           </button>
-                          <button className="btn-glass btn-glass-success text-green-600 hover:text-green-900 px-3 py-1 rounded text-sm">
+                          <button className="btn-glass btn-glass-blue text-blue-600 hover:text-blue-900 px-3 py-1 rounded text-sm">
                             Test
                           </button>
                         </div>
@@ -479,9 +479,9 @@ const ContentIntegration: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           Content Integration
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">

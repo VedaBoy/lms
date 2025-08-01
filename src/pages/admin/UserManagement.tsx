@@ -517,7 +517,7 @@ const UserManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="btn-glass btn-glass-success px-4 py-2 text-sm font-medium text-white rounded-lg focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-glass btn-glass-blue px-4 py-2 text-sm font-medium text-white rounded-lg focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Setting Password...' : 'Set Password'}
@@ -532,9 +532,9 @@ const UserManagement: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8 scroll-smooth theme-transition">
       <div className="mb-8 animate-fade-in">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
           User Management
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 text-lg">
@@ -545,7 +545,7 @@ const UserManagement: React.FC = () => {
       <div className="sm:flex sm:items-center mb-6 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
         <div className="sm:flex-auto">
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+            <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
               {filteredUsers.length} users found
             </span>
           </div>
@@ -651,9 +651,9 @@ const UserManagement: React.FC = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full capitalize ${
-                        user.role === 'admin' ? 'bg-purple-100 text-purple-800' :
+                        user.role === 'admin' ? 'bg-blue-100 text-blue-800' :
                         user.role === 'teacher' ? 'bg-blue-100 text-blue-800' :
-                        user.role === 'student' ? 'bg-green-100 text-green-800' :
+                        user.role === 'student' ? 'bg-blue-100 text-blue-800' :
                         'bg-orange-100 text-orange-800'
                       }`}>
                         {user.role}
@@ -661,7 +661,7 @@ const UserManagement: React.FC = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                        user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                        user.status === 'active' ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800'
                       }`}>
                         {user.status}
                       </span>
@@ -676,7 +676,7 @@ const UserManagement: React.FC = () => {
                             setPasswordUser(user);
                             setShowPasswordModal(true);
                           }}
-                          className="btn-glass btn-glass-success text-green-600 hover:text-green-900 p-2 rounded"
+                          className="btn-glass btn-glass-blue text-blue-600 hover:text-blue-900 p-2 rounded"
                           title="Set Password"
                         >
                           <Key className="w-4 h-4" />

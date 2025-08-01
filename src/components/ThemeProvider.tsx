@@ -101,7 +101,7 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
   return (
     <button
       onClick={handleClick}
-      className={`btn-glass btn-glass-secondary relative p-2.5 rounded-xl text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-all duration-300 theme-transition shadow-sm ${className}`}
+      className={`btn-glass btn-glass-secondary relative p-2.5 rounded-xl text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-all duration-300 theme-transition shadow-sm ${className}`}
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       <div className="relative w-5 h-5">
@@ -126,7 +126,7 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
         <div className={`absolute inset-0 bg-gradient-to-r ${
           theme === 'light' 
             ? 'from-yellow-200 to-orange-200' 
-            : 'from-blue-200 to-purple-200'
+            : 'from-blue-200 to-blue-300'
         } opacity-0 hover:opacity-20 transition-opacity duration-300`}></div>
       </div>
       
